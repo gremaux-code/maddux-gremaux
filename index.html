@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Maddux Gremaux</title>
+  <style>
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Georgia', serif;
+      background: #fff;
+      color: #111;
+    }
+
+    /* NAV */
+    nav {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        padding: 20px 40px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 100;
+        transition: background 0.3s ease, backdrop-filter 0.3s ease;
+        /* remove mix-blend-mode: difference; */
+    }
+
+    nav .logo {
+      font-size: 16px;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #fff;
+      text-decoration: none;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 32px;
+    }
+
+    nav ul a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 13px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    nav {
+    transition: background 0.3s ease, backdrop-filter 0.3s ease;
+    }
+    nav.scrolled {
+    mix-blend-mode: normal;
+    background: rgba(10, 10, 10, 0.75);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    }
+    nav.scrolled .logo,
+    nav.scrolled ul a {
+    color: #fff;
+    }
+    
+
+    /* HERO VIDEO */
+    .hero {
+      position: relative;
+      width: 100%;
+      height: min(100vh, 56.25vw);
+      overflow: hidden;
+      background: #111;
+    }
+
+    .hero video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.85;
+    }
+
+    .hero-text {
+      position: absolute;
+      bottom: 48px;
+      left: 40px;
+      color: #fff;
+      z-index: 10;
+    }
+
+    .hero-text h1 {
+      font-size: clamp(36px, 5vw, 72px);
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+    }
+
+    .hero-text p {
+      margin-top: 12px;
+      font-size: 15px;
+      letter-spacing: 0.05em;
+      opacity: 0.8;
+      font-style: italic;
+      
+    }
+
+        .hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 100%);
+    pointer-events: none;
+    }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 48px;
+      right: 40px;
+      color: #fff;
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      opacity: 0.6;
+      writing-mode: vertical-rl;
+    }
+
+    /* FEATURED IN */
+    .featured {
+      padding: 80px 40px;
+      text-align: center;
+      border-bottom: 1px solid #eee;
+    }
+
+    .featured h2 {
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #999;
+      margin-bottom: 40px;
+    }
+
+    .featured-logos {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 48px;
+      flex-wrap: wrap;
+    }
+
+    .featured-logos span {
+      font-size: 14px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #555;
+      font-weight: 400;
+    }
+
+    .featured-stat {
+      margin-top: 48px;
+      font-size: 13px;
+      color: #999;
+      letter-spacing: 0.05em;
+      font-style: italic;
+    }
+
+    /* PHOTO GRID */
+    .grid-section {
+      padding: 80px 40px;
+    }
+
+    .grid-section h2 {
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #999;
+      margin-bottom: 32px;
+    }
+
+    .filter-buttons {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 40px;
+    }
+
+    .filter-buttons button {
+      background: none;
+      border: 1px solid #ddd;
+      padding: 8px 20px;
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.2s;
+      color: #555;
+    }
+
+    .filter-buttons button.active,
+    .filter-buttons button:hover {
+      background: #111;
+      color: #fff;
+      border-color: #111;
+    }
+
+    .photo-grid {
+    columns: 3;
+    column-gap: 12px;
+    }
+
+    .photo-grid .photo-item {
+    break-inside: avoid;
+    margin-bottom: 12px;
+    background: #f0f0f0;
+    overflow: hidden;
+    cursor: pointer;
+    }
+
+    .photo-grid .photo-item img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+
+        .photo-grid .photo-item:hover img {
+    transform: scale(1.04);
+    filter: brightness(1.06);
+    }
+
+    .photo-grid .photo-item.placeholder {
+      aspect-ratio: 3/4;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      color: #bbb;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    /* ABOUT */
+    .about {
+      padding: 100px 40px;
+      max-width: 680px;
+    }
+
+    .about h2 {
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #999;
+      margin-bottom: 32px;
+    }
+
+    .about p {
+      font-size: 18px;
+      line-height: 1.8;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    .about a {
+      display: inline-block;
+      margin-top: 24px;
+      font-size: 12px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #111;
+      text-decoration: none;
+      border-bottom: 1px solid #111;
+      padding-bottom: 2px;
+    }
+
+    /* FOOTER */
+    footer {
+      padding: 40px;
+      border-top: 1px solid #eee;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+      color: #999;
+      letter-spacing: 0.05em;
+    }
+
+    footer a {
+      color: #999;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      color: #111;
+    }
+
+    /* LIGHTBOX */
+    .lightbox {
+        position: fixed;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background: rgba(0,0,0,0.9);
+        z-index: 1000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.2s ease, visibility 0.2s ease;
+        user-select: none;
+    }
+    .lightbox.active {
+        opacity: 1;
+        visibility: visible;
+    }
+    .lightbox-close {
+        position: absolute;
+        top: 24px;
+        right: 32px;
+        color: #fff;
+        font-size: 24px;
+        cursor: pointer;
+        opacity: 0.7;
+        font-family: sans-serif;
+        user-select: none;
+    }
+    .lightbox img {
+      max-width: 90vw;
+      max-height: 90vh;
+      object-fit: contain;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 24px;
+      right: 32px;
+      color: #fff;
+      font-size: 24px;
+      cursor: pointer;
+      opacity: 0.7;
+      letter-spacing: 0.1em;
+      font-family: sans-serif;
+    }
+    .lightbox-prev,
+.lightbox-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #fff;
+  font-size: 48px;
+  cursor: pointer;
+  opacity: 0.7;
+  user-select: none;
+  padding: 20px;
+}
+
+.lightbox-prev { left: 16px; }
+.lightbox-next { right: 16px; }
+
+.lightbox-prev:hover,
+.lightbox-next:hover { opacity: 1; }
+
+/* DROPDOWN */
+.dropdown-wrapper {
+  position: relative;
+}
+
+.dropdown {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  padding-top: 8px;
+  background: #fff;
+  border: 1px solid #ddd;
+  z-index: 50;
+  min-width: 140px;
+  flex-direction: column;
+}
+
+.dropdown-wrapper:hover .dropdown {
+  display: flex;
+}
+
+.dropdown button {
+  border: none;
+  border-bottom: 1px solid #eee;
+  text-align: left;
+  width: 100%;
+}
+
+.dropdown button:last-child {
+  border-bottom: none;
+}
+
+    /* MOBILE */
+    
+    @media (max-width: 600px) {
+      .hero {
+        height: 75vw;
+      }
+      .hero video {
+        object-position: 45% 50%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a class="logo" href="#">Maddux Gremaux</a>
+    <ul>
+      <li><a href="#prints">Prints</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO VIDEO -->
+  <section class="hero">
+     <video autoplay muted loop playsinline preload="auto" poster="hero-poster.jpg">
+      <source src="maddux-tempe-town-lake-hero.mp4" type="video/mp4" />
+    </video>
+    <div class="hero-text">
+      <h1>Photographer.<br>Storyteller.<br>Urbanist.</h1>
+      <p>Phoenix, AZ</p>
+    </div>
+    <div class="scroll-hint">Scroll</div>
+  </section>
+
+  <!-- FEATURED IN -->
+  <section class="featured">
+    <h2>As Seen In</h2>
+    <div class="featured-logos">
+      <span>The Daily Show</span>
+      <span>Exploring Alternatives</span>
+      <span>Streetsblog</span>
+      <span>Culdesac</span>
+    </div>
+    <p class="featured-stat">1M+ organic views per quarter</p>
+  </section>
+
+  <!-- PHOTO GRID / PRINTS -->
+  <section class="grid-section" id="prints">
+    <h2>Prints</h2>
+   <div class="filter-buttons">
+  <button class="active" data-category="featured">Featured</button>
+  <div class="dropdown-wrapper">
+    <button>Cities ▾</button>
+    <div class="dropdown">
+      <button data-city="all-cities">All Cities</button>
+      <button data-city="chicago">Chicago</button>
+      <button data-city="london">London</button>
+      <button data-city="prague">Prague</button>
+      <button data-city="paris">Paris</button>
+      <button data-city="alicante">Alicante, Spain </button>
+      <button data-city="amsterdam">Amsterdam</button>
+    <button data-city="san-francisco">San Francisco</button>
+    </div>
+  </div>
+  <button>Bikes</button>
+  <button>Transit</button>
+  <button>Architecture</button>
+  <button>People</button>
+</div>
+    <div class="photo-grid">
+    <div class="photo-item" data-city="chicago" data-category="featured" ><img src="photos/chicago/Chicago6.jpg" alt="" /></div>
+    <div class="photo-item" data-city="london" data-category="featured" ><img src="photos/london/london-22.jpg" alt="" /></div>
+    <div class="photo-item" data-city="prague" data-category="featured" ><img src="photos/prague/prague-36.jpg" alt="" /></div>
+    <div class="photo-item" data-city="paris" data-category="featured" ><img src="photos/paris/paris-13.jpg" alt="" /></div>
+    <div class="photo-item" data-city="alicante" data-category="featured" ><img src="photos/alicante/alicante-3.jpg" alt="" /></div>
+    <div class="photo-item" data-city="alicante" data-category="featured" ><img src="photos/alicante/alicante-7.jpg" alt="" /></div>
+    <div class="photo-item" data-city="chicago"><img src="photos/chicago/Chicago1.jpg" alt="" /></div>
+    <div class="photo-item" data-city="chicago"><img src="photos/chicago/Chicago2.jpg" alt="" /></div>
+    <div class="photo-item" data-city="chicago"><img src="photos/chicago/Chicago3.jpg" alt="" /></div>
+    <div class="photo-item" data-city="chicago"><img src="photos/chicago/Chicago4.jpg" alt="" /></div>
+    <div class="photo-item" data-city="chicago"><img src="photos/chicago/Chicago5.jpg" alt="" /></div>
+    <div class="photo-item" data-city="chicago"><img src="photos/chicago/Chicago6.jpg" alt="" /></div>
+    <div class="photo-item" data-city="chicago"><img src="photos/chicago/Chicago7.jpg" alt="" /></div>
+    <div class="photo-item" data-city="chicago"><img src="photos/chicago/Chicago8.jpg" alt="" /></div>
+    <div class="photo-item" data-city="chicago"><img src="photos/chicago/Chicago9.jpg" alt="" /></div>
+    <div class="photo-item" data-city="chicago"><img src="photos/chicago/Chicago10.jpg" alt="" /></div>
+    <div class="photo-item" data-city="chicago"><img src="photos/chicago/Chicago11.jpg" alt="" /></div>
+    <div class="photo-item" data-city="chicago"><img src="photos/chicago/Chicago12.jpg" alt="" /></div>
+    <div class="photo-item" data-city="chicago"><img src="photos/chicago/Chicago13.jpg" alt="" /></div>
+    <div class="photo-item" data-city="chicago"><img src="photos/chicago/Chicago14.jpg" alt="" /></div>
+    <div class="photo-item" data-city="chicago"><img src="photos/chicago/Chicago15.jpg" alt="" /></div>
+    <div class="photo-item" data-city="chicago"><img src="photos/chicago/Chicago16.jpg" alt="" /></div>
+    <div class="photo-item" data-city="chicago"><img src="photos/chicago/Chicago17.jpg" alt="" /></div>
+    <div class="photo-item" data-city="chicago"><img src="photos/chicago/Chicago18.jpg" alt="" /></div>
+    <div class="photo-item" data-city="chicago"><img src="photos/chicago/Chicago19.jpg" alt="" /></div>
+    <div class="photo-item" data-city="chicago"><img src="photos/chicago/Chicago20.jpg" alt="" /></div>
+    <div class="photo-item" data-city="chicago"><img src="photos/chicago/Chicago21.jpg" alt="" /></div>
+    <div class="photo-item" data-city="chicago"><img src="photos/chicago/Chicago22.jpg" alt="" /></div>
+    <div class="photo-item" data-city="chicago"><img src="photos/chicago/Chicago23.jpg" alt="" /></div>
+    <div class="photo-item" data-city="chicago"><img src="photos/chicago/Chicago24.jpg" alt="" /></div>
+    <div class="photo-item" data-city="chicago"><img src="photos/chicago/Chicago25.jpg" alt="" /></div>
+    <div class="photo-item" data-city="chicago"><img src="photos/chicago/Chicago26.jpg" alt="" /></div>
+    <div class="photo-item" data-city="chicago"><img src="photos/chicago/Chicago27.jpg" alt="" /></div>
+    <div class="photo-item" data-city="chicago"><img src="photos/chicago/Chicago28.jpg" alt="" /></div>
+    <div class="photo-item" data-city="chicago"><img src="photos/chicago/Chicago29.jpg" alt="" /></div>
+    <div class="photo-item" data-city="chicago"><img src="photos/chicago/Chicago30.jpg" alt="" /></div>
+    <div class="photo-item" data-city="prague"><img src="photos/prague/prague-1.jpg" alt="" /></div>
+    <div class="photo-item" data-city="prague"><img src="photos/prague/prague-2.jpg" alt="" /></div>
+    <div class="photo-item" data-city="prague"><img src="photos/prague/prague-3.jpg" alt="" /></div>
+    <div class="photo-item" data-city="prague"><img src="photos/prague/prague-4.jpg" alt="" /></div>
+    <div class="photo-item" data-city="prague"><img src="photos/prague/prague-5.jpg" alt="" /></div>
+    <div class="photo-item" data-city="prague"><img src="photos/prague/prague-6.jpg" alt="" /></div>
+    <div class="photo-item" data-city="prague"><img src="photos/prague/prague-7.jpg" alt="" /></div>
+    <div class="photo-item" data-city="prague"><img src="photos/prague/prague-8.jpg" alt="" /></div>
+    <div class="photo-item" data-city="prague"><img src="photos/prague/prague-9.jpg" alt="" /></div>
+    <div class="photo-item" data-city="prague"><img src="photos/prague/prague-10.jpg" alt="" /></div>
+    <div class="photo-item" data-city="prague"><img src="photos/prague/prague-11.jpg" alt="" /></div>
+    <div class="photo-item" data-city="prague"><img src="photos/prague/prague-12.jpg" alt="" /></div>
+    <div class="photo-item" data-city="prague"><img src="photos/prague/prague-13.jpg" alt="" /></div>
+    <div class="photo-item" data-city="prague"><img src="photos/prague/prague-14.jpg" alt="" /></div>
+    <div class="photo-item" data-city="prague"><img src="photos/prague/prague-15.jpg" alt="" /></div>
+    <div class="photo-item" data-city="prague"><img src="photos/prague/prague-16.jpg" alt="" /></div>
+    <div class="photo-item" data-city="prague"><img src="photos/prague/prague-17.jpg" alt="" /></div>
+    <div class="photo-item" data-city="prague"><img src="photos/prague/prague-18.jpg" alt="" /></div>
+    <div class="photo-item" data-city="prague"><img src="photos/prague/prague-19.jpg" alt="" /></div>
+    <div class="photo-item" data-city="prague"><img src="photos/prague/prague-20.jpg" alt="" /></div>
+    <div class="photo-item" data-city="prague"><img src="photos/prague/prague-21.jpg" alt="" /></div>
+    <div class="photo-item" data-city="prague"><img src="photos/prague/prague-22.jpg" alt="" /></div>
+    <div class="photo-item" data-city="prague"><img src="photos/prague/prague-23.jpg" alt="" /></div>
+    <div class="photo-item" data-city="prague"><img src="photos/prague/prague-24.jpg" alt="" /></div>
+    <div class="photo-item" data-city="prague"><img src="photos/prague/prague-25.jpg" alt="" /></div>
+    <div class="photo-item" data-city="prague"><img src="photos/prague/prague-26.jpg" alt="" /></div>
+    <div class="photo-item" data-city="prague"><img src="photos/prague/prague-27.jpg" alt="" /></div>
+    <div class="photo-item" data-city="prague"><img src="photos/prague/prague-28.jpg" alt="" /></div>
+    <div class="photo-item" data-city="prague"><img src="photos/prague/prague-29.jpg" alt="" /></div>
+    <div class="photo-item" data-city="prague"><img src="photos/prague/prague-30.jpg" alt="" /></div>
+    <div class="photo-item" data-city="prague"><img src="photos/prague/prague-31.jpg" alt="" /></div>
+    <div class="photo-item" data-city="prague"><img src="photos/prague/prague-32.jpg" alt="" /></div>
+    <div class="photo-item" data-city="prague"><img src="photos/prague/prague-33.jpg" alt="" /></div>
+    <div class="photo-item" data-city="prague"><img src="photos/prague/prague-34.jpg" alt="" /></div>
+    <div class="photo-item" data-city="prague"><img src="photos/prague/prague-35.jpg" alt="" /></div>
+    <div class="photo-item" data-city="prague"><img src="photos/prague/prague-36.jpg" alt="" /></div>
+    <div class="photo-item" data-city="prague"><img src="photos/prague/prague-37.jpg" alt="" /></div>
+
+    <!-- AMSTERDAM -->
+<div class="photo-item" data-city="amsterdam"><img src="photos/amsterdam/amsterdam-1.jpg" alt="" /></div>
+<div class="photo-item" data-city="amsterdam"><img src="photos/amsterdam/amsterdam-2.jpg" alt="" /></div>
+<div class="photo-item" data-city="amsterdam"><img src="photos/amsterdam/amsterdam-3.jpg" alt="" /></div>
+<div class="photo-item" data-city="amsterdam"><img src="photos/amsterdam/amsterdam-4.jpg" alt="" /></div>
+<div class="photo-item" data-city="amsterdam"><img src="photos/amsterdam/amsterdam-5.jpg" alt="" /></div>
+<div class="photo-item" data-city="amsterdam"><img src="photos/amsterdam/amsterdam-6.jpg" alt="" /></div>
+<div class="photo-item" data-city="amsterdam"><img src="photos/amsterdam/amsterdam-7.jpg" alt="" /></div>
+<div class="photo-item" data-city="amsterdam"><img src="photos/amsterdam/amsterdam-8.jpg" alt="" /></div>
+
+<!-- LONDON -->
+<div class="photo-item" data-city="london"><img src="photos/london/london-1.jpg" alt="" /></div>
+<div class="photo-item" data-city="london"><img src="photos/london/london-2.jpg" alt="" /></div>
+<div class="photo-item" data-city="london"><img src="photos/london/london-3.jpg" alt="" /></div>
+<div class="photo-item" data-city="london"><img src="photos/london/london-4.jpg" alt="" /></div>
+<div class="photo-item" data-city="london"><img src="photos/london/london-5.jpg" alt="" /></div>
+<div class="photo-item" data-city="london"><img src="photos/london/london-6.jpg" alt="" /></div>
+<div class="photo-item" data-city="london"><img src="photos/london/london-7.jpg" alt="" /></div>
+<div class="photo-item" data-city="london"><img src="photos/london/london-8.jpg" alt="" /></div>
+<div class="photo-item" data-city="london"><img src="photos/london/london-9.jpg" alt="" /></div>
+<div class="photo-item" data-city="london"><img src="photos/london/london-10.jpg" alt="" /></div>
+<div class="photo-item" data-city="london"><img src="photos/london/london-11.jpg" alt="" /></div>
+<div class="photo-item" data-city="london"><img src="photos/london/london-12.jpg" alt="" /></div>
+<div class="photo-item" data-city="london"><img src="photos/london/london-13.jpg" alt="" /></div>
+<div class="photo-item" data-city="london"><img src="photos/london/london-14.jpg" alt="" /></div>
+<div class="photo-item" data-city="london"><img src="photos/london/london-15.jpg" alt="" /></div>
+<div class="photo-item" data-city="london"><img src="photos/london/london-16.jpg" alt="" /></div>
+<div class="photo-item" data-city="london"><img src="photos/london/london-17.jpg" alt="" /></div>
+<div class="photo-item" data-city="london"><img src="photos/london/london-18.jpg" alt="" /></div>
+<div class="photo-item" data-city="london"><img src="photos/london/london-19.jpg" alt="" /></div>
+<div class="photo-item" data-city="london"><img src="photos/london/london-20.jpg" alt="" /></div>
+<div class="photo-item" data-city="london"><img src="photos/london/london-21.jpg" alt="" /></div>
+<div class="photo-item" data-city="london"><img src="photos/london/london-22.jpg" alt="" /></div>
+<div class="photo-item" data-city="london"><img src="photos/london/london-23.jpg" alt="" /></div>
+<div class="photo-item" data-city="london"><img src="photos/london/london-24.jpg" alt="" /></div>
+<div class="photo-item" data-city="london"><img src="photos/london/london-25.jpg" alt="" /></div>
+<div class="photo-item" data-city="london"><img src="photos/london/london-26.jpg" alt="" /></div>
+<div class="photo-item" data-city="london"><img src="photos/london/london-27.jpg" alt="" /></div>
+<div class="photo-item" data-city="london"><img src="photos/london/london-28.jpg" alt="" /></div>
+<div class="photo-item" data-city="london"><img src="photos/london/london-29.jpg" alt="" /></div>
+<div class="photo-item" data-city="london"><img src="photos/london/london-30.jpg" alt="" /></div>
+<div class="photo-item" data-city="london"><img src="photos/london/london-31.jpg" alt="" /></div>
+<div class="photo-item" data-city="london"><img src="photos/london/london-32.jpg" alt="" /></div>
+<div class="photo-item" data-city="london"><img src="photos/london/london-33.jpg" alt="" /></div>
+<div class="photo-item" data-city="london"><img src="photos/london/london-34.jpg" alt="" /></div>
+<div class="photo-item" data-city="london"><img src="photos/london/london-35.jpg" alt="" /></div>
+<div class="photo-item" data-city="london"><img src="photos/london/london-36.jpg" alt="" /></div>
+
+<!-- PARIS -->
+<div class="photo-item" data-city="paris"><img src="photos/paris/paris-1.jpg" alt="" /></div>
+<div class="photo-item" data-city="paris"><img src="photos/paris/paris-2.jpg" alt="" /></div>
+<div class="photo-item" data-city="paris"><img src="photos/paris/paris-3.jpg" alt="" /></div>
+<div class="photo-item" data-city="paris"><img src="photos/paris/paris-4.jpg" alt="" /></div>
+<div class="photo-item" data-city="paris"><img src="photos/paris/paris-5.jpg" alt="" /></div>
+<div class="photo-item" data-city="paris"><img src="photos/paris/paris-6.jpg" alt="" /></div>
+<div class="photo-item" data-city="paris"><img src="photos/paris/paris-7.jpg" alt="" /></div>
+<div class="photo-item" data-city="paris"><img src="photos/paris/paris-8.jpg" alt="" /></div>
+<div class="photo-item" data-city="paris"><img src="photos/paris/paris-9.jpg" alt="" /></div>
+<div class="photo-item" data-city="paris"><img src="photos/paris/paris-10.jpg" alt="" /></div>
+<div class="photo-item" data-city="paris"><img src="photos/paris/paris-11.jpg" alt="" /></div>
+<div class="photo-item" data-city="paris"><img src="photos/paris/paris-12.jpg" alt="" /></div>
+<div class="photo-item" data-city="paris"><img src="photos/paris/paris-13.jpg" alt="" /></div>
+<div class="photo-item" data-city="paris"><img src="photos/paris/paris-14.jpg" alt="" /></div>
+<div class="photo-item" data-city="paris"><img src="photos/paris/paris-15.jpg" alt="" /></div>
+<div class="photo-item" data-city="paris"><img src="photos/paris/paris-16.jpg" alt="" /></div>
+<div class="photo-item" data-city="paris"><img src="photos/paris/paris-17.jpg" alt="" /></div>
+<div class="photo-item" data-city="paris"><img src="photos/paris/paris-18.jpg" alt="" /></div>
+<div class="photo-item" data-city="paris"><img src="photos/paris/paris-19.jpg" alt="" /></div>
+<div class="photo-item" data-city="paris"><img src="photos/paris/paris-20.jpg" alt="" /></div>
+<div class="photo-item" data-city="paris"><img src="photos/paris/paris-21.jpg" alt="" /></div>
+<div class="photo-item" data-city="paris"><img src="photos/paris/paris-22.jpg" alt="" /></div>
+<div class="photo-item" data-city="paris"><img src="photos/paris/paris-23.jpg" alt="" /></div>
+<div class="photo-item" data-city="paris"><img src="photos/paris/paris-24.jpg" alt="" /></div>
+<div class="photo-item" data-city="paris"><img src="photos/paris/paris-25.jpg" alt="" /></div>
+<div class="photo-item" data-city="paris"><img src="photos/paris/paris-26.jpg" alt="" /></div>
+<div class="photo-item" data-city="paris"><img src="photos/paris/paris-27.jpg" alt="" /></div>
+<div class="photo-item" data-city="paris"><img src="photos/paris/paris-28.jpg" alt="" /></div>
+<div class="photo-item" data-city="paris"><img src="photos/paris/paris-29.jpg" alt="" /></div>
+<div class="photo-item" data-city="paris"><img src="photos/paris/paris-30.jpg" alt="" /></div>
+<div class="photo-item" data-city="paris"><img src="photos/paris/paris-31.jpg" alt="" /></div>
+<div class="photo-item" data-city="paris"><img src="photos/paris/paris-32.jpg" alt="" /></div>
+<div class="photo-item" data-city="paris"><img src="photos/paris/paris-33.jpg" alt="" /></div>
+<div class="photo-item" data-city="paris"><img src="photos/paris/paris-34.jpg" alt="" /></div>
+<div class="photo-item" data-city="paris"><img src="photos/paris/paris-35.jpg" alt="" /></div>
+<div class="photo-item" data-city="paris"><img src="photos/paris/paris-36.jpg" alt="" /></div>
+<div class="photo-item" data-city="paris"><img src="photos/paris/paris-37.jpg" alt="" /></div>
+
+<!-- SAN FRANCISCO -->
+<div class="photo-item" data-city="san-francisco"><img src="photos/san-francisco/san-francisco-1.jpg" alt="" /></div>
+<div class="photo-item" data-city="san-francisco"><img src="photos/san-francisco/san-francisco-2.jpg" alt="" /></div>
+<div class="photo-item" data-city="san-francisco"><img src="photos/san-francisco/san-francisco-3.jpg" alt="" /></div>
+<div class="photo-item" data-city="san-francisco"><img src="photos/san-francisco/san-francisco-4.jpg" alt="" /></div>
+<div class="photo-item" data-city="san-francisco"><img src="photos/san-francisco/san-francisco-5.jpg" alt="" /></div>
+<div class="photo-item" data-city="san-francisco"><img src="photos/san-francisco/san-francisco-6.jpg" alt="" /></div>
+<div class="photo-item" data-city="san-francisco"><img src="photos/san-francisco/san-francisco-7.jpg" alt="" /></div>
+<div class="photo-item" data-city="san-francisco"><img src="photos/san-francisco/san-francisco-8.jpg" alt="" /></div>
+<div class="photo-item" data-city="san-francisco"><img src="photos/san-francisco/san-francisco-9.jpg" alt="" /></div>
+<div class="photo-item" data-city="san-francisco"><img src="photos/san-francisco/san-francisco-10.jpg" alt="" /></div>
+<div class="photo-item" data-city="san-francisco"><img src="photos/san-francisco/san-francisco-11.jpg" alt="" /></div>
+<div class="photo-item" data-city="san-francisco"><img src="photos/san-francisco/san-francisco-12.jpg" alt="" /></div>
+<div class="photo-item" data-city="san-francisco"><img src="photos/san-francisco/san-francisco-13.jpg" alt="" /></div>
+<div class="photo-item" data-city="san-francisco"><img src="photos/san-francisco/san-francisco-14.jpg" alt="" /></div>
+<div class="photo-item" data-city="san-francisco"><img src="photos/san-francisco/san-francisco-15.jpg" alt="" /></div>
+<div class="photo-item" data-city="san-francisco"><img src="photos/san-francisco/san-francisco-16.jpg" alt="" /></div>
+<div class="photo-item" data-city="san-francisco"><img src="photos/san-francisco/san-francisco-17.jpg" alt="" /></div>
+
+<!-- ALICANTE -->
+<div class="photo-item" data-city="alicante"><img src="photos/alicante/alicante-1.jpg" alt="" /></div>
+<div class="photo-item" data-city="alicante"><img src="photos/alicante/alicante-2.jpg" alt="" /></div>
+<div class="photo-item" data-city="alicante"><img src="photos/alicante/alicante-3.jpg" alt="" /></div>
+<div class="photo-item" data-city="alicante"><img src="photos/alicante/alicante-4.jpg" alt="" /></div>
+<div class="photo-item" data-city="alicante"><img src="photos/alicante/alicante-5.jpg" alt="" /></div>
+<div class="photo-item" data-city="alicante"><img src="photos/alicante/alicante-6.jpg" alt="" /></div>
+<div class="photo-item" data-city="alicante"><img src="photos/alicante/alicante-7.jpg" alt="" /></div>
+<div class="photo-item" data-city="alicante"><img src="photos/alicante/alicante-8.jpg" alt="" /></div>
+<div class="photo-item" data-city="alicante"><img src="photos/alicante/alicante-9.jpg" alt="" /></div>
+<div class="photo-item" data-city="alicante"><img src="photos/alicante/alicante-10.jpg" alt="" /></div>
+<div class="photo-item" data-city="alicante"><img src="photos/alicante/alicante-11.jpg" alt="" /></div>
+<div class="photo-item" data-city="alicante"><img src="photos/alicante/alicante-12.jpg" alt="" /></div>
+<div class="photo-item" data-city="alicante"><img src="photos/alicante/alicante-13.jpg" alt="" /></div>
+<div class="photo-item" data-city="alicante"><img src="photos/alicante/alicante-14.jpg" alt="" /></div>
+<div class="photo-item" data-city="alicante"><img src="photos/alicante/alicante-15.jpg" alt="" /></div>
+<div class="photo-item" data-city="alicante"><img src="photos/alicante/alicante-16.jpg" alt="" /></div>
+<div class="photo-item" data-city="alicante"><img src="photos/alicante/alicante-17.jpg" alt="" /></div>
+<div class="photo-item" data-city="alicante"><img src="photos/alicante/alicante-18.jpg" alt="" /></div>
+<div class="photo-item" data-city="alicante"><img src="photos/alicante/alicante-19.jpg" alt="" /></div>
+<div class="photo-item" data-city="alicante"><img src="photos/alicante/alicante-20.jpg" alt="" /></div>
+<div class="photo-item" data-city="alicante"><img src="photos/alicante/alicante-21.jpg" alt="" /></div>
+<div class="photo-item" data-city="alicante"><img src="photos/alicante/alicante-22.jpg" alt="" /></div>
+<div class="photo-item" data-city="alicante"><img src="photos/alicante/alicante-23.jpg" alt="" /></div>
+<div class="photo-item" data-city="alicante"><img src="photos/alicante/alicante-24.jpg" alt="" /></div>
+<div class="photo-item" data-city="alicante"><img src="photos/alicante/alicante-25.jpg" alt="" /></div>
+<div class="photo-item" data-city="alicante"><img src="photos/alicante/alicante-26.jpg" alt="" /></div>
+<div class="photo-item" data-city="alicante"><img src="photos/alicante/alicante-27.jpg" alt="" /></div>
+<div class="photo-item" data-city="alicante"><img src="photos/alicante/alicante-28.jpg" alt="" /></div>
+<div class="photo-item" data-city="alicante"><img src="photos/alicante/alicante-29.jpg" alt="" /></div>
+<div class="photo-item" data-city="alicante"><img src="photos/alicante/alicante-30.jpg" alt="" /></div>
+<div class="photo-item" data-city="alicante"><img src="photos/alicante/alicante-31.jpg" alt="" /></div>
+<div class="photo-item" data-city="alicante"><img src="photos/alicante/alicante-32.jpg" alt="" /></div>
+    </div>
+
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+  <a href="contact.html">Get in touch →</a>
+</section>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <span>© 2025 Maddux Gremaux</span>
+    <div style="display:flex; gap:24px;">
+      <a href="#">Instagram</a>
+      <a href="#">LinkedIn</a>
+    </div>
+  </footer>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox">
+  <span class="lightbox-close">✕</span>
+  <span class="lightbox-prev">‹</span>
+  <img id="lightbox-img" src="" alt="" />
+  <span class="lightbox-next">›</span>
+</div>
+
+ <script>
+ // Scroll-influenced video speed + hero text parallax
+const heroVideo = document.querySelector('.hero video');
+const heroText = document.querySelector('.hero-text');
+let lastScrollY = window.scrollY;
+
+window.addEventListener('scroll', () => {
+  const delta = window.scrollY - lastScrollY;
+  lastScrollY = window.scrollY;
+
+  // Video speed
+  if (delta > 0) {
+    heroVideo.playbackRate = Math.min(1 + delta * 0.05, 2.5);
+  }
+  clearTimeout(heroVideo._resetTimer);
+  heroVideo._resetTimer = setTimeout(() => {
+    heroVideo.playbackRate = 1;
+  }, 200);
+
+  // Hero text parallax
+  heroText.style.transform = `translateY(${window.scrollY * 0.25}px)`;
+});
+    // Filter buttons
+    const buttons = document.querySelectorAll('.filter-buttons button');
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        buttons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+      });
+    });
+    function showFeatured() {
+  document.querySelectorAll('.photo-item').forEach(item => {
+    item.style.display = item.getAttribute('data-category') === 'featured' ? 'block' : 'none';
+  });
+}
+
+document.querySelector('[data-category="featured"]').addEventListener('click', showFeatured);
+
+// Run on page load
+showFeatured();
+    // Dropdown
+const dropdownWrapper = document.querySelector('.dropdown-wrapper');
+const dropdownBtns = document.querySelectorAll('.dropdown button');
+
+dropdownBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    const city = btn.getAttribute('data-city');
+    const label = btn.textContent;
+
+    // Update button label
+    document.querySelector('.dropdown-wrapper > button').textContent = label + ' ▾';
+
+    // Close dropdown
+    dropdownWrapper.querySelector('.dropdown').style.removeProperty('display');
+
+    // Filter photos
+    document.querySelectorAll('.photo-item').forEach(item => {
+      if (city === 'all-cities' || item.getAttribute('data-city') === city) {
+        item.style.display = 'block';
+      } else {
+        item.style.display = 'none';
+      }
+    });
+  });
+});
+
+    // Lightbox
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightbox-img');
+let currentPhotos = [];
+let currentIndex = 0;
+
+function getVisiblePhotos() {
+  return [...document.querySelectorAll('.photo-item img')].filter(img => {
+    return img.closest('.photo-item').style.display !== 'none';
+  });
+}
+
+document.querySelectorAll('.photo-item img').forEach(img => {
+  img.addEventListener('click', () => {
+    currentPhotos = getVisiblePhotos();
+    currentIndex = currentPhotos.indexOf(img);
+    lightboxImg.src = img.src;
+    lightbox.classList.add('active');
+  });
+});
+
+lightbox.addEventListener('click', (e) => {
+  if (e.target === lightbox || e.target === lightboxImg) {
+    lightbox.classList.remove('active');
+    lightboxImg.src = '';
+  }
+});
+
+document.addEventListener('keydown', (e) => {
+  if (!lightbox.classList.contains('active')) return;
+  if (e.key === 'ArrowRight') {
+    currentIndex = (currentIndex + 1) % currentPhotos.length;
+    lightboxImg.src = currentPhotos[currentIndex].src;
+  }
+  if (e.key === 'ArrowLeft') {
+    currentIndex = (currentIndex - 1 + currentPhotos.length) % currentPhotos.length;
+    lightboxImg.src = currentPhotos[currentIndex].src;
+  }
+  if (e.key === 'Escape') {
+    lightbox.classList.remove('active');
+    lightboxImg.src = '';
+  }
+});
+document.querySelector('.lightbox-prev').addEventListener('click', (e) => {
+  e.stopPropagation();
+  currentIndex = (currentIndex - 1 + currentPhotos.length) % currentPhotos.length;
+  lightboxImg.src = currentPhotos[currentIndex].src;
+});
+
+document.querySelector('.lightbox-next').addEventListener('click', (e) => {
+  e.stopPropagation();
+  currentIndex = (currentIndex + 1) % currentPhotos.length;
+  lightboxImg.src = currentPhotos[currentIndex].src;
+});
+
+document.querySelector('.lightbox-close').addEventListener('click', (e) => {
+  e.stopPropagation();
+  lightbox.classList.remove('active');
+  lightboxImg.src = '';
+});
+
+// Nav background on scroll
+const nav = document.querySelector('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 80);
+});
+</script>
+
+</body>
+</html>

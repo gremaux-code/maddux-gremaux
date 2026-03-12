@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About — Maddux Gremaux</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Georgia', serif;
+      background: #fff;
+      color: #111;
+    }
+
+    nav {
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #eee;
+    }
+
+    nav .logo {
+      font-size: 16px;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #111;
+      text-decoration: none;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 32px;
+    }
+
+    nav ul a {
+      color: #111;
+      text-decoration: none;
+      font-size: 13px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    nav ul a:hover { opacity: 0.5; }
+
+    /* LAYOUT */
+    .about-layout {
+      display: flex;
+      gap: 80px;
+      align-items: flex-start;
+      padding: 100px 40px;
+      max-width: 1100px;
+    }
+
+    .about-left {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .about-right {
+      width: 320px;
+      flex-shrink: 0;
+      position: sticky;
+      top: 40px;
+    }
+
+    .about-right img {
+      width: 100%;
+      height: auto;
+      display: block;
+      filter: grayscale(20%);
+    }
+
+    .label {
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #999;
+      margin-bottom: 48px;
+    }
+
+    .bio {
+      font-size: 20px;
+      line-height: 1.8;
+      color: #111;
+      margin-bottom: 20px;
+    }
+
+    .bio-secondary {
+      font-size: 17px;
+      line-height: 1.8;
+      color: #555;
+      margin-bottom: 32px;
+    }
+
+    /* SECTIONS */
+    .section {
+      margin-top: 64px;
+      margin-bottom: 64px;
+    }
+
+    .section-label {
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #999;
+      margin-bottom: 28px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid #eee;
+    }
+
+    .entry {
+      display: flex;
+      gap: 32px;
+      margin-bottom: 32px;
+    }
+
+    .entry-year {
+      font-size: 12px;
+      color: #bbb;
+      letter-spacing: 0.05em;
+      min-width: 80px;
+      padding-top: 3px;
+    }
+
+    .entry-content h3 {
+      font-size: 15px;
+      font-weight: 400;
+      color: #111;
+      margin-bottom: 4px;
+    }
+
+    .entry-content p {
+      font-size: 14px;
+      line-height: 1.7;
+      color: #777;
+    }
+
+    /* PRESS */
+    .press-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .press-item {
+      display: flex;
+      gap: 32px;
+      align-items: baseline;
+    }
+
+    .press-outlet {
+      font-size: 14px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #111;
+      min-width: 160px;
+    }
+
+    .press-desc {
+      font-size: 14px;
+      color: #777;
+    }
+
+    /* CTA */
+    .cta {
+      margin-top: 80px;
+    }
+
+    .cta p {
+      font-size: 15px;
+      color: #555;
+      margin-bottom: 20px;
+      line-height: 1.7;
+    }
+
+    .cta a {
+      font-size: 12px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #111;
+      text-decoration: none;
+      border-bottom: 1px solid #111;
+      padding-bottom: 2px;
+    }
+
+    .cta a:hover { opacity: 0.4; }
+
+    footer {
+      padding: 40px;
+      border-top: 1px solid #eee;
+      font-size: 12px;
+      color: #ccc;
+      letter-spacing: 0.05em;
+    }
+
+    @media (max-width: 768px) {
+      .about-layout {
+        flex-direction: column-reverse;
+        padding: 60px 24px;
+        gap: 48px;
+      }
+      .about-right {
+        width: 100%;
+        position: static;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a class="logo" href="index.html">Maddux Gremaux</a>
+    <ul>
+      <li><a href="index.html#prints">Prints</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <div class="about-layout">
+
+    <div class="about-left">
+      <p class="label">About</p>
+
+      <p class="bio">About me.</p>
+
+      <p class="bio-secondary">
+  I lead marketing at Culdesac, an innovative Arizona-based developer building
+  walkable, mixed-use neighborhoods. My job is translating what we're building
+  into stories that resonate — running organic and paid campaigns, coordinating
+  large-scale events, managing press visits from outlets like NYT, CNN, and
+  The Daily Show, and building decks for high-profile speaking engagements.
+</p>
+
+<p class="bio-secondary">
+  Before Culdesac, I worked in the City of Phoenix Mayor's Office, and created
+  public engagement materials on climate resilience for the City of Tempe.
+</p>
+
+      <!-- EXPERIENCE -->
+      <div class="section">
+        <p class="section-label">Experience</p>
+
+        <div class="entry">
+          <span class="entry-year">2023 —</span>
+          <div class="entry-content">
+            <h3>Marketing & Communications — Culdesac</h3>
+            <p>Running campaigns, press, events, and brand strategy for the first
+            car-free neighborhood built from scratch in the US.</p>
+          </div>
+        </div>
+
+        <div class="entry">
+          <span class="entry-year">Prior</span>
+          <div class="entry-content">
+            <h3>City of Phoenix Mayor's Office</h3>
+            <p>Communications and public engagement.</p>
+          </div>
+        </div>
+
+        <div class="entry">
+          <span class="entry-year">Prior</span>
+          <div class="entry-content">
+            <h3>City of Tempe</h3>
+            <p>Public engagement materials on climate resilience.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- PRESS -->
+      <div class="section">
+        <p class="section-label">Press</p>
+        <div class="press-list">
+          <div class="press-item">
+        <span class="press-outlet">The Daily Show</span>
+        <span class="press-desc">Original footage featured</span>
+        </div>
+        <div class="press-item">
+        <span class="press-outlet">Exploring Alternatives</span>
+        <span class="press-desc">Original footage featured</span>
+        </div>
+          <div class="press-item">
+            <span class="press-outlet">CNN · NYT · Business Insider</span>
+            <span class="press-desc">Coverage coordination and production support</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- EDUCATION -->
+      <div class="section">
+        <p class="section-label">Education</p>
+        <div class="entry">
+          <span class="entry-year"></span>
+          <div class="entry-content">
+            <h3>Arizona State University</h3>
+            <p>Sustainability · Geographic Information Systems</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="cta">
+        <p>Always happy to connect, especially if you're thinking about urban
+        development, placemaking, or how to tell stories that make our cities
+        better places to live.</p>
+        <a href="contact.html">Get in touch →</a>
+      </div>
+
+    </div><!-- end about-left -->
+
+    <div class="about-right">
+      <img src="about-headshot.JPG" alt="Maddux Gremaux" />
+    </div>
+
+  </div><!-- end about-layout -->
+
+  <footer>© 2026 Maddux Gremaux</footer>
+
+</body>
+</html>
