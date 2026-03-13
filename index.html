@@ -966,19 +966,24 @@ let activeCity = null;
 let activeCategory = 'featured';
 
 function applyFilters() {
+  const seenSrcs = new Set();
   document.querySelectorAll('.photo-item').forEach(item => {
     const city = item.getAttribute('data-city');
-    const category = item.getAttribute('data-category');
+    const category = item.getAttribute('data-category') || '';
+    const src = item.querySelector('img').src;
 
     let show = true;
 
-     if (activeCategory === 'featured') {
-      show = category && category.split(' ').includes('featured');
+    if (activeCategory === 'featured') {
+      show = category.split(' ').includes('featured');
     } else if (activeCategory) {
-      show = category && category.split(' ').includes(activeCategory);
+      show = category.split(' ').includes(activeCategory);
     }
 
     if (activeCity && city !== activeCity) show = false;
+
+    if (show && seenSrcs.has(src)) show = false;
+    if (show) seenSrcs.add(src);
 
     item.style.display = show ? 'block' : 'none';
   });
