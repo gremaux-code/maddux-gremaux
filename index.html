@@ -369,6 +369,80 @@
 .lightbox-prev:hover,
 .lightbox-next:hover { opacity: 1; }
 
+.photo-item {
+  position: relative;
+}
+
+.photo-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+  color: #fff;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  pointer-events: none;
+}
+
+.photo-item:hover .photo-overlay {
+  opacity: 1;
+}
+
+.lightbox-print {
+  position: absolute;
+  bottom: 32px;
+  right: 32px;
+  z-index: 10;
+}
+
+.print-toggle {
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.4);
+  color: #fff;
+  padding: 8px 16px;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  backdrop-filter: blur(4px);
+}
+
+.print-dropdown {
+  display: none;
+  flex-direction: column;
+  background: rgba(10,10,10,0.85);
+  border: 1px solid rgba(255,255,255,0.15);
+  backdrop-filter: blur(8px);
+  margin-top: 4px;
+}
+
+.print-dropdown a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 10px 16px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.print-dropdown a:last-child {
+  border-bottom: none;
+}
+
+.print-dropdown a:hover {
+  background: rgba(255,255,255,0.1);
+}
+
+.lightbox-print.open .print-dropdown {
+  display: flex;
+}
+
 /* DROPDOWN */
 .dropdown-wrapper {
   position: relative;
@@ -401,17 +475,155 @@
 .dropdown button:last-child {
   border-bottom: none;
 }
+.featured-mobile {
+  display: none;
+}
+
+.featured-below-mobile {
+  display: block;
+  padding: 80px 40px;
+  text-align: center;
+  border-top: 1px solid #eee;
+}
+
+.featured-below-mobile h2 {
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #999;
+  margin-bottom: 40px;
+}
+
+.featured-below-mobile .featured-logos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 48px;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+}
+
+.featured-below-mobile a {
+  color: #555;
+  text-decoration: none;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-size: 13px;
+  border-bottom: 1px solid #ccc;
+}
 
     /* MOBILE */
     
     @media (max-width: 600px) {
-      .hero {
-        height: 75vw;
-      }
-      .hero video {
-        object-position: 45% 50%;
-      }
-    }
+  .hero {
+    height: 95vw;
+  }
+  .hero video {
+    object-position: 45% 50%;
+  }
+  .hero-text {
+  bottom: 20px;
+  left: 20px;
+}
+.hero-text h1 {
+  font-size: 28px;
+}
+nav {
+  padding: 16px 20px;
+}
+nav .logo {
+  font-size: 13px;
+}
+
+  /* Hide featured section in its current spot */
+  .featured {
+    display: none;
+  }
+
+  /* Show slim featured strip below hero on mobile */
+  .featured-mobile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    padding: 16px 20px;
+    border-bottom: 1px solid #eee;
+  }
+
+  .featured-mobile span {
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #888;
+  }
+
+  /* Full featured section reappears after grid on mobile */
+  .featured-below-mobile {
+    display: block;
+    padding: 48px 20px;
+    text-align: center;
+    border-top: 1px solid #eee;
+  }
+
+  .featured-below-mobile h2 {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #999;
+    margin-bottom: 24px;
+  }
+
+  .featured-below-mobile .featured-logos {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 24px;
+  }
+
+  .featured-below-mobile .featured-logos span {
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #555;
+  }
+
+  /* 2-column grid on mobile */
+  .photo-grid {
+    columns: 2;
+    column-gap: 8px;
+  }
+
+  .photo-grid .photo-item {
+    margin-bottom: 8px;
+  }
+
+  .grid-section {
+    padding: 40px 16px;
+  }
+
+  .filter-buttons {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+}
+
+.featured-below-mobile h2 {
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #999;
+  margin-bottom: 40px;
+}
+
+.featured-below-mobile .featured-logos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 48px;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+}
   </style>
 </head>
 <body>
@@ -435,10 +647,18 @@
       <h1>Photographer.<br>Storyteller.<br>Urbanist.</h1>
       <p>Phoenix, AZ</p>
     </div>
-    <div class="scroll-hint">Scroll</div>
+    <!-- MOBILE SLIM STRIP 
+<div class="featured-mobile">
+  <span>The Daily Show</span>
+  <span>·</span>
+  <span>Exploring Alternatives</span>
+  <span>·</span>
+  <span>Streetsblog</span>
+</div>
+-->
   </section>
 
-  <!-- FEATURED IN -->
+  <!-- FEATURED IN 
   <section class="featured">
     <h2>As Seen In</h2>
     <div class="featured-logos">
@@ -449,6 +669,18 @@
     </div>
     <p class="featured-stat">1M+ organic views per quarter</p>
   </section>
+  <!-- 
+  <section class="featured">
+    <h2>As Seen In</h2>
+    <div class="featured-logos">
+      <span>The Daily Show</span>
+      <span>Exploring Alternatives</span>
+      <span>Streetsblog</span>
+      <span>Culdesac</span>
+    </div>
+    <p class="featured-stat">1M+ organic views per quarter</p>
+  </section>
+-->
 
   <!-- PHOTO GRID / PRINTS -->
   <section class="grid-section" id="prints">
@@ -468,226 +700,208 @@
     <button data-city="san-francisco">San Francisco</button>
     </div>
   </div>
-  <button>Bikes</button>
-  <button>Transit</button>
-  <button>Architecture</button>
-  <button>People</button>
+<button data-category="bikes">Bikes</button>
+  <button data-category="transit">Transit</button>
+  <button data-category="architecture">Architecture</button>
 </div>
     <div class="photo-grid">
-    <div class="photo-item" data-city="chicago" data-category="featured" ><img src="photos/chicago/Chicago6.jpg" alt="" /></div>
-    <div class="photo-item" data-city="london" data-category="featured" ><img src="photos/london/london-22.jpg" alt="" /></div>
-    <div class="photo-item" data-city="prague" data-category="featured" ><img src="photos/prague/prague-36.jpg" alt="" /></div>
-    <div class="photo-item" data-city="paris" data-category="featured" ><img src="photos/paris/paris-13.jpg" alt="" /></div>
-    <div class="photo-item" data-city="alicante" data-category="featured" ><img src="photos/alicante/alicante-3.jpg" alt="" /></div>
-    <div class="photo-item" data-city="alicante" data-category="featured" ><img src="photos/alicante/alicante-7.jpg" alt="" /></div>
-    <div class="photo-item" data-city="chicago"><img src="photos/chicago/Chicago1.jpg" alt="" /></div>
+    <div class="photo-item" data-city="chicago"><img src="photos/chicago/Chicago6.jpg" alt="" /></div>
+    <div class="photo-item" data-city="london" data-category="featured bikes"><img src="photos/london/london-22.jpg" alt="" /></div>
+    <div class="photo-item" data-city="prague" data-category="featured architecture"><img src="photos/prague/prague-36.jpg" alt="" /></div>
+    <div class="photo-item" data-city="paris" data-category="featured"><img src="photos/paris/paris-13.jpg" alt="" /></div>
+    <div class="photo-item" data-city="alicante" data-category="featured transit"><img src="photos/alicante/alicante-3.jpg" alt="" /></div>
+    <div class="photo-item" data-city="alicante" data-category="featured architecture"><img src="photos/alicante/alicante-7.jpg" alt="" /></div>
+    <div class="photo-item" data-city="chicago" data-category="transit"><img src="photos/chicago/Chicago1.jpg" alt="" /></div>
     <div class="photo-item" data-city="chicago"><img src="photos/chicago/Chicago2.jpg" alt="" /></div>
     <div class="photo-item" data-city="chicago"><img src="photos/chicago/Chicago3.jpg" alt="" /></div>
     <div class="photo-item" data-city="chicago"><img src="photos/chicago/Chicago4.jpg" alt="" /></div>
-    <div class="photo-item" data-city="chicago"><img src="photos/chicago/Chicago5.jpg" alt="" /></div>
-    <div class="photo-item" data-city="chicago"><img src="photos/chicago/Chicago6.jpg" alt="" /></div>
-    <div class="photo-item" data-city="chicago"><img src="photos/chicago/Chicago7.jpg" alt="" /></div>
+    <div class="photo-item" data-city="chicago" data-category="architecture"><img src="photos/chicago/Chicago5.jpg" alt="" /></div>
+    <div class="photo-item" data-city="chicago" data-category="architecture"><img src="photos/chicago/Chicago6.jpg" alt="" /></div>
+    <div class="photo-item" data-city="chicago" data-category="architecture"><img src="photos/chicago/Chicago7.jpg" alt="" /></div>
     <div class="photo-item" data-city="chicago"><img src="photos/chicago/Chicago8.jpg" alt="" /></div>
-    <div class="photo-item" data-city="chicago"><img src="photos/chicago/Chicago9.jpg" alt="" /></div>
+    <div class="photo-item" data-city="chicago" data-category="architecture"><img src="photos/chicago/Chicago9.jpg" alt="" /></div>
     <div class="photo-item" data-city="chicago"><img src="photos/chicago/Chicago10.jpg" alt="" /></div>
-    <div class="photo-item" data-city="chicago"><img src="photos/chicago/Chicago11.jpg" alt="" /></div>
+    <div class="photo-item" data-city="chicago" data-category="bikes"><img src="photos/chicago/Chicago11.jpg" alt="" /></div>
     <div class="photo-item" data-city="chicago"><img src="photos/chicago/Chicago12.jpg" alt="" /></div>
-    <div class="photo-item" data-city="chicago"><img src="photos/chicago/Chicago13.jpg" alt="" /></div>
-    <div class="photo-item" data-city="chicago"><img src="photos/chicago/Chicago14.jpg" alt="" /></div>
-    <div class="photo-item" data-city="chicago"><img src="photos/chicago/Chicago15.jpg" alt="" /></div>
-    <div class="photo-item" data-city="chicago"><img src="photos/chicago/Chicago16.jpg" alt="" /></div>
+    <div class="photo-item" data-city="chicago" data-category="bikes"><img src="photos/chicago/Chicago13.jpg" alt="" /></div>
+    <div class="photo-item" data-city="chicago" data-category="bikes"><img src="photos/chicago/Chicago14.jpg" alt="" /></div>
+    <div class="photo-item" data-city="chicago" data-category="architecture"><img src="photos/chicago/Chicago15.jpg" alt="" /></div>
+    <div class="photo-item" data-city="chicago" data-category="bikes"><img src="photos/chicago/Chicago16.jpg" alt="" /></div>
     <div class="photo-item" data-city="chicago"><img src="photos/chicago/Chicago17.jpg" alt="" /></div>
-    <div class="photo-item" data-city="chicago"><img src="photos/chicago/Chicago18.jpg" alt="" /></div>
-    <div class="photo-item" data-city="chicago"><img src="photos/chicago/Chicago19.jpg" alt="" /></div>
-    <div class="photo-item" data-city="chicago"><img src="photos/chicago/Chicago20.jpg" alt="" /></div>
-    <div class="photo-item" data-city="chicago"><img src="photos/chicago/Chicago21.jpg" alt="" /></div>
+    <div class="photo-item" data-city="chicago" data-category="bikes transit"><img src="photos/chicago/Chicago18.jpg" alt="" /></div>
+    <div class="photo-item" data-city="chicago" data-category="bikes"><img src="photos/chicago/Chicago19.jpg" alt="" /></div>
+    <div class="photo-item" data-city="chicago" data-category="transit"><img src="photos/chicago/Chicago20.jpg" alt="" /></div>
+    <div class="photo-item" data-city="chicago" data-category="transit"><img src="photos/chicago/Chicago21.jpg" alt="" /></div>
     <div class="photo-item" data-city="chicago"><img src="photos/chicago/Chicago22.jpg" alt="" /></div>
     <div class="photo-item" data-city="chicago"><img src="photos/chicago/Chicago23.jpg" alt="" /></div>
     <div class="photo-item" data-city="chicago"><img src="photos/chicago/Chicago24.jpg" alt="" /></div>
     <div class="photo-item" data-city="chicago"><img src="photos/chicago/Chicago25.jpg" alt="" /></div>
     <div class="photo-item" data-city="chicago"><img src="photos/chicago/Chicago26.jpg" alt="" /></div>
     <div class="photo-item" data-city="chicago"><img src="photos/chicago/Chicago27.jpg" alt="" /></div>
-    <div class="photo-item" data-city="chicago"><img src="photos/chicago/Chicago28.jpg" alt="" /></div>
-    <div class="photo-item" data-city="chicago"><img src="photos/chicago/Chicago29.jpg" alt="" /></div>
+    <div class="photo-item" data-city="chicago" data-category="bikes"><img src="photos/chicago/Chicago29.jpg" alt="" /></div>
     <div class="photo-item" data-city="chicago"><img src="photos/chicago/Chicago30.jpg" alt="" /></div>
     <div class="photo-item" data-city="prague"><img src="photos/prague/prague-1.jpg" alt="" /></div>
-    <div class="photo-item" data-city="prague"><img src="photos/prague/prague-2.jpg" alt="" /></div>
-    <div class="photo-item" data-city="prague"><img src="photos/prague/prague-3.jpg" alt="" /></div>
+    <div class="photo-item" data-city="prague" data-category="architecture"><img src="photos/prague/prague-2.jpg" alt="" /></div>
+    <div class="photo-item" data-city="prague" data-category="architecture"><img src="photos/prague/prague-3.jpg" alt="" /></div>
     <div class="photo-item" data-city="prague"><img src="photos/prague/prague-4.jpg" alt="" /></div>
-    <div class="photo-item" data-city="prague"><img src="photos/prague/prague-5.jpg" alt="" /></div>
-    <div class="photo-item" data-city="prague"><img src="photos/prague/prague-6.jpg" alt="" /></div>
-    <div class="photo-item" data-city="prague"><img src="photos/prague/prague-7.jpg" alt="" /></div>
-    <div class="photo-item" data-city="prague"><img src="photos/prague/prague-8.jpg" alt="" /></div>
+    <div class="photo-item" data-city="prague" data-category="transit"><img src="photos/prague/prague-5.jpg" alt="" /></div>
+    <div class="photo-item" data-city="prague" data-category="transit"><img src="photos/prague/prague-6.jpg" alt="" /></div>
+    <div class="photo-item" data-city="prague" data-category="transit"><img src="photos/prague/prague-7.jpg" alt="" /></div>
+    <div class="photo-item" data-city="prague" data-category="transit"><img src="photos/prague/prague-8.jpg" alt="" /></div>
     <div class="photo-item" data-city="prague"><img src="photos/prague/prague-9.jpg" alt="" /></div>
-    <div class="photo-item" data-city="prague"><img src="photos/prague/prague-10.jpg" alt="" /></div>
-    <div class="photo-item" data-city="prague"><img src="photos/prague/prague-11.jpg" alt="" /></div>
-    <div class="photo-item" data-city="prague"><img src="photos/prague/prague-12.jpg" alt="" /></div>
-    <div class="photo-item" data-city="prague"><img src="photos/prague/prague-13.jpg" alt="" /></div>
-    <div class="photo-item" data-city="prague"><img src="photos/prague/prague-14.jpg" alt="" /></div>
-    <div class="photo-item" data-city="prague"><img src="photos/prague/prague-15.jpg" alt="" /></div>
+    <div class="photo-item" data-city="prague" data-category="architecture"><img src="photos/prague/prague-10.jpg" alt="" /></div>
+    <div class="photo-item" data-city="prague" data-category="architecture"><img src="photos/prague/prague-11.jpg" alt="" /></div>
+    <div class="photo-item" data-city="prague" data-category="architecture"><img src="photos/prague/prague-12.jpg" alt="" /></div>
+    <div class="photo-item" data-city="prague" data-category="architecture"><img src="photos/prague/prague-13.jpg" alt="" /></div>
+    <div class="photo-item" data-city="prague" data-category="architecture"><img src="photos/prague/prague-14.jpg" alt="" /></div>
+    <div class="photo-item" data-city="prague" data-category="architecture"><img src="photos/prague/prague-15.jpg" alt="" /></div>
     <div class="photo-item" data-city="prague"><img src="photos/prague/prague-16.jpg" alt="" /></div>
     <div class="photo-item" data-city="prague"><img src="photos/prague/prague-17.jpg" alt="" /></div>
     <div class="photo-item" data-city="prague"><img src="photos/prague/prague-18.jpg" alt="" /></div>
-    <div class="photo-item" data-city="prague"><img src="photos/prague/prague-19.jpg" alt="" /></div>
-    <div class="photo-item" data-city="prague"><img src="photos/prague/prague-20.jpg" alt="" /></div>
+    <div class="photo-item" data-city="prague" data-category="architecture"><img src="photos/prague/prague-19.jpg" alt="" /></div>
+    <div class="photo-item" data-city="prague" data-category="architecture"><img src="photos/prague/prague-20.jpg" alt="" /></div>
     <div class="photo-item" data-city="prague"><img src="photos/prague/prague-21.jpg" alt="" /></div>
-    <div class="photo-item" data-city="prague"><img src="photos/prague/prague-22.jpg" alt="" /></div>
-    <div class="photo-item" data-city="prague"><img src="photos/prague/prague-23.jpg" alt="" /></div>
-    <div class="photo-item" data-city="prague"><img src="photos/prague/prague-24.jpg" alt="" /></div>
-    <div class="photo-item" data-city="prague"><img src="photos/prague/prague-25.jpg" alt="" /></div>
-    <div class="photo-item" data-city="prague"><img src="photos/prague/prague-26.jpg" alt="" /></div>
-    <div class="photo-item" data-city="prague"><img src="photos/prague/prague-27.jpg" alt="" /></div>
+    <div class="photo-item" data-city="prague" data-category="architecture"><img src="photos/prague/prague-22.jpg" alt="" /></div>
+    <div class="photo-item" data-city="prague" data-category="architecture"><img src="photos/prague/prague-23.jpg" alt="" /></div>
+    <div class="photo-item" data-city="prague" data-category="architecture"><img src="photos/prague/prague-24.jpg" alt="" /></div>
+    <div class="photo-item" data-city="prague" data-category="architecture"><img src="photos/prague/prague-25.jpg" alt="" /></div>
+    <div class="photo-item" data-city="prague" data-category="architecture"><img src="photos/prague/prague-26.jpg" alt="" /></div>
+    <div class="photo-item" data-city="prague" data-category="architecture"><img src="photos/prague/prague-27.jpg" alt="" /></div>
     <div class="photo-item" data-city="prague"><img src="photos/prague/prague-28.jpg" alt="" /></div>
-    <div class="photo-item" data-city="prague"><img src="photos/prague/prague-29.jpg" alt="" /></div>
-    <div class="photo-item" data-city="prague"><img src="photos/prague/prague-30.jpg" alt="" /></div>
-    <div class="photo-item" data-city="prague"><img src="photos/prague/prague-31.jpg" alt="" /></div>
-    <div class="photo-item" data-city="prague"><img src="photos/prague/prague-32.jpg" alt="" /></div>
+    <div class="photo-item" data-city="prague" data-category="architecture"><img src="photos/prague/prague-30.jpg" alt="" /></div>
+    <div class="photo-item" data-city="prague" data-category="architecture"><img src="photos/prague/prague-31.jpg" alt="" /></div>
+    <div class="photo-item" data-city="prague" data-category="architecture"><img src="photos/prague/prague-32.jpg" alt="" /></div>
     <div class="photo-item" data-city="prague"><img src="photos/prague/prague-33.jpg" alt="" /></div>
-    <div class="photo-item" data-city="prague"><img src="photos/prague/prague-34.jpg" alt="" /></div>
-    <div class="photo-item" data-city="prague"><img src="photos/prague/prague-35.jpg" alt="" /></div>
-    <div class="photo-item" data-city="prague"><img src="photos/prague/prague-36.jpg" alt="" /></div>
-    <div class="photo-item" data-city="prague"><img src="photos/prague/prague-37.jpg" alt="" /></div>
-
-    <!-- AMSTERDAM -->
-<div class="photo-item" data-city="amsterdam"><img src="photos/amsterdam/amsterdam-1.jpg" alt="" /></div>
-<div class="photo-item" data-city="amsterdam"><img src="photos/amsterdam/amsterdam-2.jpg" alt="" /></div>
-<div class="photo-item" data-city="amsterdam"><img src="photos/amsterdam/amsterdam-3.jpg" alt="" /></div>
-<div class="photo-item" data-city="amsterdam"><img src="photos/amsterdam/amsterdam-4.jpg" alt="" /></div>
-<div class="photo-item" data-city="amsterdam"><img src="photos/amsterdam/amsterdam-5.jpg" alt="" /></div>
-<div class="photo-item" data-city="amsterdam"><img src="photos/amsterdam/amsterdam-6.jpg" alt="" /></div>
-<div class="photo-item" data-city="amsterdam"><img src="photos/amsterdam/amsterdam-7.jpg" alt="" /></div>
-<div class="photo-item" data-city="amsterdam"><img src="photos/amsterdam/amsterdam-8.jpg" alt="" /></div>
-
-<!-- LONDON -->
-<div class="photo-item" data-city="london"><img src="photos/london/london-1.jpg" alt="" /></div>
-<div class="photo-item" data-city="london"><img src="photos/london/london-2.jpg" alt="" /></div>
-<div class="photo-item" data-city="london"><img src="photos/london/london-3.jpg" alt="" /></div>
-<div class="photo-item" data-city="london"><img src="photos/london/london-4.jpg" alt="" /></div>
-<div class="photo-item" data-city="london"><img src="photos/london/london-5.jpg" alt="" /></div>
-<div class="photo-item" data-city="london"><img src="photos/london/london-6.jpg" alt="" /></div>
-<div class="photo-item" data-city="london"><img src="photos/london/london-7.jpg" alt="" /></div>
-<div class="photo-item" data-city="london"><img src="photos/london/london-8.jpg" alt="" /></div>
-<div class="photo-item" data-city="london"><img src="photos/london/london-9.jpg" alt="" /></div>
-<div class="photo-item" data-city="london"><img src="photos/london/london-10.jpg" alt="" /></div>
-<div class="photo-item" data-city="london"><img src="photos/london/london-11.jpg" alt="" /></div>
-<div class="photo-item" data-city="london"><img src="photos/london/london-12.jpg" alt="" /></div>
-<div class="photo-item" data-city="london"><img src="photos/london/london-13.jpg" alt="" /></div>
-<div class="photo-item" data-city="london"><img src="photos/london/london-14.jpg" alt="" /></div>
-<div class="photo-item" data-city="london"><img src="photos/london/london-15.jpg" alt="" /></div>
-<div class="photo-item" data-city="london"><img src="photos/london/london-16.jpg" alt="" /></div>
-<div class="photo-item" data-city="london"><img src="photos/london/london-17.jpg" alt="" /></div>
-<div class="photo-item" data-city="london"><img src="photos/london/london-18.jpg" alt="" /></div>
-<div class="photo-item" data-city="london"><img src="photos/london/london-19.jpg" alt="" /></div>
-<div class="photo-item" data-city="london"><img src="photos/london/london-20.jpg" alt="" /></div>
-<div class="photo-item" data-city="london"><img src="photos/london/london-21.jpg" alt="" /></div>
-<div class="photo-item" data-city="london"><img src="photos/london/london-22.jpg" alt="" /></div>
-<div class="photo-item" data-city="london"><img src="photos/london/london-23.jpg" alt="" /></div>
-<div class="photo-item" data-city="london"><img src="photos/london/london-24.jpg" alt="" /></div>
-<div class="photo-item" data-city="london"><img src="photos/london/london-25.jpg" alt="" /></div>
-<div class="photo-item" data-city="london"><img src="photos/london/london-26.jpg" alt="" /></div>
-<div class="photo-item" data-city="london"><img src="photos/london/london-27.jpg" alt="" /></div>
-<div class="photo-item" data-city="london"><img src="photos/london/london-28.jpg" alt="" /></div>
-<div class="photo-item" data-city="london"><img src="photos/london/london-29.jpg" alt="" /></div>
-<div class="photo-item" data-city="london"><img src="photos/london/london-30.jpg" alt="" /></div>
-<div class="photo-item" data-city="london"><img src="photos/london/london-31.jpg" alt="" /></div>
-<div class="photo-item" data-city="london"><img src="photos/london/london-32.jpg" alt="" /></div>
-<div class="photo-item" data-city="london"><img src="photos/london/london-33.jpg" alt="" /></div>
-<div class="photo-item" data-city="london"><img src="photos/london/london-34.jpg" alt="" /></div>
-<div class="photo-item" data-city="london"><img src="photos/london/london-35.jpg" alt="" /></div>
-<div class="photo-item" data-city="london"><img src="photos/london/london-36.jpg" alt="" /></div>
-
-<!-- PARIS -->
-<div class="photo-item" data-city="paris"><img src="photos/paris/paris-1.jpg" alt="" /></div>
-<div class="photo-item" data-city="paris"><img src="photos/paris/paris-2.jpg" alt="" /></div>
-<div class="photo-item" data-city="paris"><img src="photos/paris/paris-3.jpg" alt="" /></div>
-<div class="photo-item" data-city="paris"><img src="photos/paris/paris-4.jpg" alt="" /></div>
-<div class="photo-item" data-city="paris"><img src="photos/paris/paris-5.jpg" alt="" /></div>
-<div class="photo-item" data-city="paris"><img src="photos/paris/paris-6.jpg" alt="" /></div>
-<div class="photo-item" data-city="paris"><img src="photos/paris/paris-7.jpg" alt="" /></div>
-<div class="photo-item" data-city="paris"><img src="photos/paris/paris-8.jpg" alt="" /></div>
-<div class="photo-item" data-city="paris"><img src="photos/paris/paris-9.jpg" alt="" /></div>
-<div class="photo-item" data-city="paris"><img src="photos/paris/paris-10.jpg" alt="" /></div>
-<div class="photo-item" data-city="paris"><img src="photos/paris/paris-11.jpg" alt="" /></div>
-<div class="photo-item" data-city="paris"><img src="photos/paris/paris-12.jpg" alt="" /></div>
-<div class="photo-item" data-city="paris"><img src="photos/paris/paris-13.jpg" alt="" /></div>
-<div class="photo-item" data-city="paris"><img src="photos/paris/paris-14.jpg" alt="" /></div>
-<div class="photo-item" data-city="paris"><img src="photos/paris/paris-15.jpg" alt="" /></div>
-<div class="photo-item" data-city="paris"><img src="photos/paris/paris-16.jpg" alt="" /></div>
-<div class="photo-item" data-city="paris"><img src="photos/paris/paris-17.jpg" alt="" /></div>
-<div class="photo-item" data-city="paris"><img src="photos/paris/paris-18.jpg" alt="" /></div>
-<div class="photo-item" data-city="paris"><img src="photos/paris/paris-19.jpg" alt="" /></div>
-<div class="photo-item" data-city="paris"><img src="photos/paris/paris-20.jpg" alt="" /></div>
-<div class="photo-item" data-city="paris"><img src="photos/paris/paris-21.jpg" alt="" /></div>
-<div class="photo-item" data-city="paris"><img src="photos/paris/paris-22.jpg" alt="" /></div>
-<div class="photo-item" data-city="paris"><img src="photos/paris/paris-23.jpg" alt="" /></div>
-<div class="photo-item" data-city="paris"><img src="photos/paris/paris-24.jpg" alt="" /></div>
-<div class="photo-item" data-city="paris"><img src="photos/paris/paris-25.jpg" alt="" /></div>
-<div class="photo-item" data-city="paris"><img src="photos/paris/paris-26.jpg" alt="" /></div>
-<div class="photo-item" data-city="paris"><img src="photos/paris/paris-27.jpg" alt="" /></div>
-<div class="photo-item" data-city="paris"><img src="photos/paris/paris-28.jpg" alt="" /></div>
-<div class="photo-item" data-city="paris"><img src="photos/paris/paris-29.jpg" alt="" /></div>
-<div class="photo-item" data-city="paris"><img src="photos/paris/paris-30.jpg" alt="" /></div>
-<div class="photo-item" data-city="paris"><img src="photos/paris/paris-31.jpg" alt="" /></div>
-<div class="photo-item" data-city="paris"><img src="photos/paris/paris-32.jpg" alt="" /></div>
-<div class="photo-item" data-city="paris"><img src="photos/paris/paris-33.jpg" alt="" /></div>
-<div class="photo-item" data-city="paris"><img src="photos/paris/paris-34.jpg" alt="" /></div>
-<div class="photo-item" data-city="paris"><img src="photos/paris/paris-35.jpg" alt="" /></div>
-<div class="photo-item" data-city="paris"><img src="photos/paris/paris-36.jpg" alt="" /></div>
-<div class="photo-item" data-city="paris"><img src="photos/paris/paris-37.jpg" alt="" /></div>
-
-<!-- SAN FRANCISCO -->
-<div class="photo-item" data-city="san-francisco"><img src="photos/san-francisco/san-francisco-1.jpg" alt="" /></div>
-<div class="photo-item" data-city="san-francisco"><img src="photos/san-francisco/san-francisco-2.jpg" alt="" /></div>
-<div class="photo-item" data-city="san-francisco"><img src="photos/san-francisco/san-francisco-3.jpg" alt="" /></div>
-<div class="photo-item" data-city="san-francisco"><img src="photos/san-francisco/san-francisco-4.jpg" alt="" /></div>
-<div class="photo-item" data-city="san-francisco"><img src="photos/san-francisco/san-francisco-5.jpg" alt="" /></div>
-<div class="photo-item" data-city="san-francisco"><img src="photos/san-francisco/san-francisco-6.jpg" alt="" /></div>
-<div class="photo-item" data-city="san-francisco"><img src="photos/san-francisco/san-francisco-7.jpg" alt="" /></div>
-<div class="photo-item" data-city="san-francisco"><img src="photos/san-francisco/san-francisco-8.jpg" alt="" /></div>
-<div class="photo-item" data-city="san-francisco"><img src="photos/san-francisco/san-francisco-9.jpg" alt="" /></div>
-<div class="photo-item" data-city="san-francisco"><img src="photos/san-francisco/san-francisco-10.jpg" alt="" /></div>
-<div class="photo-item" data-city="san-francisco"><img src="photos/san-francisco/san-francisco-11.jpg" alt="" /></div>
-<div class="photo-item" data-city="san-francisco"><img src="photos/san-francisco/san-francisco-12.jpg" alt="" /></div>
-<div class="photo-item" data-city="san-francisco"><img src="photos/san-francisco/san-francisco-13.jpg" alt="" /></div>
-<div class="photo-item" data-city="san-francisco"><img src="photos/san-francisco/san-francisco-14.jpg" alt="" /></div>
-<div class="photo-item" data-city="san-francisco"><img src="photos/san-francisco/san-francisco-15.jpg" alt="" /></div>
-<div class="photo-item" data-city="san-francisco"><img src="photos/san-francisco/san-francisco-16.jpg" alt="" /></div>
-<div class="photo-item" data-city="san-francisco"><img src="photos/san-francisco/san-francisco-17.jpg" alt="" /></div>
-
-<!-- ALICANTE -->
-<div class="photo-item" data-city="alicante"><img src="photos/alicante/alicante-1.jpg" alt="" /></div>
-<div class="photo-item" data-city="alicante"><img src="photos/alicante/alicante-2.jpg" alt="" /></div>
-<div class="photo-item" data-city="alicante"><img src="photos/alicante/alicante-3.jpg" alt="" /></div>
-<div class="photo-item" data-city="alicante"><img src="photos/alicante/alicante-4.jpg" alt="" /></div>
-<div class="photo-item" data-city="alicante"><img src="photos/alicante/alicante-5.jpg" alt="" /></div>
-<div class="photo-item" data-city="alicante"><img src="photos/alicante/alicante-6.jpg" alt="" /></div>
-<div class="photo-item" data-city="alicante"><img src="photos/alicante/alicante-7.jpg" alt="" /></div>
-<div class="photo-item" data-city="alicante"><img src="photos/alicante/alicante-8.jpg" alt="" /></div>
-<div class="photo-item" data-city="alicante"><img src="photos/alicante/alicante-9.jpg" alt="" /></div>
-<div class="photo-item" data-city="alicante"><img src="photos/alicante/alicante-10.jpg" alt="" /></div>
-<div class="photo-item" data-city="alicante"><img src="photos/alicante/alicante-11.jpg" alt="" /></div>
-<div class="photo-item" data-city="alicante"><img src="photos/alicante/alicante-12.jpg" alt="" /></div>
-<div class="photo-item" data-city="alicante"><img src="photos/alicante/alicante-13.jpg" alt="" /></div>
-<div class="photo-item" data-city="alicante"><img src="photos/alicante/alicante-14.jpg" alt="" /></div>
-<div class="photo-item" data-city="alicante"><img src="photos/alicante/alicante-15.jpg" alt="" /></div>
-<div class="photo-item" data-city="alicante"><img src="photos/alicante/alicante-16.jpg" alt="" /></div>
-<div class="photo-item" data-city="alicante"><img src="photos/alicante/alicante-17.jpg" alt="" /></div>
-<div class="photo-item" data-city="alicante"><img src="photos/alicante/alicante-18.jpg" alt="" /></div>
-<div class="photo-item" data-city="alicante"><img src="photos/alicante/alicante-19.jpg" alt="" /></div>
-<div class="photo-item" data-city="alicante"><img src="photos/alicante/alicante-20.jpg" alt="" /></div>
-<div class="photo-item" data-city="alicante"><img src="photos/alicante/alicante-21.jpg" alt="" /></div>
-<div class="photo-item" data-city="alicante"><img src="photos/alicante/alicante-22.jpg" alt="" /></div>
-<div class="photo-item" data-city="alicante"><img src="photos/alicante/alicante-23.jpg" alt="" /></div>
-<div class="photo-item" data-city="alicante"><img src="photos/alicante/alicante-24.jpg" alt="" /></div>
-<div class="photo-item" data-city="alicante"><img src="photos/alicante/alicante-25.jpg" alt="" /></div>
-<div class="photo-item" data-city="alicante"><img src="photos/alicante/alicante-26.jpg" alt="" /></div>
-<div class="photo-item" data-city="alicante"><img src="photos/alicante/alicante-27.jpg" alt="" /></div>
-<div class="photo-item" data-city="alicante"><img src="photos/alicante/alicante-28.jpg" alt="" /></div>
-<div class="photo-item" data-city="alicante"><img src="photos/alicante/alicante-29.jpg" alt="" /></div>
-<div class="photo-item" data-city="alicante"><img src="photos/alicante/alicante-30.jpg" alt="" /></div>
-<div class="photo-item" data-city="alicante"><img src="photos/alicante/alicante-31.jpg" alt="" /></div>
-<div class="photo-item" data-city="alicante"><img src="photos/alicante/alicante-32.jpg" alt="" /></div>
+    <div class="photo-item" data-city="prague" data-category="architecture"><img src="photos/prague/prague-34.jpg" alt="" /></div>
+    <div class="photo-item" data-city="prague" data-category="architecture"><img src="photos/prague/prague-35.jpg" alt="" /></div>
+    <div class="photo-item" data-city="prague" data-category="architecture"><img src="photos/prague/prague-36.jpg" alt="" /></div>
+    <div class="photo-item" data-city="prague" data-category="transit"><img src="photos/prague/prague-37.jpg" alt="" /></div>
+    <div class="photo-item" data-city="amsterdam" data-category="architecture"><img src="photos/amsterdam/amsterdam-1.jpg" alt="" /></div>
+    <div class="photo-item" data-city="amsterdam" data-category="architecture"><img src="photos/amsterdam/amsterdam-2.jpg" alt="" /></div>
+    <div class="photo-item" data-city="amsterdam" data-category="transit"><img src="photos/amsterdam/amsterdam-3.jpg" alt="" /></div>
+    <div class="photo-item" data-city="amsterdam" data-category="bikes"><img src="photos/amsterdam/amsterdam-4.jpg" alt="" /></div>
+    <div class="photo-item" data-city="amsterdam" data-category="architecture"><img src="photos/amsterdam/amsterdam-5.jpg" alt="" /></div>
+    <div class="photo-item" data-city="amsterdam" data-category="architecture"><img src="photos/amsterdam/amsterdam-6.jpg" alt="" /></div>
+    <div class="photo-item" data-city="amsterdam" data-category="bikes"><img src="photos/amsterdam/amsterdam-7.jpg" alt="" /></div>
+    <div class="photo-item" data-city="amsterdam" data-category="bikes architecture"><img src="photos/amsterdam/amsterdam-8.jpg" alt="" /></div>
+    <div class="photo-item" data-city="london" data-category="architecture"><img src="photos/london/london-1.jpg" alt="" /></div>
+    <div class="photo-item" data-city="london" data-category="bikes"><img src="photos/london/london-2.jpg" alt="" /></div>
+    <div class="photo-item" data-city="london" data-category="bikes"><img src="photos/london/london-3.jpg" alt="" /></div>
+    <div class="photo-item" data-city="london"><img src="photos/london/london-7.jpg" alt="" /></div>
+    <div class="photo-item" data-city="london" data-category="architecture"><img src="photos/london/london-8.jpg" alt="" /></div>
+    <div class="photo-item" data-city="london" data-category="architecture"><img src="photos/london/london-9.jpg" alt="" /></div>
+    <div class="photo-item" data-city="london"><img src="photos/london/london-10.jpg" alt="" /></div>
+    <div class="photo-item" data-city="london" data-category="architecture"><img src="photos/london/london-11.jpg" alt="" /></div>
+    <div class="photo-item" data-city="london"><img src="photos/london/london-12.jpg" alt="" /></div>
+    <div class="photo-item" data-city="london" data-category="architecture"><img src="photos/london/london-14.jpg" alt="" /></div>
+    <div class="photo-item" data-city="london"><img src="photos/london/london-15.jpg" alt="" /></div>
+    <div class="photo-item" data-city="london" data-category="architecture"><img src="photos/london/london-17.jpg" alt="" /></div>
+    <div class="photo-item" data-city="london" data-category="architecture"><img src="photos/london/london-18.jpg" alt="" /></div>
+    <div class="photo-item" data-city="london" data-category="architecture"><img src="photos/london/london-19.jpg" alt="" /></div>
+    <div class="photo-item" data-city="london" data-category="bikes"><img src="photos/london/london-20.jpg" alt="" /></div>
+    <div class="photo-item" data-city="london" data-category="architecture"><img src="photos/london/london-21.jpg" alt="" /></div>
+    <div class="photo-item" data-city="london" data-category="bikes" data-category="featured" ><img src="photos/london/london-22.jpg" alt="" /></div>
+    <div class="photo-item" data-city="london" data-category="bikes transit"><img src="photos/london/london-25.jpg" alt="" /></div>
+    <div class="photo-item" data-city="london" data-category="bikes"><img src="photos/london/london-26.jpg" alt="" /></div>
+    <div class="photo-item" data-city="london" data-category="architecture"><img src="photos/london/london-27.jpg" alt="" /></div>
+    <div class="photo-item" data-city="london" data-category="architecture"><img src="photos/london/london-28.jpg" alt="" /></div>
+    <div class="photo-item" data-city="london" data-category="architecture"><img src="photos/london/london-29.jpg" alt="" /></div>
+    <div class="photo-item" data-city="london" data-category="architecture"><img src="photos/london/london-30.jpg" alt="" /></div>
+    <div class="photo-item" data-city="london"><img src="photos/london/london-31.jpg" alt="" /></div>
+    <div class="photo-item" data-city="london"><img src="photos/london/london-32.jpg" alt="" /></div>
+    <div class="photo-item" data-city="london"><img src="photos/london/london-33.jpg" alt="" /></div>
+    <div class="photo-item" data-city="london" data-category="architecture"><img src="photos/london/london-34.jpg" alt="" /></div>
+    <div class="photo-item" data-city="london"><img src="photos/london/london-35.jpg" alt="" /></div>
+    <div class="photo-item" data-city="london"><img src="photos/london/london-36.jpg" alt="" /></div>
+    <div class="photo-item" data-city="paris"><img src="photos/paris/paris-2.jpg" alt="" /></div>
+    <div class="photo-item" data-city="paris" data-category="architecture"><img src="photos/paris/paris-5.jpg" alt="" /></div>
+    <div class="photo-item" data-city="paris" data-category="bikes"><img src="photos/paris/paris-6.jpg" alt="" /></div>
+    <div class="photo-item" data-city="paris" data-category="bikes"><img src="photos/paris/paris-7.jpg" alt="" /></div>
+    <div class="photo-item" data-city="paris" data-category="architecture"><img src="photos/paris/paris-8.jpg" alt="" /></div>
+    <div class="photo-item" data-city="paris" data-category="architecture"><img src="photos/paris/paris-9.jpg" alt="" /></div>
+    <div class="photo-item" data-city="paris" data-category="bikes"><img src="photos/paris/paris-10.jpg" alt="" /></div>
+    <div class="photo-item" data-city="paris" data-category="bikes"><img src="photos/paris/paris-11.jpg" alt="" /></div>
+    <div class="photo-item" data-city="paris" data-category="architecture"><img src="photos/paris/paris-12.jpg" alt="" /></div>
+    <div class="photo-item" data-city="paris"><img src="photos/paris/paris-13.jpg" alt="" /></div>
+    <div class="photo-item" data-city="paris" data-category="bikes"><img src="photos/paris/paris-14.jpg" alt="" /></div>
+    <div class="photo-item" data-city="paris" data-category="bikes"><img src="photos/paris/paris-15.jpg" alt="" /></div>
+    <div class="photo-item" data-city="paris" data-category="architecture"><img src="photos/paris/paris-16.jpg" alt="" /></div>
+    <div class="photo-item" data-city="paris"><img src="photos/paris/paris-17.jpg" alt="" /></div>
+    <div class="photo-item" data-city="paris" data-category="architecture"><img src="photos/paris/paris-20.jpg" alt="" /></div>
+    <div class="photo-item" data-city="paris" data-category="architecture"><img src="photos/paris/paris-21.jpg" alt="" /></div>
+    <div class="photo-item" data-city="paris" data-category="architecture"><img src="photos/paris/paris-22.jpg" alt="" /></div>
+    <div class="photo-item" data-city="paris" data-category="architecture"><img src="photos/paris/paris-23.jpg" alt="" /></div>
+    <div class="photo-item" data-city="paris" data-category="architecture"><img src="photos/paris/paris-24.jpg" alt="" /></div>
+    <div class="photo-item" data-city="paris" data-category="architecture"><img src="photos/paris/paris-26.jpg" alt="" /></div>
+    <div class="photo-item" data-city="paris"><img src="photos/paris/paris-27.jpg" alt="" /></div>
+    <div class="photo-item" data-city="paris"><img src="photos/paris/paris-28.jpg" alt="" /></div>
+    <div class="photo-item" data-city="paris" data-category="architecture"><img src="photos/paris/paris-29.jpg" alt="" /></div>
+    <div class="photo-item" data-city="paris" data-category="architecture"><img src="photos/paris/paris-30.jpg" alt="" /></div>
+    <div class="photo-item" data-city="paris" data-category="architecture"><img src="photos/paris/paris-31.jpg" alt="" /></div>
+    <div class="photo-item" data-city="paris" data-category="architecture"><img src="photos/paris/paris-32.jpg" alt="" /></div>
+    <div class="photo-item" data-city="paris"><img src="photos/paris/paris-33.jpg" alt="" /></div>
+    <div class="photo-item" data-city="paris"><img src="photos/paris/paris-36.jpg" alt="" /></div>
+    <div class="photo-item" data-city="paris" data-category="bikes"><img src="photos/paris/paris-37.jpg" alt="" /></div>
+    <div class="photo-item" data-city="san-francisco"><img src="photos/san-francisco/san-francisco-1.jpg" alt="" /></div>
+    <div class="photo-item" data-city="san-francisco"><img src="photos/san-francisco/san-francisco-2.jpg" alt="" /></div>
+    <div class="photo-item" data-city="san-francisco"><img src="photos/san-francisco/san-francisco-3.jpg" alt="" /></div>
+    <div class="photo-item" data-city="san-francisco"><img src="photos/san-francisco/san-francisco-4.jpg" alt="" /></div>
+    <div class="photo-item" data-city="san-francisco"><img src="photos/san-francisco/san-francisco-5.jpg" alt="" /></div>
+    <div class="photo-item" data-city="san-francisco"><img src="photos/san-francisco/san-francisco-6.jpg" alt="" /></div>
+    <div class="photo-item" data-city="san-francisco"><img src="photos/san-francisco/san-francisco-7.jpg" alt="" /></div>
+    <div class="photo-item" data-city="san-francisco"><img src="photos/san-francisco/san-francisco-8.jpg" alt="" /></div>
+    <div class="photo-item" data-city="san-francisco"><img src="photos/san-francisco/san-francisco-9.jpg" alt="" /></div>
+    <div class="photo-item" data-city="san-francisco"><img src="photos/san-francisco/san-francisco-10.jpg" alt="" /></div>
+    <div class="photo-item" data-city="san-francisco"><img src="photos/san-francisco/san-francisco-11.jpg" alt="" /></div>
+    <div class="photo-item" data-city="san-francisco"><img src="photos/san-francisco/san-francisco-12.jpg" alt="" /></div>
+    <div class="photo-item" data-city="san-francisco"><img src="photos/san-francisco/san-francisco-13.jpg" alt="" /></div>
+    <div class="photo-item" data-city="san-francisco"><img src="photos/san-francisco/san-francisco-14.jpg" alt="" /></div>
+    <div class="photo-item" data-city="san-francisco"><img src="photos/san-francisco/san-francisco-15.jpg" alt="" /></div>
+    <div class="photo-item" data-city="san-francisco"><img src="photos/san-francisco/san-francisco-16.jpg" alt="" /></div>
+    <div class="photo-item" data-city="san-francisco"><img src="photos/san-francisco/san-francisco-17.jpg" alt="" /></div>
+    <div class="photo-item" data-city="alicante" data-category="bikes"><img src="photos/alicante/alicante-1.jpg" alt="" /></div>
+    <div class="photo-item" data-city="alicante" data-category="architecture"><img src="photos/alicante/alicante-2.jpg" alt="" /></div>
+    <div class="photo-item" data-city="alicante" data-category="transit"><img src="photos/alicante/alicante-3.jpg" alt="" /></div>
+    <div class="photo-item" data-city="alicante" data-category="architecture"><img src="photos/alicante/alicante-4.jpg" alt="" /></div>
+    <div class="photo-item" data-city="alicante" data-category="architecture"><img src="photos/alicante/alicante-5.jpg" alt="" /></div>
+    <div class="photo-item" data-city="alicante" data-category="bikes"><img src="photos/alicante/alicante-6.jpg" alt="" /></div>
+    <div class="photo-item" data-city="alicante" data-category="architecture"><img src="photos/alicante/alicante-7.jpg" alt="" /></div>
+    <div class="photo-item" data-city="alicante"><img src="photos/alicante/alicante-8.jpg" alt="" /></div>
+    <div class="photo-item" data-city="alicante" data-category="architecture"><img src="photos/alicante/alicante-9.jpg" alt="" /></div>
+    <div class="photo-item" data-city="alicante" data-category="architecture"><img src="photos/alicante/alicante-10.jpg" alt="" /></div>
+    <div class="photo-item" data-city="alicante" data-category="bikes"><img src="photos/alicante/alicante-11.jpg" alt="" /></div>
+    <div class="photo-item" data-city="alicante" data-category="bikes"><img src="photos/alicante/alicante-12.jpg" alt="" /></div>
+    <div class="photo-item" data-city="alicante" data-category="architecture"><img src="photos/alicante/alicante-13.jpg" alt="" /></div>
+    <div class="photo-item" data-city="alicante" data-category="architecture"><img src="photos/alicante/alicante-14.jpg" alt="" /></div>
+    <div class="photo-item" data-city="alicante" data-category="transit"><img src="photos/alicante/alicante-15.jpg" alt="" /></div>
+    <div class="photo-item" data-city="alicante" data-category="architecture"><img src="photos/alicante/alicante-16.jpg" alt="" /></div>
+    <div class="photo-item" data-city="alicante" data-category="architecture"><img src="photos/alicante/alicante-17.jpg" alt="" /></div>
+    <div class="photo-item" data-city="alicante" data-category="architecture"><img src="photos/alicante/alicante-18.jpg" alt="" /></div>
+    <div class="photo-item" data-city="alicante" data-category="architecture"><img src="photos/alicante/alicante-19.jpg" alt="" /></div>
+    <div class="photo-item" data-city="alicante" data-category="architecture"><img src="photos/alicante/alicante-20.jpg" alt="" /></div>
+    <div class="photo-item" data-city="alicante" data-category="architecture"><img src="photos/alicante/alicante-21.jpg" alt="" /></div>
+    <div class="photo-item" data-city="alicante" data-category="architecture"><img src="photos/alicante/alicante-22.jpg" alt="" /></div>
+    <div class="photo-item" data-city="alicante" data-category="architecture"><img src="photos/alicante/alicante-23.jpg" alt="" /></div>
+    <div class="photo-item" data-city="alicante"><img src="photos/alicante/alicante-24.jpg" alt="" /></div>
+    <div class="photo-item" data-city="alicante"><img src="photos/alicante/alicante-25.jpg" alt="" /></div>
+    <div class="photo-item" data-city="alicante" data-category="architecture"><img src="photos/alicante/alicante-26.jpg" alt="" /></div>
+    <div class="photo-item" data-city="alicante" data-category="architecture"><img src="photos/alicante/alicante-27.jpg" alt="" /></div>
+    <div class="photo-item" data-city="alicante" data-category="architecture"><img src="photos/alicante/alicante-28.jpg" alt="" /></div>
+    <div class="photo-item" data-city="alicante" data-category="architecture"><img src="photos/alicante/alicante-29.jpg" alt="" /></div>
+    <div class="photo-item" data-city="alicante" data-category="architecture"><img src="photos/alicante/alicante-30.jpg" alt="" /></div>
+    <div class="photo-item" data-city="alicante"><img src="photos/alicante/alicante-31.jpg" alt="" /></div>
+    <div class="photo-item" data-city="alicante" data-category="architecture"><img src="photos/alicante/alicante-32.jpg" alt="" /></div>
     </div>
+
+    <!-- AS SEEN IN (mobile, below grid) -->
+<div class="featured-below-mobile">
+  <h2>Original Footage Featured In</h2>
+  <div class="featured-logos">
+    <a href="https://www.youtube.com/watch?v=cu6ozB7mKDQ" target="_blank">The Daily Show</a>
+    <a href="https://www.youtube.com/watch?v=BA7OUNr5qLM" target="_blank">Exploring Alternatives</a>
+  </div>
+  <p class="featured-stat">CNN · NYT · Business Insider — Coverage coordination and production support</p>
+</div>
 
   </section>
 
@@ -706,12 +920,21 @@
     </div>
   </footer>
 
-  <!-- LIGHTBOX -->
-  <div class="lightbox" id="lightbox">
+ <div class="lightbox" id="lightbox">
   <span class="lightbox-close">✕</span>
   <span class="lightbox-prev">‹</span>
   <img id="lightbox-img" src="" alt="" />
+  <p id="lightbox-caption" style="position:absolute; bottom:24px; left:50%; transform:translateX(-50%); color:#fff; font-size:12px; letter-spacing:0.1em; opacity:0.6; white-space:nowrap;"></p>
   <span class="lightbox-next">›</span>
+  <div class="lightbox-print">
+    <button class="print-toggle">Order Print ▾</button>
+    <div class="print-dropdown">
+      <a href="YOUR_8x10_STRIPE_LINK" target="_blank">8×10 — $36</a>
+      <a href="YOUR_11x14_STRIPE_LINK" target="_blank">11×14 — $39</a>
+      <a href="YOUR_16x20_STRIPE_LINK" target="_blank">16×20 — $54</a>
+      <a href="YOUR_20x30_STRIPE_LINK" target="_blank">20×30 — $62</a>
+    </div>
+  </div>
 </div>
 
  <script>
@@ -725,60 +948,77 @@ window.addEventListener('scroll', () => {
   lastScrollY = window.scrollY;
 
   // Video speed
-  if (delta > 0) {
-    heroVideo.playbackRate = Math.min(1 + delta * 0.05, 2.5);
+  if (window.innerWidth > 600) {
+    if (delta > 0) {
+      heroVideo.playbackRate = Math.min(1 + delta * 0.05, 2.5);
+    }
+    clearTimeout(heroVideo._resetTimer);
+    heroVideo._resetTimer = setTimeout(() => {
+      heroVideo.playbackRate = 1;
+    }, 200);
   }
-  clearTimeout(heroVideo._resetTimer);
-  heroVideo._resetTimer = setTimeout(() => {
-    heroVideo.playbackRate = 1;
-  }, 200);
 
   // Hero text parallax
   heroText.style.transform = `translateY(${window.scrollY * 0.25}px)`;
 });
-    // Filter buttons
-    const buttons = document.querySelectorAll('.filter-buttons button');
-    buttons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        buttons.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-      });
-    });
-    function showFeatured() {
+  // Filter state
+let activeCity = null;
+let activeCategory = 'featured';
+
+function applyFilters() {
   document.querySelectorAll('.photo-item').forEach(item => {
-    item.style.display = item.getAttribute('data-category') === 'featured' ? 'block' : 'none';
+    const city = item.getAttribute('data-city');
+    const category = item.getAttribute('data-category');
+
+    let show = true;
+
+     if (activeCategory === 'featured') {
+      show = category && category.split(' ').includes('featured');
+    } else if (activeCategory) {
+      show = category && category.split(' ').includes(activeCategory);
+    }
+
+    if (activeCity && city !== activeCity) show = false;
+
+    item.style.display = show ? 'block' : 'none';
   });
 }
 
-document.querySelector('[data-category="featured"]').addEventListener('click', showFeatured);
+function setActiveButton(btn) {
+  document.querySelectorAll('.filter-buttons > button, .filter-buttons .dropdown-wrapper > button').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+}
 
-// Run on page load
-showFeatured();
-    // Dropdown
-const dropdownWrapper = document.querySelector('.dropdown-wrapper');
-const dropdownBtns = document.querySelectorAll('.dropdown button');
+document.querySelector('[data-category="featured"]').addEventListener('click', (e) => {
+  activeCategory = 'featured';
+  activeCity = null;
+  document.querySelector('.dropdown-wrapper > button').textContent = 'Cities ▾';
+  setActiveButton(e.currentTarget);
+  applyFilters();
+});
 
-dropdownBtns.forEach(btn => {
-  btn.addEventListener('click', () => {
-    const city = btn.getAttribute('data-city');
-    const label = btn.textContent;
-
-    // Update button label
-    document.querySelector('.dropdown-wrapper > button').textContent = label + ' ▾';
-
-    // Close dropdown
-    dropdownWrapper.querySelector('.dropdown').style.removeProperty('display');
-
-    // Filter photos
-    document.querySelectorAll('.photo-item').forEach(item => {
-      if (city === 'all-cities' || item.getAttribute('data-city') === city) {
-        item.style.display = 'block';
-      } else {
-        item.style.display = 'none';
-      }
-    });
+document.querySelectorAll('[data-category="bikes"], [data-category="transit"], [data-category="architecture"]').forEach(btn => {
+  btn.addEventListener('click', (e) => {
+    activeCategory = btn.getAttribute('data-category');
+    setActiveButton(e.currentTarget);
+    applyFilters();
   });
 });
+
+const dropdownWrapper = document.querySelector('.dropdown-wrapper');
+
+document.querySelectorAll('.dropdown button').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const city = btn.getAttribute('data-city');
+    activeCity = city === 'all-cities' ? null : city;
+    activeCategory = null;
+    document.querySelector('.dropdown-wrapper > button').textContent = btn.textContent + ' ▾';
+    document.querySelectorAll('.filter-buttons > button').forEach(b => b.classList.remove('active'));
+    applyFilters();
+  });
+});
+
+applyFilters();
 
     // Lightbox
 const lightbox = document.getElementById('lightbox');
@@ -797,6 +1037,7 @@ document.querySelectorAll('.photo-item img').forEach(img => {
     currentPhotos = getVisiblePhotos();
     currentIndex = currentPhotos.indexOf(img);
     lightboxImg.src = img.src;
+    document.getElementById('lightbox-caption').textContent = img.src.split('/').pop();
     lightbox.classList.add('active');
   });
 });
@@ -813,10 +1054,12 @@ document.addEventListener('keydown', (e) => {
   if (e.key === 'ArrowRight') {
     currentIndex = (currentIndex + 1) % currentPhotos.length;
     lightboxImg.src = currentPhotos[currentIndex].src;
+    document.getElementById('lightbox-caption').textContent = currentPhotos[currentIndex].src.split('/').pop();
   }
   if (e.key === 'ArrowLeft') {
     currentIndex = (currentIndex - 1 + currentPhotos.length) % currentPhotos.length;
     lightboxImg.src = currentPhotos[currentIndex].src;
+    document.getElementById('lightbox-caption').textContent = currentPhotos[currentIndex].src.split('/').pop();
   }
   if (e.key === 'Escape') {
     lightbox.classList.remove('active');
@@ -827,25 +1070,40 @@ document.querySelector('.lightbox-prev').addEventListener('click', (e) => {
   e.stopPropagation();
   currentIndex = (currentIndex - 1 + currentPhotos.length) % currentPhotos.length;
   lightboxImg.src = currentPhotos[currentIndex].src;
+  document.getElementById('lightbox-caption').textContent = currentPhotos[currentIndex].src.split('/').pop();
 });
 
 document.querySelector('.lightbox-next').addEventListener('click', (e) => {
   e.stopPropagation();
   currentIndex = (currentIndex + 1) % currentPhotos.length;
   lightboxImg.src = currentPhotos[currentIndex].src;
+  document.getElementById('lightbox-caption').textContent = currentPhotos[currentIndex].src.split('/').pop();
 });
-
 document.querySelector('.lightbox-close').addEventListener('click', (e) => {
   e.stopPropagation();
   lightbox.classList.remove('active');
   lightboxImg.src = '';
 });
 
+
 // Nav background on scroll
 const nav = document.querySelector('nav');
 window.addEventListener('scroll', () => {
   nav.classList.toggle('scrolled', window.scrollY > 80);
 });
+
+document.querySelectorAll('.photo-item').forEach(item => {
+  const overlay = document.createElement('div');
+  overlay.className = 'photo-overlay';
+  overlay.textContent = 'Order Print — from $36';
+  item.appendChild(overlay);
+});
+
+document.querySelector('.print-toggle').addEventListener('click', (e) => {
+  e.stopPropagation();
+  document.querySelector('.lightbox-print').classList.toggle('open');
+});
+
 </script>
 
 </body>
