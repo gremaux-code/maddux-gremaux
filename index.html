@@ -480,6 +480,8 @@
   z-index: 50;
   min-width: 140px;
   flex-direction: column;
+  max-height: 300px;
+  overflow-y: auto;
 }
 
 .dropdown-wrapper:hover .dropdown {
@@ -817,6 +819,7 @@ nav .logo {
       <button data-city="alicante">Alicante, Spain </button>
       <button data-city="amsterdam">Amsterdam</button>
     <button data-city="san-francisco">San Francisco</button>
+    <button data-city="tempe">Tempe</button>
     </div>
   </div>
 <button data-category="bikes">Bikes</button>
@@ -1009,6 +1012,32 @@ nav .logo {
     <div class="photo-item" data-city="alicante" data-category="architecture"><img src="photos/alicante/alicante-30.jpg" alt="" /></div>
     <div class="photo-item" data-city="alicante"><img src="photos/alicante/alicante-31.jpg" alt="" /></div>
     <div class="photo-item" data-city="alicante" data-category="architecture"><img src="photos/alicante/alicante-32.jpg" alt="" /></div>
+    <div class="photo-item" data-city="tempe"><img src="photos/tempe/tempe-1.jpg" alt="" /></div>
+<div class="photo-item" data-city="tempe"><img src="photos/tempe/tempe-2.jpg" alt="" /></div>
+<div class="photo-item" data-city="tempe" data-category="architecture"><img src="photos/tempe/tempe-3.jpg" alt="" /></div>
+<div class="photo-item" data-city="tempe" data-category="architecture"><img src="photos/tempe/tempe-4.jpg" alt="" /></div>
+<div class="photo-item" data-city="tempe"><img src="photos/tempe/tempe-5.jpg" alt="" /></div>
+<div class="photo-item" data-city="tempe" data-category="architecture"><img src="photos/tempe/tempe-6.jpg" alt="" /></div>
+<div class="photo-item" data-city="tempe" data-category="architecture"><img src="photos/tempe/tempe-7.jpg" alt="" /></div>
+<div class="photo-item" data-city="tempe" data-category="architecture"><img src="photos/tempe/tempe-8.jpg" alt="" /></div>
+<div class="photo-item" data-city="tempe" data-category="architecture"><img src="photos/tempe/tempe-9.jpg" alt="" /></div>
+<div class="photo-item" data-city="tempe"><img src="photos/tempe/tempe-10.jpg" alt="" /></div>
+<div class="photo-item" data-city="tempe"><img src="photos/tempe/tempe-11.jpg" alt="" /></div>
+<div class="photo-item" data-city="tempe"><img src="photos/tempe/tempe-12.jpg" alt="" /></div>
+<div class="photo-item" data-city="tempe"><img src="photos/tempe/tempe-13.jpg" alt="" /></div>
+<div class="photo-item" data-city="tempe"><img src="photos/tempe/tempe-14.jpg" alt="" /></div>
+<div class="photo-item" data-city="tempe"><img src="photos/tempe/tempe-15.jpg" alt="" /></div>
+<div class="photo-item" data-city="tempe" data-category="transit"><img src="photos/tempe/tempe-16.jpg" alt="" /></div>
+<div class="photo-item" data-city="tempe"><img src="photos/tempe/tempe-17.jpg" alt="" /></div>
+<div class="photo-item" data-city="tempe" data-category="architecture"><img src="photos/tempe/tempe-18.jpg" alt="" /></div>
+<div class="photo-item" data-city="tempe" data-category="architecture"><img src="photos/tempe/tempe-19.jpg" alt="" /></div>
+<div class="photo-item" data-city="tempe" data-category="architecture"><img src="photos/tempe/tempe-20.jpg" alt="" /></div>
+<div class="photo-item" data-city="tempe" data-category="architecture"><img src="photos/tempe/tempe-21.jpg" alt="" /></div>
+<div class="photo-item" data-city="tempe" data-category="architecture"><img src="photos/tempe/tempe-22.jpg" alt="" /></div>
+<div class="photo-item" data-city="tempe" data-category="architecture"><img src="photos/tempe/tempe-23.jpg" alt="" /></div>
+<div class="photo-item" data-city="tempe"><img src="photos/tempe/tempe-24.jpg" alt="" /></div>
+<div class="photo-item" data-city="tempe"><img src="photos/tempe/tempe-25.jpg" alt="" /></div>
+<div class="photo-item" data-city="tempe" data-category="transit"><img src="photos/tempe/tempe-26.jpg" alt="" /></div>
     </div>
 
     <!-- AS SEEN IN (mobile, below grid) -->
@@ -1166,6 +1195,17 @@ function getVisiblePhotos() {
   });
 }
 
+function updatePrintOptions(src) {
+  const item = [...document.querySelectorAll('.photo-item')].find(el => el.querySelector('img').src === src);
+  const isVideo = item && item.getAttribute('data-source') === 'video';
+  document.querySelectorAll('.print-dropdown a').forEach(a => {
+    const text = a.textContent;
+    if (text.includes('16×20') || text.includes('20×30')) {
+      a.style.display = isVideo ? 'none' : 'block';
+    }
+  });
+}
+
 document.querySelectorAll('.photo-item img').forEach(img => {
   img.addEventListener('click', () => {
     currentPhotos = getVisiblePhotos();
@@ -1173,6 +1213,7 @@ document.querySelectorAll('.photo-item img').forEach(img => {
     lightboxImg.src = img.src;
     document.getElementById('lightbox-caption').textContent = img.src.split('/').pop();
     updateViewInRoomBtn(img.src);
+    updatePrintOptions(lightboxImg.src);
     lightbox.classList.add('active');
   });
 });
@@ -1191,12 +1232,14 @@ document.addEventListener('keydown', (e) => {
     lightboxImg.src = currentPhotos[currentIndex].src;
     document.getElementById('lightbox-caption').textContent = currentPhotos[currentIndex].src.split('/').pop();
     updateViewInRoomBtn(currentPhotos[currentIndex].src);
+    updatePrintOptions(lightboxImg.src);
   }
  if (e.key === 'ArrowLeft') {
     currentIndex = (currentIndex - 1 + currentPhotos.length) % currentPhotos.length;
     lightboxImg.src = currentPhotos[currentIndex].src;
     document.getElementById('lightbox-caption').textContent = currentPhotos[currentIndex].src.split('/').pop();
     updateViewInRoomBtn(currentPhotos[currentIndex].src);
+    updatePrintOptions(lightboxImg.src);
   }
   if (e.key === 'Escape') {
     lightbox.classList.remove('active');
@@ -1209,6 +1252,7 @@ document.querySelector('.lightbox-prev').addEventListener('click', (e) => {
   lightboxImg.src = currentPhotos[currentIndex].src;
   document.getElementById('lightbox-caption').textContent = currentPhotos[currentIndex].src.split('/').pop();
   updateViewInRoomBtn(currentPhotos[currentIndex].src);
+  updatePrintOptions(lightboxImg.src);
 });
 
 document.querySelector('.lightbox-next').addEventListener('click', (e) => {
@@ -1217,6 +1261,7 @@ document.querySelector('.lightbox-next').addEventListener('click', (e) => {
   lightboxImg.src = currentPhotos[currentIndex].src;
   document.getElementById('lightbox-caption').textContent = currentPhotos[currentIndex].src.split('/').pop();
   updateViewInRoomBtn(currentPhotos[currentIndex].src);
+  updatePrintOptions(lightboxImg.src);
 });
 
 document.querySelector('.lightbox-close').addEventListener('click', (e) => {
