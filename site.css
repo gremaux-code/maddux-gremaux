@@ -1,0 +1,209 @@
+/* =========================================================
+   SITE.CSS: shared styles for every page
+   (nav, footer, buttons). Page-specific styles stay inline
+   in each page's <style> block.
+   ========================================================= */
+
+/* ---------- NAV ---------- */
+.site-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background: #fff;
+  border-bottom: 1px solid #eee;
+  font-family: Georgia, serif;
+  transition: background 0.3s ease;
+}
+
+.site-nav .logo {
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #111;
+  text-decoration: none;
+}
+
+.site-nav .nav-right {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.site-nav .nav-links {
+  list-style: none;
+  display: flex;
+  gap: 32px;
+  margin: 0;
+  padding: 0;
+}
+
+.site-nav .nav-links a,
+.site-nav .nav-book,
+.site-nav .nav-toggle {
+  color: #111;
+  font-family: Georgia, serif;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.site-nav .nav-links a:hover { opacity: 0.5; }
+
+.site-nav .nav-links a[aria-current="page"] {
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 2px;
+}
+
+.site-nav .nav-book {
+  border: 1px solid #111;
+  padding: 8px 18px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.site-nav .nav-book:hover {
+  background: #111;
+  color: #fff;
+}
+
+.site-nav .nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px 0;
+}
+
+/* Transparent version used on top of the homepage hero video */
+.site-nav.over-hero {
+  position: fixed;
+  left: 0;
+  right: 0;
+  background: transparent;
+  border-bottom-color: transparent;
+}
+
+.site-nav.over-hero .logo,
+.site-nav.over-hero .nav-links a,
+.site-nav.over-hero .nav-book,
+.site-nav.over-hero .nav-toggle { color: #fff; }
+
+.site-nav.over-hero .nav-book { border-color: rgba(255, 255, 255, 0.7); }
+
+.site-nav.over-hero .nav-book:hover {
+  background: #fff;
+  color: #111;
+}
+
+.site-nav.over-hero.scrolled,
+.site-nav.over-hero.menu-open {
+  background: rgba(10, 10, 10, 0.85);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+}
+
+/* ---------- FOOTER ---------- */
+.site-footer {
+  padding: 40px;
+  border-top: 1px solid #eee;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  font-family: Georgia, serif;
+  font-size: 12px;
+  color: #999;
+  letter-spacing: 0.05em;
+}
+
+.site-footer .footer-links {
+  display: flex;
+  gap: 24px;
+}
+
+.site-footer a {
+  color: #999;
+  text-decoration: none;
+}
+
+.site-footer a:hover { color: #111; }
+
+/* ---------- SHARED TEXT BUTTON ---------- */
+.text-link {
+  display: inline-block;
+  font-size: 12px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #111;
+  text-decoration: none;
+  border-bottom: 1px solid #111;
+  padding-bottom: 2px;
+  transition: opacity 0.2s;
+}
+
+.text-link:hover { opacity: 0.4; }
+
+.button-solid {
+  display: inline-block;
+  background: #111;
+  color: #fff;
+  border: 1px solid #111;
+  padding: 14px 32px;
+  font-family: Georgia, serif;
+  font-size: 12px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+}
+
+.button-solid:hover {
+  background: #fff;
+  color: #111;
+}
+
+/* ---------- MOBILE ---------- */
+@media (max-width: 700px) {
+  .site-nav { padding: 16px 20px; }
+  .site-nav .logo { font-size: 13px; }
+  .site-nav .nav-right { gap: 16px; }
+  .site-nav .nav-book { padding: 6px 12px; font-size: 11px; }
+  .site-nav .nav-toggle { display: block; font-size: 11px; }
+
+  .site-nav .nav-links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    gap: 0;
+    background: #fff;
+    border-bottom: 1px solid #eee;
+  }
+
+  .site-nav .nav-links a {
+    display: block;
+    padding: 16px 20px;
+    border-top: 1px solid #eee;
+  }
+
+  .site-nav .nav-links a[aria-current="page"] { border-bottom: none; }
+
+  .site-nav.menu-open .nav-links { display: flex; }
+
+  .site-nav.over-hero .nav-links {
+    background: rgba(10, 10, 10, 0.92);
+    border-bottom: none;
+  }
+
+  .site-nav.over-hero .nav-links a { border-top-color: rgba(255, 255, 255, 0.1); }
+
+  .site-footer { padding: 32px 20px; }
+}

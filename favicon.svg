@@ -1,0 +1,10 @@
+<!-- Bike icon from Tabler Icons (MIT License, Copyright (c) 2020-2026 Pawel Kuna) -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <rect width="24" height="24" rx="5" fill="#fff"/>
+  <g fill="none" stroke="#111" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" transform="translate(1.2 1.2) scale(0.9)">
+    <path d="M2 18a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" />
+    <path d="M16 18a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" />
+    <path d="M12 19v-4l-3 -3l5 -4l2 3h3" />
+    <path d="M13.007 5a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
+  </g>
+</svg>

@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- SEO + SHARING -->
+  <meta name="description" content="ASU grad photos and portrait sessions in Tempe and Phoenix, AZ. Grad sessions from $175 for a one-hour shoot with 40 to 60 edited photos. Couples, engagements, and small groups too." />
+  <link rel="canonical" href="https://madduxgremaux.com/portraits.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Maddux Gremaux" />
+  <meta property="og:title" content="Grad and Portrait Photography in Tempe and Phoenix" />
+  <meta property="og:description" content="Grad sessions from $175 for a one-hour shoot with 40 to 60 edited photos." />
+  <meta property="og:url" content="https://madduxgremaux.com/portraits.html" />
+  <meta property="og:image" content="https://madduxgremaux.com/photos/portraits/asu-grad-photos-old-main-fountain-01.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+  <title>Grad and Portrait Photographer in Tempe and Phoenix | Maddux Gremaux</title>
+
+  <!-- Structured data: tells search engines this is a local photography service -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Maddux Gremaux Photography",
+    "url": "https://madduxgremaux.com/portraits.html",
+    "image": "https://madduxgremaux.com/photos/portraits/asu-grad-photos-old-main-fountain-01.jpg",
+    "email": "gremauxmaddux@gmail.com",
+    "priceRange": "From $175",
+    "areaServed": [
+      { "@type": "City", "name": "Tempe, AZ" },
+      { "@type": "City", "name": "Phoenix, AZ" }
+    ],
+    "makesOffer": [
+      {
+        "@type": "Offer",
+        "name": "Graduation photo session in Tempe",
+        "price": "175",
+        "priceCurrency": "USD",
+        "description": "One-hour grad session in Tempe with 40 to 60 edited photos"
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: Georgia, serif;
+      background: #fff;
+      color: #111;
+    }
+
+    .label {
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #999;
+      margin-bottom: 24px;
+    }
+
+    section { scroll-margin-top: 80px; }
+
+    /* ---------- HEADER ---------- */
+    .page-head {
+      padding: 100px 40px 64px;
+      max-width: 900px;
+    }
+
+    .page-head h1 {
+      font-size: clamp(34px, 4.6vw, 60px);
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      margin-bottom: 28px;
+    }
+
+    .page-head .lede {
+      font-size: 18px;
+      line-height: 1.8;
+      color: #555;
+      max-width: 640px;
+      margin-bottom: 36px;
+    }
+
+    .jump-links {
+      display: flex;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+
+    /* ---------- GALLERY ---------- */
+    .gallery {
+      padding: 0 40px 100px;
+    }
+
+    /* Three hand-balanced columns: tiles mix two heights so the
+       columns stagger, and the last tile in each column stretches
+       so every column ends flush at the bottom. */
+    .portrait-grid {
+      display: flex;
+      gap: 12px;
+      align-items: stretch;
+    }
+
+    .pcol {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .pcol .shot:last-child { flex-grow: 1; }
+
+    .portrait-grid .shot {
+      overflow: hidden;
+      background: #f0f0f0;
+      cursor: zoom-in;
+    }
+
+    .portrait-grid img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease, filter 0.5s ease;
+    }
+
+    .portrait-grid .shot:hover img {
+      transform: scale(1.03);
+      filter: brightness(1.05);
+    }
+
+    .shot.placeholder {
+      aspect-ratio: 4 / 5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #bbb;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: default;
+    }
+
+    /* ---------- PRICING ---------- */
+    .pricing {
+      padding: 100px 40px;
+      background: #f7f6f3;
+    }
+
+    .pricing h2,
+    .how h2,
+    .couples h2,
+    .closing h2 {
+      font-size: clamp(28px, 3.2vw, 40px);
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      margin-bottom: 48px;
+    }
+
+    .price-cards {
+      display: grid;
+      max-width: 960px;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+
+    .price-card {
+      background: #fff;
+      border: 1px solid #e6e3dc;
+      padding: 40px 32px;
+      transition: transform 0.25s ease, border-color 0.25s ease;
+    }
+
+    .price-card:hover {
+      transform: translateY(-4px);
+      border-color: #111;
+    }
+
+    .price-card h3 {
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #777;
+      margin-bottom: 24px;
+    }
+
+    .price-card .price {
+      font-size: 44px;
+      letter-spacing: -0.02em;
+      margin-bottom: 4px;
+    }
+
+    .price-card .price small {
+      font-size: 16px;
+      color: #777;
+    }
+
+    .price-card .price.text-price {
+      font-size: 28px;
+      line-height: 1.3;
+      margin-bottom: 12px;
+    }
+
+    .price-card p {
+      font-size: 15px;
+      line-height: 1.7;
+      color: #555;
+      margin-top: 16px;
+    }
+
+    /* ---------- HOW IT WORKS ---------- */
+    .how {
+      padding: 100px 40px;
+    }
+
+    .steps {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 32px;
+      counter-reset: step;
+    }
+
+    .steps li {
+      counter-increment: step;
+      border-top: 1px solid #111;
+      padding-top: 20px;
+      font-size: 16px;
+      line-height: 1.6;
+      color: #333;
+    }
+
+    .steps li::before {
+      content: "0" counter(step);
+      display: block;
+      font-size: 12px;
+      letter-spacing: 0.15em;
+      color: #999;
+      margin-bottom: 12px;
+    }
+
+    /* ---------- COUPLES ---------- */
+    .couples {
+      padding: 100px 40px;
+      border-top: 1px solid #eee;
+    }
+
+    .couples-intro {
+      font-size: 17px;
+      line-height: 1.8;
+      color: #555;
+      max-width: 620px;
+      margin: -24px 0 48px;
+    }
+
+    .couples-grid {
+      display: grid;
+      max-width: 960px;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .couples-grid .shot {
+      aspect-ratio: 4 / 5;
+      overflow: hidden;
+      background: #f0f0f0;
+      cursor: zoom-in;
+    }
+
+    .couples-grid img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+
+    .couples-grid .shot:hover img { transform: scale(1.03); }
+
+    /* ---------- CLOSING CTA ---------- */
+    .closing {
+      padding: 120px 40px;
+      text-align: center;
+      background: #111;
+      color: #fff;
+    }
+
+    .closing h2 { margin-bottom: 20px; }
+
+    .closing p {
+      font-size: 16px;
+      color: #aaa;
+      font-style: italic;
+      margin-bottom: 40px;
+    }
+
+    .closing .button-solid {
+      background: #fff;
+      color: #111;
+      border-color: #fff;
+    }
+
+    .closing .button-solid:hover {
+      background: #111;
+      color: #fff;
+    }
+
+    /* ---------- LIGHTBOX ---------- */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.92);
+      z-index: 1000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.2s ease, visibility 0.2s ease;
+    }
+
+    .lightbox.active { opacity: 1; visibility: visible; }
+
+    .lightbox img {
+      max-width: 90vw;
+      max-height: 90vh;
+      object-fit: contain;
+    }
+
+    .lightbox button {
+      position: absolute;
+      background: none;
+      border: none;
+      color: #fff;
+      opacity: 0.7;
+      cursor: pointer;
+      font-family: sans-serif;
+      padding: 20px;
+    }
+
+    .lightbox button:hover { opacity: 1; }
+    .lb-close { top: 12px; right: 20px; font-size: 24px; }
+    .lb-prev, .lb-next { top: 50%; transform: translateY(-50%); font-size: 48px; }
+    .lb-prev { left: 8px; }
+    .lb-next { right: 8px; }
+
+    /* ---------- MOBILE ---------- */
+    @media (max-width: 900px) {
+      .price-cards { grid-template-columns: 1fr; }
+      .steps { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 700px) {
+      .page-head { padding: 64px 20px 48px; }
+      .gallery { padding: 0 16px 72px; }
+      .portrait-grid { display: block; columns: 2; column-gap: 8px; }
+      .pcol { display: contents; }
+      .portrait-grid .shot { break-inside: avoid; margin-bottom: 8px; }
+      .pricing, .how, .couples { padding: 72px 20px; }
+      .steps { grid-template-columns: 1fr; gap: 24px; }
+      .couples-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
+      .closing { padding: 88px 20px; }
+    }
+  </style>
+  <link rel="stylesheet" href="site.css" />
+</head>
+<body>
+
+<nav class="site-nav">
+  <a class="logo" href="index.html">Maddux Gremaux</a>
+  <div class="nav-right">
+    <ul class="nav-links">
+      <li><a href="portraits.html" aria-current="page">Portraits</a></li>
+      <li><a href="prints.html">Prints</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+    <a class="nav-book" href="https://forms.gle/cRB4FQjafEhF6vEB7" target="_blank" rel="noopener">Book</a>
+    <button class="nav-toggle" aria-expanded="false" aria-label="Menu">Menu</button>
+  </div>
+</nav>
+
+  <!-- HEADER -->
+  <header class="page-head">
+    <p class="label">Portraits</p>
+    <h1>Grad and portrait photography in Tempe and Phoenix</h1>
+    <div class="jump-links">
+      <a class="text-link" href="#pricing">Pricing</a>
+      <a class="text-link" href="#couples">Couples and groups</a>
+      <a class="text-link" href="https://forms.gle/cRB4FQjafEhF6vEB7" target="_blank" rel="noopener">Book a session</a>
+    </div>
+  </header>
+
+  <!-- GRAD GALLERY -->
+  <section class="gallery" id="grads" aria-label="Grad portraits">
+    <div class="portrait-grid">
+      <div class="pcol">
+        <div class="shot" style="aspect-ratio: 2 / 3"><img src="photos/portraits/thumbs/asu-grad-photos-old-main-fountain-01.jpg" srcset="photos/portraits/thumbs/asu-grad-photos-old-main-fountain-01.jpg 600w, photos/portraits/asu-grad-photos-old-main-fountain-01.jpg 1333w" sizes="(max-width: 700px) 50vw, 33vw" data-full="photos/portraits/asu-grad-photos-old-main-fountain-01.jpg" width="600" height="900" alt="ASU grad in a white dress sitting at the fountain near Old Main" loading="lazy" decoding="async" /></div>
+        <div class="shot" style="aspect-ratio: 2 / 3"><img src="photos/portraits/thumbs/asu-grad-photos-old-main-fountain-02.jpg" srcset="photos/portraits/thumbs/asu-grad-photos-old-main-fountain-02.jpg 675w, photos/portraits/asu-grad-photos-old-main-fountain-02.jpg 1500w" sizes="(max-width: 700px) 50vw, 33vw" data-full="photos/portraits/asu-grad-photos-old-main-fountain-02.jpg" width="675" height="900" alt="ASU grad in a white dress standing at the fountain near Old Main" loading="lazy" decoding="async" /></div>
+        <div class="shot" style="aspect-ratio: 2 / 3"><img src="photos/portraits/thumbs/asu-grad-photos-old-main-fountain-03.jpg" srcset="photos/portraits/thumbs/asu-grad-photos-old-main-fountain-03.jpg 600w, photos/portraits/asu-grad-photos-old-main-fountain-03.jpg 1333w" sizes="(max-width: 700px) 50vw, 33vw" data-full="photos/portraits/asu-grad-photos-old-main-fountain-03.jpg" width="600" height="900" alt="Smiling ASU grad with a gold stole at the fountain near Old Main" loading="lazy" decoding="async" /></div>
+        <div class="shot" style="aspect-ratio: 3 / 2"><img src="photos/portraits/thumbs/asu-grad-photos-hayden-library.jpg" srcset="photos/portraits/thumbs/asu-grad-photos-hayden-library.jpg 900w, photos/portraits/asu-grad-photos-hayden-library.jpg 2000w" sizes="(max-width: 700px) 50vw, 33vw" data-full="photos/portraits/asu-grad-photos-hayden-library.jpg" width="900" height="600" alt="ASU grad peeking through the stacks at Hayden Library" loading="lazy" decoding="async" /></div>
+        <div class="shot" style="aspect-ratio: 2 / 3"><img src="photos/portraits/thumbs/asu-graduation-photos-maroon-gown.jpg" srcset="photos/portraits/thumbs/asu-graduation-photos-maroon-gown.jpg 675w, photos/portraits/asu-graduation-photos-maroon-gown.jpg 1500w" sizes="(max-width: 700px) 50vw, 33vw" data-full="photos/portraits/asu-graduation-photos-maroon-gown.jpg" width="675" height="900" alt="ASU grad in a maroon gown with the ASU letters and fountain behind her" loading="lazy" decoding="async" /></div>
+        <div class="shot" style="aspect-ratio: 2 / 3"><img src="photos/portraits/thumbs/asu-grad-photos-secret-garden-friends.jpg" srcset="photos/portraits/thumbs/asu-grad-photos-secret-garden-friends.jpg 675w, photos/portraits/asu-grad-photos-secret-garden-friends.jpg 1500w" sizes="(max-width: 700px) 50vw, 33vw" data-full="photos/portraits/asu-grad-photos-secret-garden-friends.jpg" width="675" height="900" alt="Two ASU grads laughing on a bench in the Secret Garden" loading="lazy" decoding="async" /></div>
+        <div class="shot" style="aspect-ratio: 2 / 3"><img src="photos/portraits/thumbs/asu-grad-photos-bike.jpg" srcset="photos/portraits/thumbs/asu-grad-photos-bike.jpg 600w, photos/portraits/asu-grad-photos-bike.jpg 1333w" sizes="(max-width: 700px) 50vw, 33vw" data-full="photos/portraits/asu-grad-photos-bike.jpg" width="600" height="900" alt="ASU grad in boots riding a bike on campus in Tempe" loading="lazy" decoding="async" /></div>
+      </div>
+      <div class="pcol">
+        <div class="shot" style="aspect-ratio: 10 / 17"><img src="photos/portraits/thumbs/asu-grad-photos-walton-center-01.jpg" srcset="photos/portraits/thumbs/asu-grad-photos-walton-center-01.jpg 600w, photos/portraits/asu-grad-photos-walton-center-01.jpg 1333w" sizes="(max-width: 700px) 50vw, 33vw" data-full="photos/portraits/asu-grad-photos-walton-center-01.jpg" width="600" height="900" alt="ASU grad in a maroon gown at the Walton Center for Planetary Health" loading="lazy" decoding="async" /></div>
+        <div class="shot" style="aspect-ratio: 2 / 3"><img src="photos/portraits/thumbs/asu-grad-photos-old-main-steps.jpg" srcset="photos/portraits/thumbs/asu-grad-photos-old-main-steps.jpg 600w, photos/portraits/asu-grad-photos-old-main-steps.jpg 1333w" sizes="(max-width: 700px) 50vw, 33vw" data-full="photos/portraits/asu-grad-photos-old-main-steps.jpg" width="600" height="900" alt="ASU grad on the front steps of Old Main" loading="lazy" decoding="async" /></div>
+        <div class="shot" style="aspect-ratio: 10 / 17"><img src="photos/portraits/thumbs/asu-grad-photos-old-main-porch.jpg" srcset="photos/portraits/thumbs/asu-grad-photos-old-main-porch.jpg 600w, photos/portraits/asu-grad-photos-old-main-porch.jpg 1333w" sizes="(max-width: 700px) 50vw, 33vw" data-full="photos/portraits/asu-grad-photos-old-main-porch.jpg" width="600" height="900" alt="ASU grad in boots on the porch of Old Main" loading="lazy" decoding="async" /></div>
+        <div class="shot" style="aspect-ratio: 2 / 3"><img src="photos/portraits/thumbs/asu-grad-photos-old-main-fountain-04.jpg" srcset="photos/portraits/thumbs/asu-grad-photos-old-main-fountain-04.jpg 600w, photos/portraits/asu-grad-photos-old-main-fountain-04.jpg 1333w" sizes="(max-width: 700px) 50vw, 33vw" data-full="photos/portraits/asu-grad-photos-old-main-fountain-04.jpg" width="600" height="900" alt="ASU grad in a cap and boots at the fountain near Old Main" loading="lazy" decoding="async" /></div>
+        <div class="shot" style="aspect-ratio: 2 / 3"><img src="photos/portraits/thumbs/asu-grad-photos-walton-center-02.jpg" srcset="photos/portraits/thumbs/asu-grad-photos-walton-center-02.jpg 600w, photos/portraits/asu-grad-photos-walton-center-02.jpg 1333w" sizes="(max-width: 700px) 50vw, 33vw" data-full="photos/portraits/asu-grad-photos-walton-center-02.jpg" width="600" height="900" alt="ASU grad walking along the water at the Walton Center for Planetary Health" loading="lazy" decoding="async" /></div>
+        <div class="shot" style="aspect-ratio: 10 / 17"><img src="photos/portraits/thumbs/asu-art-museum-grad-photos.jpg" srcset="photos/portraits/thumbs/asu-art-museum-grad-photos.jpg 600w, photos/portraits/asu-art-museum-grad-photos.jpg 1333w" sizes="(max-width: 700px) 50vw, 33vw" data-full="photos/portraits/asu-art-museum-grad-photos.jpg" width="600" height="900" alt="ASU grad on the pink terraces of the ASU Art Museum near Gammage" loading="lazy" decoding="async" /></div>
+      </div>
+      <div class="pcol">
+        <div class="shot" style="aspect-ratio: 2 / 3"><img src="photos/portraits/thumbs/asu-grad-photos-palm-walk-01.jpg" srcset="photos/portraits/thumbs/asu-grad-photos-palm-walk-01.jpg 600w, photos/portraits/asu-grad-photos-palm-walk-01.jpg 1333w" sizes="(max-width: 700px) 50vw, 33vw" data-full="photos/portraits/asu-grad-photos-palm-walk-01.jpg" width="600" height="900" alt="ASU grad tossing her cap on Palm Walk" loading="lazy" decoding="async" /></div>
+        <div class="shot" style="aspect-ratio: 10 / 17"><img src="photos/portraits/thumbs/asu-grad-photos-hayden-lawn-01.jpg" srcset="photos/portraits/thumbs/asu-grad-photos-hayden-lawn-01.jpg 600w, photos/portraits/asu-grad-photos-hayden-lawn-01.jpg 1333w" sizes="(max-width: 700px) 50vw, 33vw" data-full="photos/portraits/asu-grad-photos-hayden-lawn-01.jpg" width="600" height="900" alt="ASU grad in a maroon gown near Hayden Lawn" loading="lazy" decoding="async" /></div>
+        <div class="shot" style="aspect-ratio: 2 / 3"><img src="photos/portraits/thumbs/asu-grad-photos-hayden-lawn-02.jpg" srcset="photos/portraits/thumbs/asu-grad-photos-hayden-lawn-02.jpg 600w, photos/portraits/asu-grad-photos-hayden-lawn-02.jpg 1333w" sizes="(max-width: 700px) 50vw, 33vw" data-full="photos/portraits/asu-grad-photos-hayden-lawn-02.jpg" width="600" height="900" alt="ASU grad with sorority stoles near Hayden Lawn" loading="lazy" decoding="async" /></div>
+        <div class="shot" style="aspect-ratio: 10 / 17"><img src="photos/portraits/thumbs/asu-grad-photos-palm-walk-02.jpg" srcset="photos/portraits/thumbs/asu-grad-photos-palm-walk-02.jpg 600w, photos/portraits/asu-grad-photos-palm-walk-02.jpg 1333w" sizes="(max-width: 700px) 50vw, 33vw" data-full="photos/portraits/asu-grad-photos-palm-walk-02.jpg" width="600" height="900" alt="ASU grad holding her cap on Palm Walk" loading="lazy" decoding="async" /></div>
+        <div class="shot" style="aspect-ratio: 10 / 17"><img src="photos/portraits/thumbs/asu-grad-photos-secret-garden.jpg" srcset="photos/portraits/thumbs/asu-grad-photos-secret-garden.jpg 600w, photos/portraits/asu-grad-photos-secret-garden.jpg 1333w" sizes="(max-width: 700px) 50vw, 33vw" data-full="photos/portraits/asu-grad-photos-secret-garden.jpg" width="600" height="900" alt="ASU grad on a bench in the Secret Garden" loading="lazy" decoding="async" /></div>
+        <div class="shot" style="aspect-ratio: 2 / 3"><img src="photos/portraits/thumbs/asu-grad-photos-coor-hall.jpg" srcset="photos/portraits/thumbs/asu-grad-photos-coor-hall.jpg 600w, photos/portraits/asu-grad-photos-coor-hall.jpg 1333w" sizes="(max-width: 700px) 50vw, 33vw" data-full="photos/portraits/asu-grad-photos-coor-hall.jpg" width="600" height="900" alt="ASU grad in a cap and stole leaning on a vending machine in Coor Hall" loading="lazy" decoding="async" /></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="pricing" id="pricing">
+    <p class="label">Pricing</p>
+    <h2>Simple pricing</h2>
+    <div class="price-cards">
+      <div class="price-card">
+        <h3>Grad session, Tempe</h3>
+        <p class="price">$175</p>
+        <p>One-hour shoot, 40 to 60 edited photos. ASU campus, Mill Ave, Town Lake, or anywhere else in Tempe.</p>
+      </div>
+      <div class="price-card">
+        <h3>Everything else</h3>
+        <p class="price text-price">Contact for pricing</p>
+        <p>Grad sessions elsewhere in the Valley, couples, engagements, small groups, and individual portraits.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="how" aria-label="How booking works">
+    <p class="label">How it works</p>
+    <h2>From request to photos</h2>
+    <ol class="steps">
+      <li>Send a request with your date, location ideas, and what the photos are for.</li>
+      <li>We lock in a time and plan the spots together.</li>
+      <li>We shoot. Bring outfit changes, your cap and gown, and anyone you want in a few frames.</li>
+      <li>You get 40 to 60 edited photos.</li>
+    </ol>
+  </section>
+
+  <!-- COUPLES AND GROUPS -->
+  <section class="couples" id="couples">
+    <p class="label">Couples and groups</p>
+    <h2>Couples, engagements, and small groups</h2>
+    <p class="couples-intro">
+      Not just grads. I also photograph couples, engagements, and small
+      groups of friends or family.
+    </p>
+    <div class="couples-grid">
+      <div class="shot"><img src="photos/portraits/thumbs/east-valley-engagement-photos-golden-hour.jpg" srcset="photos/portraits/thumbs/east-valley-engagement-photos-golden-hour.jpg 600w, photos/portraits/east-valley-engagement-photos-golden-hour.jpg 1333w" sizes="(max-width: 700px) 50vw, 40vw" data-full="photos/portraits/east-valley-engagement-photos-golden-hour.jpg" width="600" height="900" alt="Couple at golden hour with the Superstition Mountains behind them at Lost Dutchman" loading="lazy" decoding="async" /></div>
+      <div class="shot"><img src="photos/portraits/thumbs/lost-dutchman-engagement-photos-01.jpg" srcset="photos/portraits/thumbs/lost-dutchman-engagement-photos-01.jpg 600w, photos/portraits/lost-dutchman-engagement-photos-01.jpg 1333w" sizes="(max-width: 700px) 50vw, 40vw" data-full="photos/portraits/lost-dutchman-engagement-photos-01.jpg" width="600" height="900" alt="Couple embracing among saguaros at Lost Dutchman State Park" loading="lazy" decoding="async" /></div>
+    </div>
+  </section>
+
+  <!-- CLOSING CTA -->
+  <section class="closing">
+    <h2>Book your session</h2>
+    <p>Tempe and Phoenix, any season.</p>
+    <a class="button-solid" href="https://forms.gle/cRB4FQjafEhF6vEB7" target="_blank" rel="noopener">Request a date</a>
+  </section>
+
+<footer class="site-footer">
+  <span>&copy; 2026 Maddux Gremaux</span>
+  <div class="footer-links">
+    <a href="mailto:gremauxmaddux@gmail.com">Email</a>
+    <a href="https://www.instagram.com/madduxgphotography/" target="_blank" rel="noopener">Instagram</a>
+    <a href="https://www.linkedin.com/in/madduxgremaux" target="_blank" rel="noopener">LinkedIn</a>
+  </div>
+</footer>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer">
+    <button class="lb-close" aria-label="Close">&#10005;</button>
+    <button class="lb-prev" aria-label="Previous photo">&#8249;</button>
+    <img id="lb-img" src="" alt="" />
+    <button class="lb-next" aria-label="Next photo">&#8250;</button>
+  </div>
+
+  <script>
+    // Lightbox: works across both the grad and couples galleries
+    (function () {
+      var shots = Array.prototype.slice.call(document.querySelectorAll('.shot img'));
+      var box = document.getElementById('lightbox');
+      var big = document.getElementById('lb-img');
+      var index = 0;
+      if (!shots.length) return;
+
+      function show(i) {
+        index = (i + shots.length) % shots.length;
+        big.src = shots[index].getAttribute('data-full') || shots[index].src;
+        big.alt = shots[index].alt;
+      }
+      function open(i) { show(i); box.classList.add('active'); }
+      function close() { box.classList.remove('active'); big.src = ''; }
+
+      shots.forEach(function (img, i) {
+        img.addEventListener('click', function () { open(i); });
+      });
+      box.querySelector('.lb-close').addEventListener('click', close);
+      box.querySelector('.lb-prev').addEventListener('click', function (e) { e.stopPropagation(); show(index - 1); });
+      box.querySelector('.lb-next').addEventListener('click', function (e) { e.stopPropagation(); show(index + 1); });
+      box.addEventListener('click', function (e) { if (e.target === box) close(); });
+      document.addEventListener('keydown', function (e) {
+        if (!box.classList.contains('active')) return;
+        if (e.key === 'Escape') close();
+        if (e.key === 'ArrowRight') show(index + 1);
+        if (e.key === 'ArrowLeft') show(index - 1);
+      });
+    })();
+  </script>
+  <script src="site.js" defer></script>
+</body>
+</html>

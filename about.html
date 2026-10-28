@@ -3,7 +3,21 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>About — Maddux Gremaux</title>
+  <!-- SEO + SHARING -->
+  <meta name="description" content="Maddux Gremaux is a marketer and photographer in Phoenix, AZ, leading marketing at Culdesac." />
+  <link rel="canonical" href="https://madduxgremaux.com/about.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Maddux Gremaux" />
+  <meta property="og:title" content="About | Maddux Gremaux" />
+  <meta property="og:description" content="Maddux Gremaux is a marketer and photographer in Phoenix, AZ, leading marketing at Culdesac." />
+  <meta property="og:url" content="https://madduxgremaux.com/about.html" />
+  <meta property="og:image" content="https://madduxgremaux.com/about-headshot-web.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Maddux Gremaux","url":"https://madduxgremaux.com/","image":"https://madduxgremaux.com/about-headshot-web.jpg","jobTitle":"Marketing Lead","worksFor":{"@type":"Organization","name":"Culdesac","url":"https://culdesac.com"},"alumniOf":{"@type":"CollegeOrUniversity","name":"Arizona State University"},"email":"mailto:gremauxmaddux@gmail.com","sameAs":["https://www.linkedin.com/in/madduxgremaux","https://www.instagram.com/madduxgphotography/"]}</script>
+  <title>About | Maddux Gremaux</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -197,6 +211,25 @@
       letter-spacing: 0.05em;
     }
 
+    .about-links {
+      display: flex;
+      gap: 32px;
+      flex-wrap: wrap;
+      margin-top: 8px;
+    }
+
+    .about-links a {
+      font-size: 12px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #111;
+      text-decoration: none;
+      border-bottom: 1px solid #111;
+      padding-bottom: 2px;
+    }
+
+    .about-links a:hover { opacity: 0.4; }
+
     @media (max-width: 768px) {
       .about-layout {
         flex-direction: column-reverse;
@@ -209,64 +242,74 @@
       }
     }
   </style>
+  <link rel="stylesheet" href="site.css" />
 </head>
 <body>
 
-  <nav>
-    <a class="logo" href="index.html">Maddux Gremaux</a>
-    <ul>
-      <li><a href="index.html#prints">Prints</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="contact.html">Contact</a></li>
+  <nav class="site-nav">
+  <a class="logo" href="index.html">Maddux Gremaux</a>
+  <div class="nav-right">
+    <ul class="nav-links">
+      <li><a href="portraits.html">Portraits</a></li>
+      <li><a href="prints.html">Prints</a></li>
+      <li><a href="about.html" aria-current="page">About</a></li>
     </ul>
-  </nav>
+    <a class="nav-book" href="https://forms.gle/cRB4FQjafEhF6vEB7" target="_blank" rel="noopener">Book</a>
+    <button class="nav-toggle" aria-expanded="false" aria-label="Menu">Menu</button>
+  </div>
+</nav>
 
   <div class="about-layout">
 
     <div class="about-left">
       <p class="label">About</p>
 
-      <p class="bio">About me.</p>
+      <p class="bio">I'm a marketer and photographer based in Phoenix. I lead marketing at Culdesac, the first car-free neighborhood built from scratch in the US.</p>
 
       <p class="bio-secondary">
-  I lead marketing at Culdesac, an innovative Arizona-based developer building
-  walkable, mixed-use neighborhoods. My job is translating what we're building
-  into stories that resonate — running organic and paid campaigns, coordinating
-  large-scale events, managing press visits from outlets like NYT, CNN, and
-  The Daily Show, and building decks for high-profile speaking engagements.
-</p>
+        My job is turning what we're building into stories people want to
+        follow: organic and paid social, press, events, and decks for
+        leadership speaking engagements. I've coordinated visits and coverage
+        from outlets like The New York Times, CNN, and The Daily Show, and I
+        shoot a lot of the photo and video myself.
+      </p>
 
-<p class="bio-secondary">
-  Before Culdesac, I worked in the City of Phoenix Mayor's Office, and created
-  public engagement materials on climate resilience for the City of Tempe.
-</p>
+      <p class="bio-secondary">
+        Before Culdesac, I worked in the City of Phoenix Mayor's Office. My
+        background is in sustainability and GIS.
+      </p>
+
+      <div class="about-links">
+        <a href="resume.pdf" target="_blank" rel="noopener">Resume (PDF) &rarr;</a>
+        <a href="https://www.linkedin.com/in/madduxgremaux" target="_blank" rel="noopener">LinkedIn &rarr;</a>
+      </div>
 
       <!-- EXPERIENCE -->
       <div class="section">
         <p class="section-label">Experience</p>
 
         <div class="entry">
-          <span class="entry-year">2023 —</span>
+          <span class="entry-year">2025 &ndash; Now</span>
           <div class="entry-content">
-            <h3>Marketing & Communications — Culdesac</h3>
-            <p>Running campaigns, press, events, and brand strategy for the first
-            car-free neighborhood built from scratch in the US.</p>
+            <h3>Marketing Lead and Business Operations, Culdesac</h3>
+            <p>Marketing for four properties in Tempe and Atlanta: social, press, events, email, and
+            leadership communications. 245+ Instagram reels with 6.5M+ organic views.</p>
           </div>
         </div>
 
         <div class="entry">
-          <span class="entry-year">Prior</span>
+          <span class="entry-year">2023 &ndash; 2025</span>
           <div class="entry-content">
-            <h3>City of Phoenix Mayor's Office</h3>
-            <p>Communications and public engagement.</p>
+            <h3>Marketing Intern, Culdesac</h3>
+            <p>Supported a company rebrand, managed social media, and coordinated press visits.</p>
           </div>
         </div>
 
         <div class="entry">
-          <span class="entry-year">Prior</span>
+          <span class="entry-year">2023</span>
           <div class="entry-content">
-            <h3>City of Tempe</h3>
-            <p>Public engagement materials on climate resilience.</p>
+            <h3>Constituent Services Intern, City of Phoenix Mayor's Office</h3>
+            <p>Constituent correspondence, mayoral proclamations, and City Council documentation.</p>
           </div>
         </div>
       </div>
@@ -276,16 +319,24 @@
         <p class="section-label">Press</p>
         <div class="press-list">
           <div class="press-item">
-        <span class="press-outlet">The Daily Show</span>
-        <span class="press-desc">Original footage featured</span>
-        </div>
-        <div class="press-item">
-        <span class="press-outlet">Exploring Alternatives</span>
-        <span class="press-desc">Original footage featured</span>
-        </div>
+            <span class="press-outlet">Original footage featured</span>
+            <span class="press-desc">The Daily Show, Exploring Alternatives</span>
+          </div>
           <div class="press-item">
-            <span class="press-outlet">CNN · NYT · Business Insider</span>
-            <span class="press-desc">Coverage coordination and production support</span>
+            <span class="press-outlet">Coverage coordinated</span>
+            <span class="press-desc">The Daily Show, Good Morning America, The New York Times, CNN Travel, BBC Travel, PBS NewsHour, CNBC, ABC News, Business Insider, Dwell, Monocle</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- RECOGNITION -->
+      <div class="section">
+        <p class="section-label">Recognition</p>
+        <div class="entry">
+          <span class="entry-year">2024</span>
+          <div class="entry-content">
+            <h3>Art in Public Spaces, Arizona Forward Design Awards</h3>
+            <p>Produced the video and wrote the winning submission for Culdesac.</p>
           </div>
         </div>
       </div>
@@ -294,10 +345,10 @@
       <div class="section">
         <p class="section-label">Education</p>
         <div class="entry">
-          <span class="entry-year"></span>
+          <span class="entry-year">2025</span>
           <div class="entry-content">
             <h3>Arizona State University</h3>
-            <p>Sustainability · Geographic Information Systems</p>
+            <p>BA in Sustainability (Urban Dynamics), magna cum laude<br>Certificate in Geographic Information Science</p>
           </div>
         </div>
       </div>
@@ -306,18 +357,26 @@
         <p>Always happy to connect, especially if you're thinking about urban
         development, placemaking, or how to tell stories that make our cities
         better places to live.</p>
-        <a href="contact.html">Get in touch →</a>
+        <a href="contact.html">Get in touch &rarr;</a>
       </div>
 
     </div><!-- end about-left -->
 
     <div class="about-right">
-      <img src="about-headshot.JPG" alt="Maddux Gremaux" />
+      <img src="about-headshot-web.jpg" alt="Maddux Gremaux" />
     </div>
 
   </div><!-- end about-layout -->
 
-  <footer>© 2026 Maddux Gremaux</footer>
+  <footer class="site-footer">
+  <span>&copy; 2026 Maddux Gremaux</span>
+  <div class="footer-links">
+    <a href="mailto:gremauxmaddux@gmail.com">Email</a>
+    <a href="https://www.instagram.com/madduxgphotography/" target="_blank" rel="noopener">Instagram</a>
+    <a href="https://www.linkedin.com/in/madduxgremaux" target="_blank" rel="noopener">LinkedIn</a>
+  </div>
+</footer>
 
+<script src="site.js" defer></script>
 </body>
 </html>
