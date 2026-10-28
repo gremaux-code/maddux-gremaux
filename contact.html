@@ -3,7 +3,20 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Contact — Maddux Gremaux</title>
+  <!-- SEO + SHARING -->
+  <meta name="description" content="Contact Maddux Gremaux for portrait sessions, prints, or press." />
+  <link rel="canonical" href="https://madduxgremaux.com/contact.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Maddux Gremaux" />
+  <meta property="og:title" content="Contact | Maddux Gremaux" />
+  <meta property="og:description" content="Contact Maddux Gremaux for portrait sessions, prints, or press." />
+  <meta property="og:url" content="https://madduxgremaux.com/contact.html" />
+  <meta property="og:image" content="https://madduxgremaux.com/og-image.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+  <title>Contact | Maddux Gremaux</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -108,21 +121,27 @@
       letter-spacing: 0.05em;
     }
   </style>
+  <link rel="stylesheet" href="site.css" />
 </head>
 <body>
 
-  <nav>
-    <a class="logo" href="index.html">Maddux Gremaux</a>
-    <ul>
-      <li><a href="index.html#prints">Prints</a></li>
-      <li><a href="index.html#about">About</a></li>
-      <li><a href="contact.html">Contact</a></li>
+  <nav class="site-nav">
+  <a class="logo" href="index.html">Maddux Gremaux</a>
+  <div class="nav-right">
+    <ul class="nav-links">
+      <li><a href="portraits.html">Portraits</a></li>
+      <li><a href="prints.html">Prints</a></li>
+      <li><a href="about.html">About</a></li>
     </ul>
-  </nav>
+    <a class="nav-book" href="https://forms.gle/cRB4FQjafEhF6vEB7" target="_blank" rel="noopener">Book</a>
+    <button class="nav-toggle" aria-expanded="false" aria-label="Menu">Menu</button>
+  </div>
+</nav>
 
   <div class="contact-body">
     <p class="label">Contact</p>
-    <p>For print inquiries, commissions, or press.</p>
+    <p>For portrait sessions, prints, or press. Send me what you're thinking and we'll make it happen.</p>
+    <a class="button-solid" href="https://forms.gle/cRB4FQjafEhF6vEB7" target="_blank" rel="noopener" style="margin-bottom:32px; align-self:flex-start">Book a session</a>
     <a class="email-link" href="mailto:gremauxmaddux@gmail.com">gremauxmaddux@gmail.com</a>
     <div class="social-links">
       <a href="https://www.instagram.com/madduxgphotography/" target="_blank">Instagram</a>
@@ -130,7 +149,15 @@
     </div>
   </div>
 
-  <footer>© 2026 Maddux Gremaux</footer>
+  <footer class="site-footer">
+  <span>&copy; 2026 Maddux Gremaux</span>
+  <div class="footer-links">
+    <a href="mailto:gremauxmaddux@gmail.com">Email</a>
+    <a href="https://www.instagram.com/madduxgphotography/" target="_blank" rel="noopener">Instagram</a>
+    <a href="https://www.linkedin.com/in/madduxgremaux" target="_blank" rel="noopener">LinkedIn</a>
+  </div>
+</footer>
 
+<script src="site.js" defer></script>
 </body>
 </html>

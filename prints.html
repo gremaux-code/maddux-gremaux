@@ -1,0 +1,1320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <!-- SEO + SHARING -->
+  <meta name="description" content="Fine art prints of cities, bikes, and transit by Maddux Gremaux." />
+  <link rel="canonical" href="https://madduxgremaux.com/prints.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Maddux Gremaux" />
+  <meta property="og:title" content="Maddux Gremaux — Photography" />
+  <meta property="og:description" content="Photographer, storyteller, urbanist. Based in Phoenix, AZ." />
+  <meta property="og:url" content="https://madduxgremaux.com/prints.html" />
+  <meta property="og:image" content="https://madduxgremaux.com/og-image.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+  <title>Fine Art Prints | Maddux Gremaux</title>
+  <style>
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Georgia', serif;
+      background: #fff;
+      color: #111;
+    }
+
+    /* NAV */
+    nav {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        padding: 20px 40px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 100;
+        transition: background 0.3s ease, backdrop-filter 0.3s ease;
+        /* remove mix-blend-mode: difference; */
+    }
+
+    nav .logo {
+      font-size: 16px;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #fff;
+      text-decoration: none;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 32px;
+    }
+
+    nav ul a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 13px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    nav {
+    transition: background 0.3s ease, backdrop-filter 0.3s ease;
+    }
+    nav.scrolled {
+    mix-blend-mode: normal;
+    background: rgba(10, 10, 10, 0.75);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    }
+    nav.scrolled .logo,
+    nav.scrolled ul a {
+    color: #fff;
+    }
+    
+
+    /* HERO VIDEO */
+    .hero {
+      position: relative;
+      width: 100%;
+      height: min(100vh, 56.25vw);
+      overflow: hidden;
+      background: #111;
+    }
+
+    .hero video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.85;
+    }
+
+    .hero-text {
+      position: absolute;
+      bottom: 48px;
+      left: 40px;
+      color: #fff;
+      z-index: 10;
+    }
+
+    .hero-text h1 {
+      font-size: clamp(36px, 5vw, 72px);
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+    }
+
+    .hero-text p {
+      margin-top: 12px;
+      font-size: 15px;
+      letter-spacing: 0.05em;
+      opacity: 0.8;
+      font-style: italic;
+      
+    }
+
+        .hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 100%);
+    pointer-events: none;
+    }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 48px;
+      right: 40px;
+      color: #fff;
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      opacity: 0.6;
+      writing-mode: vertical-rl;
+    }
+
+    /* FEATURED IN */
+    .featured {
+      padding: 80px 40px;
+      text-align: center;
+      border-bottom: 1px solid #eee;
+    }
+
+    .featured h2 {
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #999;
+      margin-bottom: 40px;
+    }
+
+    .featured-logos {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 48px;
+      flex-wrap: wrap;
+    }
+
+    .featured-logos span {
+      font-size: 14px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #555;
+      font-weight: 400;
+    }
+
+    .featured-stat {
+      margin-top: 48px;
+      font-size: 13px;
+      color: #999;
+      letter-spacing: 0.05em;
+      font-style: italic;
+    }
+
+    /* PHOTO GRID */
+    .grid-section {
+      padding: 80px 40px;
+    }
+
+    .grid-section h2 {
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #999;
+      margin-bottom: 32px;
+    }
+
+    .filter-buttons {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 40px;
+    }
+
+    .filter-buttons button {
+      background: none;
+      border: 1px solid #ddd;
+      padding: 8px 20px;
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.2s;
+      color: #555;
+    }
+
+    .filter-buttons button.active,
+    .filter-buttons button:hover {
+      background: #111;
+      color: #fff;
+      border-color: #111;
+    }
+
+    .photo-grid {
+    columns: 3;
+    column-gap: 12px;
+    }
+
+    .photo-grid .photo-item {
+    break-inside: avoid;
+    margin-bottom: 12px;
+    background: #f0f0f0;
+    overflow: hidden;
+    cursor: pointer;
+    }
+
+    .photo-grid .photo-item img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+
+        .photo-grid .photo-item:hover img {
+    transform: scale(1.04);
+    filter: brightness(1.06);
+    }
+
+    .photo-grid .photo-item.placeholder {
+      aspect-ratio: 3/4;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      color: #bbb;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    /* ABOUT */
+    .about {
+      padding: 100px 40px;
+      max-width: 680px;
+    }
+
+    .about h2 {
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #999;
+      margin-bottom: 32px;
+    }
+
+    .about p {
+      font-size: 18px;
+      line-height: 1.8;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    .about a {
+      display: inline-block;
+      margin-top: 24px;
+      font-size: 12px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #111;
+      text-decoration: none;
+      border-bottom: 1px solid #111;
+      padding-bottom: 2px;
+    }
+
+    /* FOOTER */
+    footer {
+      padding: 40px;
+      border-top: 1px solid #eee;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+      color: #999;
+      letter-spacing: 0.05em;
+    }
+
+    footer a {
+      color: #999;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      color: #111;
+    }
+
+    /* LIGHTBOX */
+    .lightbox {
+        position: fixed;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background: rgba(0,0,0,0.9);
+        z-index: 1000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.2s ease, visibility 0.2s ease;
+        user-select: none;
+    }
+    .lightbox.active {
+        opacity: 1;
+        visibility: visible;
+    }
+    .lightbox-close {
+        position: absolute;
+        top: 24px;
+        right: 32px;
+        color: #fff;
+        font-size: 24px;
+        cursor: pointer;
+        opacity: 0.7;
+        font-family: sans-serif;
+        user-select: none;
+    }
+    .lightbox img {
+      max-width: 90vw;
+      max-height: 90vh;
+      object-fit: contain;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 24px;
+      right: 32px;
+      color: #fff;
+      font-size: 24px;
+      cursor: pointer;
+      opacity: 0.7;
+      letter-spacing: 0.1em;
+      font-family: sans-serif;
+    }
+    .lightbox-prev,
+.lightbox-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #fff;
+  font-size: 48px;
+  cursor: pointer;
+  opacity: 0.7;
+  user-select: none;
+  padding: 20px;
+}
+
+.lightbox-prev { left: 16px; }
+.lightbox-next { right: 16px; }
+
+.lightbox-prev:hover,
+.lightbox-next:hover { opacity: 1; }
+
+.photo-item {
+  position: relative;
+}
+
+.photo-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+  color: #fff;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  pointer-events: none;
+}
+
+.photo-item:hover .photo-overlay {
+  opacity: 1;
+}
+
+.lightbox-print {
+  position: absolute;
+  bottom: 32px;
+  right: 32px;
+  z-index: 10;
+}
+
+.view-in-room-btn {
+  position: absolute;
+  bottom: 64px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: none;
+  border: 1px solid rgba(255,255,255,0.4);
+  color: #fff;
+  padding: 8px 20px;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.print-toggle {
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.4);
+  color: #fff;
+  padding: 8px 16px;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  backdrop-filter: blur(4px);
+}
+
+.print-dropdown {
+  display: none;
+  flex-direction: column;
+  background: rgba(10,10,10,0.85);
+  border: 1px solid rgba(255,255,255,0.15);
+  backdrop-filter: blur(8px);
+  margin-top: 4px;
+}
+
+.print-dropdown a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 10px 16px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.print-dropdown a:last-child {
+  border-bottom: none;
+}
+
+.print-dropdown a:hover {
+  background: rgba(255,255,255,0.1);
+}
+
+.lightbox-print.open .print-dropdown {
+  display: flex;
+}
+
+/* DROPDOWN */
+.dropdown-wrapper {
+  position: relative;
+}
+
+.dropdown {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  padding-top: 8px;
+  background: #fff;
+  border: 1px solid #ddd;
+  z-index: 50;
+  min-width: 140px;
+  flex-direction: column;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.dropdown-wrapper:hover .dropdown {
+  display: flex;
+}
+
+.dropdown button {
+  border: none;
+  border-bottom: 1px solid #eee;
+  text-align: left;
+  width: 100%;
+}
+
+.dropdown button:last-child {
+  border-bottom: none;
+}
+.featured-mobile {
+  display: none;
+}
+
+.featured-below-mobile {
+  display: block;
+  padding: 80px 40px;
+  text-align: center;
+  border-top: 1px solid #eee;
+}
+
+.featured-below-mobile h2 {
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #999;
+  margin-bottom: 40px;
+}
+
+.featured-below-mobile .featured-logos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 48px;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+}
+
+.featured-below-mobile a {
+  color: #555;
+  text-decoration: none;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-size: 13px;
+  border-bottom: 1px solid #ccc;
+}
+
+    /* MOBILE */
+    
+    @media (max-width: 600px) {
+  .hero {
+    height: 95vw;
+  }
+  .hero video {
+    object-position: 45% 50%;
+  }
+  .hero-text {
+  bottom: 20px;
+  left: 20px;
+}
+.hero-text h1 {
+  font-size: 28px;
+}
+nav {
+  padding: 16px 20px;
+}
+nav .logo {
+  font-size: 13px;
+}
+
+@media (max-width: 600px) {
+  .lightbox-print {
+    bottom: auto;
+    top: 30px;
+    right: 70px;
+  }
+}
+
+@media (max-width: 600px) {
+  .view-in-room-btn {
+    position: absolute;
+    top: 30px;
+    right: 210px;
+    bottom: auto;
+    left: auto;
+    transform: none;
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.4);
+    padding: 8px 16px;
+    font-size: 11px;
+  }
+}
+
+
+
+  /* Hide featured section in its current spot */
+  .featured {
+    display: none;
+  }
+
+  /* Show slim featured strip below hero on mobile */
+  .featured-mobile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    padding: 16px 20px;
+    border-bottom: 1px solid #eee;
+  }
+
+  .featured-mobile span {
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #888;
+  }
+
+  /* Full featured section reappears after grid on mobile */
+  .featured-below-mobile {
+    display: block;
+    padding: 48px 20px;
+    text-align: center;
+    border-top: 1px solid #eee;
+  }
+
+  .featured-below-mobile h2 {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #999;
+    margin-bottom: 24px;
+  }
+
+  .featured-below-mobile .featured-logos {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 24px;
+  }
+
+  .featured-below-mobile .featured-logos span {
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #555;
+  }
+
+  /* 2-column grid on mobile */
+  .photo-grid {
+    columns: 2;
+    column-gap: 8px;
+  }
+
+  .photo-grid .photo-item {
+    margin-bottom: 8px;
+  }
+
+  .grid-section {
+    padding: 40px 16px;
+  }
+
+  .filter-buttons {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+}
+
+.featured-below-mobile h2 {
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #999;
+  margin-bottom: 40px;
+}
+
+.featured-below-mobile .featured-logos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 48px;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+}
+
+.room-preview {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.92);
+  z-index: 2000;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.room-preview.active {
+  display: flex;
+}
+
+.room-scene {
+  position: relative;
+  display: inline-block;
+}
+
+.room-bg {
+  display: block;
+  max-height: 75vh;
+  max-width: 90vw;
+  width: auto;
+}
+
+.room-overlay {
+  position: absolute;
+  left: 24.20%;
+  top: 20.60%;
+  width: 50.99%;
+  height: 47.65%;
+  object-fit: fill;
+}
+
+.room-switcher {
+  display: flex;
+  gap: 12px;
+}
+
+.room-btn {
+  background: none;
+  border: 1px solid rgba(255,255,255,0.3);
+  color: #fff;
+  padding: 8px 20px;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.room-btn.active {
+  background: #fff;
+  color: #111;
+}
+
+.room-close {
+  position: absolute;
+  top: 24px;
+  right: 32px;
+  color: #fff;
+  font-size: 24px;
+  cursor: pointer;
+  opacity: 0.7;
+  z-index: 10;
+}
+
+    .prints-title {
+      font-size: clamp(32px, 4vw, 48px);
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+    }
+    .prints-intro {
+      font-size: 16px;
+      color: #777;
+      font-style: italic;
+      margin-bottom: 40px;
+    }
+  </style>
+  <link rel="stylesheet" href="site.css" />
+</head>
+<body>
+
+  <!-- NAV -->
+<nav class="site-nav">
+  <a class="logo" href="index.html">Maddux Gremaux</a>
+  <div class="nav-right">
+    <ul class="nav-links">
+      <li><a href="portraits.html">Portraits</a></li>
+      <li><a href="prints.html" aria-current="page">Prints</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+    <a class="nav-book" href="https://forms.gle/cRB4FQjafEhF6vEB7" target="_blank" rel="noopener">Book</a>
+    <button class="nav-toggle" aria-expanded="false" aria-label="Menu">Menu</button>
+  </div>
+</nav>
+
+
+  <!-- FEATURED IN 
+  <section class="featured">
+    <h2>As Seen In</h2>
+    <div class="featured-logos">
+      <span>The Daily Show</span>
+      <span>Exploring Alternatives</span>
+      <span>Streetsblog</span>
+      <span>Culdesac</span>
+    </div>
+    <p class="featured-stat">1M+ organic views per quarter</p>
+  </section>
+  <!-- 
+  <section class="featured">
+    <h2>As Seen In</h2>
+    <div class="featured-logos">
+      <span>The Daily Show</span>
+      <span>Exploring Alternatives</span>
+      <span>Streetsblog</span>
+      <span>Culdesac</span>
+    </div>
+    <p class="featured-stat">1M+ organic views per quarter</p>
+  </section>
+-->
+
+  <!-- PHOTO GRID / PRINTS -->
+  <section class="grid-section" id="prints">
+    <h1 class="prints-title">Prints</h1>
+    <p class="prints-intro">Fine art prints of cities, bikes, and transit.</p>
+   <div class="filter-buttons">
+  <button class="active" data-category="featured">Featured</button>
+  <div class="dropdown-wrapper">
+    <button>Cities ▾</button>
+    <div class="dropdown">
+      <button data-city="all-cities">All Cities</button>
+      <button data-city="chicago">Chicago</button>
+      <button data-city="london">London</button>
+      <button data-city="prague">Prague</button>
+      <button data-city="paris">Paris</button>
+      <button data-city="alicante">Alicante, Spain </button>
+      <button data-city="amsterdam">Amsterdam</button>
+    <button data-city="san-francisco">San Francisco</button>
+    <button data-city="tempe">Tempe</button>
+    </div>
+  </div>
+<button data-category="bikes">Bikes</button>
+  <button data-category="transit">Transit</button>
+  <button data-category="architecture">Architecture</button>
+</div>
+    <div class="photo-grid">
+    <div class="photo-item" data-city="chicago"><img loading="lazy" decoding="async" src="photos/chicago/chicago-architecture-01.jpg" alt="Architecture in Chicago, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="london" data-category="featured bikes"><img loading="lazy" decoding="async" src="photos/london/london-bikes-01.jpg" alt="Bikes in London, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="prague" data-category="featured architecture"><img loading="lazy" decoding="async" src="photos/prague/prague-architecture-01.jpg" alt="Architecture in Prague, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="paris" data-category="featured"><img loading="lazy" decoding="async" src="photos/paris/paris-street-01.jpg" alt="Street photo in Paris, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="alicante" data-category="featured transit"><img loading="lazy" decoding="async" src="photos/alicante/alicante-transit-01.jpg" alt="Transit in Alicante, Spain, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="alicante" data-category="featured architecture"><img loading="lazy" decoding="async" src="photos/alicante/alicante-architecture-01.jpg" alt="Architecture in Alicante, Spain, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="chicago" data-category="transit"><img loading="lazy" decoding="async" src="photos/chicago/chicago-transit-01.jpg" alt="Transit in Chicago, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="chicago"><img loading="lazy" decoding="async" src="photos/chicago/chicago-street-01.jpg" alt="Street photo in Chicago, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="chicago"><img loading="lazy" decoding="async" src="photos/chicago/chicago-street-02.jpg" alt="Street photo in Chicago, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="chicago"><img loading="lazy" decoding="async" src="photos/chicago/chicago-street-03.jpg" alt="Street photo in Chicago, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="chicago" data-category="architecture"><img loading="lazy" decoding="async" src="photos/chicago/chicago-architecture-02.jpg" alt="Architecture in Chicago, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="chicago" data-category="architecture"><img loading="lazy" decoding="async" src="photos/chicago/chicago-architecture-01.jpg" alt="Architecture in Chicago, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="chicago" data-category="architecture"><img loading="lazy" decoding="async" src="photos/chicago/chicago-architecture-03.jpg" alt="Architecture in Chicago, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="chicago"><img loading="lazy" decoding="async" src="photos/chicago/chicago-street-04.jpg" alt="Street photo in Chicago, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="chicago" data-category="architecture"><img loading="lazy" decoding="async" src="photos/chicago/chicago-architecture-04.jpg" alt="Architecture in Chicago, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="chicago"><img loading="lazy" decoding="async" src="photos/chicago/chicago-street-05.jpg" alt="Street photo in Chicago, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="chicago" data-category="bikes"><img loading="lazy" decoding="async" src="photos/chicago/chicago-bikes-01.jpg" alt="Bikes in Chicago, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="chicago"><img loading="lazy" decoding="async" src="photos/chicago/chicago-street-06.jpg" alt="Street photo in Chicago, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="chicago" data-category="bikes"><img loading="lazy" decoding="async" src="photos/chicago/chicago-bikes-02.jpg" alt="Bikes in Chicago, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="chicago" data-category="bikes"><img loading="lazy" decoding="async" src="photos/chicago/chicago-bikes-03.jpg" alt="Bikes in Chicago, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="chicago" data-category="architecture"><img loading="lazy" decoding="async" src="photos/chicago/chicago-architecture-05.jpg" alt="Architecture in Chicago, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="chicago" data-category="bikes"><img loading="lazy" decoding="async" src="photos/chicago/chicago-bikes-04.jpg" alt="Bikes in Chicago, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="chicago"><img loading="lazy" decoding="async" src="photos/chicago/chicago-street-07.jpg" alt="Street photo in Chicago, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="chicago" data-category="bikes transit"><img loading="lazy" decoding="async" src="photos/chicago/chicago-bikes-05.jpg" alt="Bikes in Chicago, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="chicago" data-category="bikes"><img loading="lazy" decoding="async" src="photos/chicago/chicago-bikes-06.jpg" alt="Bikes in Chicago, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="chicago" data-category="transit"><img loading="lazy" decoding="async" src="photos/chicago/chicago-transit-02.jpg" alt="Transit in Chicago, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="chicago" data-category="transit"><img loading="lazy" decoding="async" src="photos/chicago/chicago-transit-03.jpg" alt="Transit in Chicago, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="chicago"><img loading="lazy" decoding="async" src="photos/chicago/chicago-street-08.jpg" alt="Street photo in Chicago, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="chicago"><img loading="lazy" decoding="async" src="photos/chicago/chicago-street-09.jpg" alt="Street photo in Chicago, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="chicago"><img loading="lazy" decoding="async" src="photos/chicago/chicago-street-10.jpg" alt="Street photo in Chicago, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="chicago"><img loading="lazy" decoding="async" src="photos/chicago/chicago-street-11.jpg" alt="Street photo in Chicago, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="chicago"><img loading="lazy" decoding="async" src="photos/chicago/chicago-street-12.jpg" alt="Street photo in Chicago, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="chicago"><img loading="lazy" decoding="async" src="photos/chicago/chicago-street-13.jpg" alt="Street photo in Chicago, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="chicago" data-category="bikes"><img loading="lazy" decoding="async" src="photos/chicago/chicago-bikes-07.jpg" alt="Bikes in Chicago, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="chicago"><img loading="lazy" decoding="async" src="photos/chicago/chicago-street-14.jpg" alt="Street photo in Chicago, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="prague"><img loading="lazy" decoding="async" src="photos/prague/prague-street-01.jpg" alt="Street photo in Prague, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="prague" data-category="architecture"><img loading="lazy" decoding="async" src="photos/prague/prague-architecture-02.jpg" alt="Architecture in Prague, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="prague" data-category="architecture"><img loading="lazy" decoding="async" src="photos/prague/prague-architecture-03.jpg" alt="Architecture in Prague, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="prague"><img loading="lazy" decoding="async" src="photos/prague/prague-street-02.jpg" alt="Street photo in Prague, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="prague" data-category="transit"><img loading="lazy" decoding="async" src="photos/prague/prague-transit-01.jpg" alt="Transit in Prague, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="prague" data-category="transit"><img loading="lazy" decoding="async" src="photos/prague/prague-transit-02.jpg" alt="Transit in Prague, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="prague" data-category="transit"><img loading="lazy" decoding="async" src="photos/prague/prague-transit-03.jpg" alt="Transit in Prague, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="prague" data-category="transit"><img loading="lazy" decoding="async" src="photos/prague/prague-transit-04.jpg" alt="Transit in Prague, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="prague"><img loading="lazy" decoding="async" src="photos/prague/prague-street-03.jpg" alt="Street photo in Prague, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="prague" data-category="architecture"><img loading="lazy" decoding="async" src="photos/prague/prague-architecture-04.jpg" alt="Architecture in Prague, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="prague" data-category="architecture"><img loading="lazy" decoding="async" src="photos/prague/prague-architecture-05.jpg" alt="Architecture in Prague, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="prague" data-category="architecture"><img loading="lazy" decoding="async" src="photos/prague/prague-architecture-06.jpg" alt="Architecture in Prague, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="prague" data-category="architecture"><img loading="lazy" decoding="async" src="photos/prague/prague-architecture-07.jpg" alt="Architecture in Prague, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="prague" data-category="architecture"><img loading="lazy" decoding="async" src="photos/prague/prague-architecture-08.jpg" alt="Architecture in Prague, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="prague" data-category="architecture"><img loading="lazy" decoding="async" src="photos/prague/prague-architecture-09.jpg" alt="Architecture in Prague, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="prague"><img loading="lazy" decoding="async" src="photos/prague/prague-street-04.jpg" alt="Street photo in Prague, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="prague"><img loading="lazy" decoding="async" src="photos/prague/prague-street-05.jpg" alt="Street photo in Prague, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="prague"><img loading="lazy" decoding="async" src="photos/prague/prague-street-06.jpg" alt="Street photo in Prague, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="prague" data-category="architecture"><img loading="lazy" decoding="async" src="photos/prague/prague-architecture-10.jpg" alt="Architecture in Prague, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="prague" data-category="architecture"><img loading="lazy" decoding="async" src="photos/prague/prague-architecture-11.jpg" alt="Architecture in Prague, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="prague"><img loading="lazy" decoding="async" src="photos/prague/prague-street-07.jpg" alt="Street photo in Prague, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="prague" data-category="architecture"><img loading="lazy" decoding="async" src="photos/prague/prague-architecture-12.jpg" alt="Architecture in Prague, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="prague" data-category="architecture"><img loading="lazy" decoding="async" src="photos/prague/prague-architecture-13.jpg" alt="Architecture in Prague, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="prague" data-category="architecture"><img loading="lazy" decoding="async" src="photos/prague/prague-architecture-14.jpg" alt="Architecture in Prague, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="prague" data-category="architecture"><img loading="lazy" decoding="async" src="photos/prague/prague-architecture-15.jpg" alt="Architecture in Prague, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="prague" data-category="architecture"><img loading="lazy" decoding="async" src="photos/prague/prague-architecture-16.jpg" alt="Architecture in Prague, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="prague" data-category="architecture"><img loading="lazy" decoding="async" src="photos/prague/prague-architecture-17.jpg" alt="Architecture in Prague, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="prague"><img loading="lazy" decoding="async" src="photos/prague/prague-street-08.jpg" alt="Street photo in Prague, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="prague" data-category="architecture"><img loading="lazy" decoding="async" src="photos/prague/prague-architecture-18.jpg" alt="Architecture in Prague, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="prague" data-category="architecture"><img loading="lazy" decoding="async" src="photos/prague/prague-architecture-19.jpg" alt="Architecture in Prague, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="prague" data-category="architecture"><img loading="lazy" decoding="async" src="photos/prague/prague-architecture-20.jpg" alt="Architecture in Prague, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="prague"><img loading="lazy" decoding="async" src="photos/prague/prague-street-09.jpg" alt="Street photo in Prague, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="prague" data-category="architecture"><img loading="lazy" decoding="async" src="photos/prague/prague-architecture-21.jpg" alt="Architecture in Prague, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="prague" data-category="architecture"><img loading="lazy" decoding="async" src="photos/prague/prague-architecture-22.jpg" alt="Architecture in Prague, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="prague" data-category="architecture"><img loading="lazy" decoding="async" src="photos/prague/prague-architecture-01.jpg" alt="Architecture in Prague, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="prague" data-category="transit"><img loading="lazy" decoding="async" src="photos/prague/prague-transit-05.jpg" alt="Transit in Prague, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="amsterdam" data-category="architecture"><img loading="lazy" decoding="async" src="photos/amsterdam/amsterdam-architecture-01.jpg" alt="Architecture in Amsterdam, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="amsterdam" data-category="architecture"><img loading="lazy" decoding="async" src="photos/amsterdam/amsterdam-architecture-02.jpg" alt="Architecture in Amsterdam, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="amsterdam" data-category="transit"><img loading="lazy" decoding="async" src="photos/amsterdam/amsterdam-transit-01.jpg" alt="Transit in Amsterdam, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="amsterdam" data-category="bikes"><img loading="lazy" decoding="async" src="photos/amsterdam/amsterdam-bikes-01.jpg" alt="Bikes in Amsterdam, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="amsterdam" data-category="architecture"><img loading="lazy" decoding="async" src="photos/amsterdam/amsterdam-architecture-03.jpg" alt="Architecture in Amsterdam, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="amsterdam" data-category="architecture"><img loading="lazy" decoding="async" src="photos/amsterdam/amsterdam-architecture-04.jpg" alt="Architecture in Amsterdam, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="amsterdam" data-category="bikes"><img loading="lazy" decoding="async" src="photos/amsterdam/amsterdam-bikes-02.jpg" alt="Bikes in Amsterdam, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="amsterdam" data-category="bikes architecture"><img loading="lazy" decoding="async" src="photos/amsterdam/amsterdam-bikes-03.jpg" alt="Bikes in Amsterdam, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="london" data-category="architecture"><img loading="lazy" decoding="async" src="photos/london/london-architecture-01.jpg" alt="Architecture in London, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="london" data-category="bikes"><img loading="lazy" decoding="async" src="photos/london/london-bikes-02.jpg" alt="Bikes in London, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="london" data-category="bikes"><img loading="lazy" decoding="async" src="photos/london/london-bikes-03.jpg" alt="Bikes in London, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="london"><img loading="lazy" decoding="async" src="photos/london/london-street-01.jpg" alt="Street photo in London, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="london" data-category="architecture"><img loading="lazy" decoding="async" src="photos/london/london-architecture-02.jpg" alt="Architecture in London, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="london" data-category="architecture"><img loading="lazy" decoding="async" src="photos/london/london-architecture-03.jpg" alt="Architecture in London, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="london"><img loading="lazy" decoding="async" src="photos/london/london-street-02.jpg" alt="Street photo in London, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="london" data-category="architecture"><img loading="lazy" decoding="async" src="photos/london/london-architecture-04.jpg" alt="Architecture in London, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="london"><img loading="lazy" decoding="async" src="photos/london/london-street-03.jpg" alt="Street photo in London, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="london" data-category="architecture"><img loading="lazy" decoding="async" src="photos/london/london-architecture-05.jpg" alt="Architecture in London, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="london"><img loading="lazy" decoding="async" src="photos/london/london-street-04.jpg" alt="Street photo in London, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="london" data-category="architecture"><img loading="lazy" decoding="async" src="photos/london/london-architecture-06.jpg" alt="Architecture in London, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="london" data-category="architecture"><img loading="lazy" decoding="async" src="photos/london/london-architecture-07.jpg" alt="Architecture in London, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="london" data-category="architecture"><img loading="lazy" decoding="async" src="photos/london/london-architecture-08.jpg" alt="Architecture in London, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="london" data-category="bikes"><img loading="lazy" decoding="async" src="photos/london/london-bikes-04.jpg" alt="Bikes in London, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="london" data-category="architecture"><img loading="lazy" decoding="async" src="photos/london/london-architecture-09.jpg" alt="Architecture in London, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="london" data-category="bikes" data-category="featured" ><img loading="lazy" decoding="async" src="photos/london/london-bikes-01.jpg" alt="Bikes in London, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="london" data-category="bikes transit"><img loading="lazy" decoding="async" src="photos/london/london-bikes-05.jpg" alt="Bikes in London, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="london" data-category="bikes"><img loading="lazy" decoding="async" src="photos/london/london-bikes-06.jpg" alt="Bikes in London, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="london" data-category="architecture"><img loading="lazy" decoding="async" src="photos/london/london-architecture-10.jpg" alt="Architecture in London, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="london" data-category="architecture"><img loading="lazy" decoding="async" src="photos/london/london-architecture-11.jpg" alt="Architecture in London, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="london" data-category="architecture"><img loading="lazy" decoding="async" src="photos/london/london-architecture-12.jpg" alt="Architecture in London, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="london" data-category="architecture"><img loading="lazy" decoding="async" src="photos/london/london-architecture-13.jpg" alt="Architecture in London, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="london"><img loading="lazy" decoding="async" src="photos/london/london-street-05.jpg" alt="Street photo in London, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="london"><img loading="lazy" decoding="async" src="photos/london/london-street-06.jpg" alt="Street photo in London, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="london"><img loading="lazy" decoding="async" src="photos/london/london-street-07.jpg" alt="Street photo in London, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="london" data-category="architecture"><img loading="lazy" decoding="async" src="photos/london/london-architecture-14.jpg" alt="Architecture in London, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="london"><img loading="lazy" decoding="async" src="photos/london/london-street-08.jpg" alt="Street photo in London, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="london"><img loading="lazy" decoding="async" src="photos/london/london-street-09.jpg" alt="Street photo in London, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="paris"><img loading="lazy" decoding="async" src="photos/paris/paris-street-02.jpg" alt="Street photo in Paris, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="paris" data-category="architecture"><img loading="lazy" decoding="async" src="photos/paris/paris-architecture-01.jpg" alt="Architecture in Paris, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="paris" data-category="bikes"><img loading="lazy" decoding="async" src="photos/paris/paris-bikes-01.jpg" alt="Bikes in Paris, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="paris" data-category="bikes"><img loading="lazy" decoding="async" src="photos/paris/paris-bikes-02.jpg" alt="Bikes in Paris, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="paris" data-category="architecture"><img loading="lazy" decoding="async" src="photos/paris/paris-architecture-02.jpg" alt="Architecture in Paris, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="paris" data-category="architecture"><img loading="lazy" decoding="async" src="photos/paris/paris-architecture-03.jpg" alt="Architecture in Paris, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="paris" data-category="bikes"><img loading="lazy" decoding="async" src="photos/paris/paris-bikes-03.jpg" alt="Bikes in Paris, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="paris" data-category="bikes"><img loading="lazy" decoding="async" src="photos/paris/paris-bikes-04.jpg" alt="Bikes in Paris, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="paris" data-category="architecture"><img loading="lazy" decoding="async" src="photos/paris/paris-architecture-04.jpg" alt="Architecture in Paris, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="paris"><img loading="lazy" decoding="async" src="photos/paris/paris-street-01.jpg" alt="Street photo in Paris, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="paris" data-category="bikes"><img loading="lazy" decoding="async" src="photos/paris/paris-bikes-05.jpg" alt="Bikes in Paris, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="paris" data-category="bikes"><img loading="lazy" decoding="async" src="photos/paris/paris-bikes-06.jpg" alt="Bikes in Paris, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="paris" data-category="architecture"><img loading="lazy" decoding="async" src="photos/paris/paris-architecture-05.jpg" alt="Architecture in Paris, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="paris"><img loading="lazy" decoding="async" src="photos/paris/paris-street-03.jpg" alt="Street photo in Paris, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="paris" data-category="architecture"><img loading="lazy" decoding="async" src="photos/paris/paris-architecture-06.jpg" alt="Architecture in Paris, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="paris" data-category="architecture"><img loading="lazy" decoding="async" src="photos/paris/paris-architecture-07.jpg" alt="Architecture in Paris, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="paris" data-category="architecture"><img loading="lazy" decoding="async" src="photos/paris/paris-architecture-08.jpg" alt="Architecture in Paris, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="paris" data-category="architecture"><img loading="lazy" decoding="async" src="photos/paris/paris-architecture-09.jpg" alt="Architecture in Paris, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="paris" data-category="architecture"><img loading="lazy" decoding="async" src="photos/paris/paris-architecture-10.jpg" alt="Architecture in Paris, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="paris" data-category="architecture"><img loading="lazy" decoding="async" src="photos/paris/paris-architecture-11.jpg" alt="Architecture in Paris, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="paris"><img loading="lazy" decoding="async" src="photos/paris/paris-street-04.jpg" alt="Street photo in Paris, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="paris"><img loading="lazy" decoding="async" src="photos/paris/paris-street-05.jpg" alt="Street photo in Paris, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="paris" data-category="architecture"><img loading="lazy" decoding="async" src="photos/paris/paris-architecture-12.jpg" alt="Architecture in Paris, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="paris" data-category="architecture"><img loading="lazy" decoding="async" src="photos/paris/paris-architecture-13.jpg" alt="Architecture in Paris, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="paris" data-category="architecture"><img loading="lazy" decoding="async" src="photos/paris/paris-architecture-14.jpg" alt="Architecture in Paris, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="paris" data-category="architecture"><img loading="lazy" decoding="async" src="photos/paris/paris-architecture-15.jpg" alt="Architecture in Paris, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="paris"><img loading="lazy" decoding="async" src="photos/paris/paris-street-06.jpg" alt="Street photo in Paris, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="paris"><img loading="lazy" decoding="async" src="photos/paris/paris-street-07.jpg" alt="Street photo in Paris, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="paris" data-category="bikes"><img loading="lazy" decoding="async" src="photos/paris/paris-bikes-07.jpg" alt="Bikes in Paris, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="san-francisco"><img loading="lazy" decoding="async" src="photos/san-francisco/san-francisco-street-01.jpg" alt="Street photo in San Francisco, photo by Maddux Gremaux" /></div>
+<div class="photo-item" data-city="san-francisco"><img loading="lazy" decoding="async" src="photos/san-francisco/san-francisco-street-02.jpg" alt="Street photo in San Francisco, photo by Maddux Gremaux" /></div>
+<div class="photo-item" data-city="san-francisco" data-category="architecture"><img loading="lazy" decoding="async" src="photos/san-francisco/san-francisco-architecture-01.jpg" alt="Architecture in San Francisco, photo by Maddux Gremaux" /></div>
+<div class="photo-item" data-city="san-francisco" data-category="architecture"><img loading="lazy" decoding="async" src="photos/san-francisco/san-francisco-architecture-02.jpg" alt="Architecture in San Francisco, photo by Maddux Gremaux" /></div>
+<div class="photo-item" data-city="san-francisco" data-category="architecture"><img loading="lazy" decoding="async" src="photos/san-francisco/san-francisco-architecture-03.jpg" alt="Architecture in San Francisco, photo by Maddux Gremaux" /></div>
+<div class="photo-item" data-city="san-francisco" data-category="transit"><img loading="lazy" decoding="async" src="photos/san-francisco/san-francisco-transit-01.jpg" alt="Transit in San Francisco, photo by Maddux Gremaux" /></div>
+<div class="photo-item" data-city="san-francisco"><img loading="lazy" decoding="async" src="photos/san-francisco/san-francisco-street-03.jpg" alt="Street photo in San Francisco, photo by Maddux Gremaux" /></div>
+<div class="photo-item" data-city="san-francisco" data-category="architecture"><img loading="lazy" decoding="async" src="photos/san-francisco/san-francisco-architecture-04.jpg" alt="Architecture in San Francisco, photo by Maddux Gremaux" /></div>
+<div class="photo-item" data-city="san-francisco"><img loading="lazy" decoding="async" src="photos/san-francisco/san-francisco-street-04.jpg" alt="Street photo in San Francisco, photo by Maddux Gremaux" /></div>
+<div class="photo-item" data-city="san-francisco" data-category="bikes"><img loading="lazy" decoding="async" src="photos/san-francisco/san-francisco-bikes-01.jpg" alt="Bikes in San Francisco, photo by Maddux Gremaux" /></div>
+<div class="photo-item" data-city="san-francisco" data-category="bikes"><img loading="lazy" decoding="async" src="photos/san-francisco/san-francisco-bikes-02.jpg" alt="Bikes in San Francisco, photo by Maddux Gremaux" /></div>
+<div class="photo-item" data-city="san-francisco" data-category="transit"><img loading="lazy" decoding="async" src="photos/san-francisco/san-francisco-transit-02.jpg" alt="Transit in San Francisco, photo by Maddux Gremaux" /></div>
+<div class="photo-item" data-city="san-francisco" data-category="transit"><img loading="lazy" decoding="async" src="photos/san-francisco/san-francisco-transit-03.jpg" alt="Transit in San Francisco, photo by Maddux Gremaux" /></div>
+<div class="photo-item" data-city="san-francisco"><img loading="lazy" decoding="async" src="photos/san-francisco/san-francisco-street-05.jpg" alt="Street photo in San Francisco, photo by Maddux Gremaux" /></div>
+<div class="photo-item" data-city="san-francisco" data-category="transit"><img loading="lazy" decoding="async" src="photos/san-francisco/san-francisco-transit-04.jpg" alt="Transit in San Francisco, photo by Maddux Gremaux" /></div>
+<div class="photo-item" data-city="san-francisco"><img loading="lazy" decoding="async" src="photos/san-francisco/san-francisco-street-06.jpg" alt="Street photo in San Francisco, photo by Maddux Gremaux" /></div>
+<div class="photo-item" data-city="san-francisco"><img loading="lazy" decoding="async" src="photos/san-francisco/san-francisco-street-07.jpg" alt="Street photo in San Francisco, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="alicante" data-category="bikes"><img loading="lazy" decoding="async" src="photos/alicante/alicante-bikes-01.jpg" alt="Bikes in Alicante, Spain, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="alicante" data-category="architecture"><img loading="lazy" decoding="async" src="photos/alicante/alicante-architecture-02.jpg" alt="Architecture in Alicante, Spain, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="alicante" data-category="transit"><img loading="lazy" decoding="async" src="photos/alicante/alicante-transit-01.jpg" alt="Transit in Alicante, Spain, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="alicante" data-category="architecture"><img loading="lazy" decoding="async" src="photos/alicante/alicante-architecture-03.jpg" alt="Architecture in Alicante, Spain, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="alicante" data-category="architecture"><img loading="lazy" decoding="async" src="photos/alicante/alicante-architecture-04.jpg" alt="Architecture in Alicante, Spain, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="alicante" data-category="bikes"><img loading="lazy" decoding="async" src="photos/alicante/alicante-bikes-02.jpg" alt="Bikes in Alicante, Spain, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="alicante" data-category="architecture"><img loading="lazy" decoding="async" src="photos/alicante/alicante-architecture-01.jpg" alt="Architecture in Alicante, Spain, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="alicante"><img loading="lazy" decoding="async" src="photos/alicante/alicante-street-01.jpg" alt="Street photo in Alicante, Spain, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="alicante" data-category="architecture"><img loading="lazy" decoding="async" src="photos/alicante/alicante-architecture-05.jpg" alt="Architecture in Alicante, Spain, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="alicante" data-category="architecture"><img loading="lazy" decoding="async" src="photos/alicante/alicante-architecture-06.jpg" alt="Architecture in Alicante, Spain, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="alicante" data-category="bikes"><img loading="lazy" decoding="async" src="photos/alicante/alicante-bikes-03.jpg" alt="Bikes in Alicante, Spain, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="alicante" data-category="architecture"><img loading="lazy" decoding="async" src="photos/alicante/alicante-architecture-07.jpg" alt="Architecture in Alicante, Spain, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="alicante" data-category="architecture"><img loading="lazy" decoding="async" src="photos/alicante/alicante-architecture-08.jpg" alt="Architecture in Alicante, Spain, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="alicante" data-category="transit"><img loading="lazy" decoding="async" src="photos/alicante/alicante-transit-02.jpg" alt="Transit in Alicante, Spain, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="alicante" data-category="architecture"><img loading="lazy" decoding="async" src="photos/alicante/alicante-architecture-09.jpg" alt="Architecture in Alicante, Spain, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="alicante" data-category="architecture"><img loading="lazy" decoding="async" src="photos/alicante/alicante-architecture-10.jpg" alt="Architecture in Alicante, Spain, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="alicante" data-category="architecture"><img loading="lazy" decoding="async" src="photos/alicante/alicante-architecture-11.jpg" alt="Architecture in Alicante, Spain, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="alicante" data-category="architecture"><img loading="lazy" decoding="async" src="photos/alicante/alicante-architecture-12.jpg" alt="Architecture in Alicante, Spain, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="alicante" data-category="architecture"><img loading="lazy" decoding="async" src="photos/alicante/alicante-architecture-13.jpg" alt="Architecture in Alicante, Spain, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="alicante" data-category="architecture"><img loading="lazy" decoding="async" src="photos/alicante/alicante-architecture-14.jpg" alt="Architecture in Alicante, Spain, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="alicante" data-category="architecture"><img loading="lazy" decoding="async" src="photos/alicante/alicante-architecture-15.jpg" alt="Architecture in Alicante, Spain, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="alicante" data-category="architecture"><img loading="lazy" decoding="async" src="photos/alicante/alicante-architecture-16.jpg" alt="Architecture in Alicante, Spain, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="alicante"><img loading="lazy" decoding="async" src="photos/alicante/alicante-street-02.jpg" alt="Street photo in Alicante, Spain, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="alicante"><img loading="lazy" decoding="async" src="photos/alicante/alicante-street-03.jpg" alt="Street photo in Alicante, Spain, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="alicante" data-category="architecture"><img loading="lazy" decoding="async" src="photos/alicante/alicante-architecture-17.jpg" alt="Architecture in Alicante, Spain, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="alicante" data-category="architecture"><img loading="lazy" decoding="async" src="photos/alicante/alicante-architecture-18.jpg" alt="Architecture in Alicante, Spain, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="alicante" data-category="architecture"><img loading="lazy" decoding="async" src="photos/alicante/alicante-architecture-19.jpg" alt="Architecture in Alicante, Spain, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="alicante" data-category="architecture"><img loading="lazy" decoding="async" src="photos/alicante/alicante-architecture-20.jpg" alt="Architecture in Alicante, Spain, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="alicante" data-category="architecture"><img loading="lazy" decoding="async" src="photos/alicante/alicante-architecture-21.jpg" alt="Architecture in Alicante, Spain, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="alicante"><img loading="lazy" decoding="async" src="photos/alicante/alicante-street-04.jpg" alt="Street photo in Alicante, Spain, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="alicante" data-category="architecture"><img loading="lazy" decoding="async" src="photos/alicante/alicante-architecture-22.jpg" alt="Architecture in Alicante, Spain, photo by Maddux Gremaux" /></div>
+    <div class="photo-item" data-city="tempe"><img loading="lazy" decoding="async" src="photos/tempe/tempe-street-01.jpg" alt="Street photo in Tempe, photo by Maddux Gremaux" /></div>
+<div class="photo-item" data-city="tempe"><img loading="lazy" decoding="async" src="photos/tempe/tempe-street-02.jpg" alt="Street photo in Tempe, photo by Maddux Gremaux" /></div>
+<div class="photo-item" data-city="tempe" data-category="architecture"><img loading="lazy" decoding="async" src="photos/tempe/tempe-architecture-01.jpg" alt="Architecture in Tempe, photo by Maddux Gremaux" /></div>
+<div class="photo-item" data-city="tempe" data-category="architecture"><img loading="lazy" decoding="async" src="photos/tempe/tempe-architecture-02.jpg" alt="Architecture in Tempe, photo by Maddux Gremaux" /></div>
+<div class="photo-item" data-city="tempe"><img loading="lazy" decoding="async" src="photos/tempe/tempe-street-03.jpg" alt="Street photo in Tempe, photo by Maddux Gremaux" /></div>
+<div class="photo-item" data-city="tempe" data-category="architecture"><img loading="lazy" decoding="async" src="photos/tempe/tempe-architecture-03.jpg" alt="Architecture in Tempe, photo by Maddux Gremaux" /></div>
+<div class="photo-item" data-city="tempe" data-category="architecture"><img loading="lazy" decoding="async" src="photos/tempe/tempe-architecture-04.jpg" alt="Architecture in Tempe, photo by Maddux Gremaux" /></div>
+<div class="photo-item" data-city="tempe" data-category="architecture"><img loading="lazy" decoding="async" src="photos/tempe/tempe-architecture-05.jpg" alt="Architecture in Tempe, photo by Maddux Gremaux" /></div>
+<div class="photo-item" data-city="tempe" data-category="architecture"><img loading="lazy" decoding="async" src="photos/tempe/tempe-architecture-06.jpg" alt="Architecture in Tempe, photo by Maddux Gremaux" /></div>
+<div class="photo-item" data-city="tempe"><img loading="lazy" decoding="async" src="photos/tempe/tempe-street-04.jpg" alt="Street photo in Tempe, photo by Maddux Gremaux" /></div>
+<div class="photo-item" data-city="tempe"><img loading="lazy" decoding="async" src="photos/tempe/tempe-street-05.jpg" alt="Street photo in Tempe, photo by Maddux Gremaux" /></div>
+<div class="photo-item" data-city="tempe"><img loading="lazy" decoding="async" src="photos/tempe/tempe-street-06.jpg" alt="Street photo in Tempe, photo by Maddux Gremaux" /></div>
+<div class="photo-item" data-city="tempe"><img loading="lazy" decoding="async" src="photos/tempe/tempe-street-07.jpg" alt="Street photo in Tempe, photo by Maddux Gremaux" /></div>
+<div class="photo-item" data-city="tempe"><img loading="lazy" decoding="async" src="photos/tempe/tempe-street-08.jpg" alt="Street photo in Tempe, photo by Maddux Gremaux" /></div>
+<div class="photo-item" data-city="tempe"><img loading="lazy" decoding="async" src="photos/tempe/tempe-street-09.jpg" alt="Street photo in Tempe, photo by Maddux Gremaux" /></div>
+<div class="photo-item" data-city="tempe" data-category="transit"><img loading="lazy" decoding="async" src="photos/tempe/tempe-transit-01.jpg" alt="Transit in Tempe, photo by Maddux Gremaux" /></div>
+<div class="photo-item" data-city="tempe"><img loading="lazy" decoding="async" src="photos/tempe/tempe-street-10.jpg" alt="Street photo in Tempe, photo by Maddux Gremaux" /></div>
+<div class="photo-item" data-city="tempe" data-category="architecture"><img loading="lazy" decoding="async" src="photos/tempe/tempe-architecture-07.jpg" alt="Architecture in Tempe, photo by Maddux Gremaux" /></div>
+<div class="photo-item" data-city="tempe" data-category="architecture"><img loading="lazy" decoding="async" src="photos/tempe/tempe-architecture-08.jpg" alt="Architecture in Tempe, photo by Maddux Gremaux" /></div>
+<div class="photo-item" data-city="tempe" data-category="architecture"><img loading="lazy" decoding="async" src="photos/tempe/tempe-architecture-09.jpg" alt="Architecture in Tempe, photo by Maddux Gremaux" /></div>
+<div class="photo-item" data-city="tempe" data-category="architecture"><img loading="lazy" decoding="async" src="photos/tempe/tempe-architecture-10.jpg" alt="Architecture in Tempe, photo by Maddux Gremaux" /></div>
+<div class="photo-item" data-city="tempe" data-category="architecture"><img loading="lazy" decoding="async" src="photos/tempe/tempe-architecture-11.jpg" alt="Architecture in Tempe, photo by Maddux Gremaux" /></div>
+<div class="photo-item" data-city="tempe" data-category="architecture"><img loading="lazy" decoding="async" src="photos/tempe/tempe-architecture-12.jpg" alt="Architecture in Tempe, photo by Maddux Gremaux" /></div>
+<div class="photo-item" data-city="tempe"><img loading="lazy" decoding="async" src="photos/tempe/tempe-street-11.jpg" alt="Street photo in Tempe, photo by Maddux Gremaux" /></div>
+<div class="photo-item" data-city="tempe"><img loading="lazy" decoding="async" src="photos/tempe/tempe-street-12.jpg" alt="Street photo in Tempe, photo by Maddux Gremaux" /></div>
+<div class="photo-item" data-city="tempe" data-category="transit"><img loading="lazy" decoding="async" src="photos/tempe/tempe-transit-02.jpg" alt="Transit in Tempe, photo by Maddux Gremaux" /></div>
+    </div>
+
+    <!-- AS SEEN IN (mobile, below grid) -->
+<div class="featured-below-mobile">
+  <h2>Original Footage Featured In</h2>
+  <div class="featured-logos">
+    <a href="https://www.youtube.com/watch?v=cu6ozB7mKDQ" target="_blank">The Daily Show</a>
+    <a href="https://www.youtube.com/watch?v=BA7OUNr5qLM" target="_blank">Exploring Alternatives</a>
+  </div>
+  <p class="featured-stat">CNN · NYT · Business Insider — Coverage coordination and production support</p>
+</div>
+
+  </section>
+
+<footer class="site-footer">
+  <span>&copy; 2026 Maddux Gremaux</span>
+  <div class="footer-links">
+    <a href="mailto:gremauxmaddux@gmail.com">Email</a>
+    <a href="https://www.instagram.com/madduxgphotography/" target="_blank" rel="noopener">Instagram</a>
+    <a href="https://www.linkedin.com/in/madduxgremaux" target="_blank" rel="noopener">LinkedIn</a>
+  </div>
+</footer>
+
+ <div class="lightbox" id="lightbox">
+  <span class="lightbox-close">✕</span>
+  <span class="lightbox-prev">‹</span>
+  <img id="lightbox-img" src="" alt="" />
+  <p id="lightbox-caption" style="position:absolute; bottom:24px; left:50%; transform:translateX(-50%); color:#fff; font-size:12px; letter-spacing:0.1em; opacity:0.6; white-space:nowrap;"></p>
+ <button class="view-in-room-btn" id="view-in-room-btn">View in Room</button>
+  <span class="lightbox-next">›</span>
+  <div class="lightbox-print">
+    <button class="print-toggle">Order Print ▾</button>
+    <div class="print-dropdown">
+      <a href="https://buy.stripe.com/14A28kf8I5QF7TScaq9MY03" target="_blank">8×10 — $36</a>
+    <a href="https://buy.stripe.com/eVqeV61hS4MBeiga2i9MY05" target="_blank">11×14 — $39</a>
+    <a href="https://buy.stripe.com/5kQfZa6Cc3Ixgqo6Q69MY02" target="_blank">16×20 — $54</a>
+    <a href="https://buy.stripe.com/9B67sE8Kkcf3ca8eiy9MY01" target="_blank">20×30 — $62</a>
+    </div>
+  </div>
+</div>
+
+ <script>
+  // Filter state
+let activeCity = null;
+let activeCategory = 'featured';
+
+function applyFilters() {
+  const seenSrcs = new Set();
+  document.querySelectorAll('.photo-item').forEach(item => {
+    const city = item.getAttribute('data-city');
+    const category = item.getAttribute('data-category') || '';
+    const src = item.querySelector('img').src;
+
+    let show = true;
+
+    if (activeCategory === 'featured') {
+      show = category.split(' ').includes('featured');
+    } else if (activeCategory) {
+      show = category.split(' ').includes(activeCategory);
+    }
+
+    if (activeCity && city !== activeCity) show = false;
+
+    if (show && seenSrcs.has(src)) show = false;
+    if (show) seenSrcs.add(src);
+
+    item.style.display = show ? 'block' : 'none';
+  });
+}
+
+function setActiveButton(btn) {
+  document.querySelectorAll('.filter-buttons > button, .filter-buttons .dropdown-wrapper > button').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+}
+
+document.querySelector('[data-category="featured"]').addEventListener('click', (e) => {
+  activeCategory = 'featured';
+  activeCity = null;
+  document.querySelector('.dropdown-wrapper > button').textContent = 'Cities ▾';
+  setActiveButton(e.currentTarget);
+  applyFilters();
+});
+
+document.querySelectorAll('[data-category="bikes"], [data-category="transit"], [data-category="architecture"]').forEach(btn => {
+  btn.addEventListener('click', (e) => {
+    activeCategory = btn.getAttribute('data-category');
+    setActiveButton(e.currentTarget);
+    applyFilters();
+  });
+});
+
+const dropdownWrapper = document.querySelector('.dropdown-wrapper');
+
+document.querySelectorAll('.dropdown button').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const city = btn.getAttribute('data-city');
+    activeCity = city === 'all-cities' ? null : city;
+    activeCategory = null;
+    document.querySelector('.dropdown-wrapper > button').textContent = btn.textContent + ' ▾';
+    document.querySelectorAll('.filter-buttons > button').forEach(b => b.classList.remove('active'));
+    applyFilters();
+  });
+});
+
+applyFilters();
+
+function updateViewInRoomBtn(src) {
+  const btn = document.getElementById('view-in-room-btn');
+  const tempImg = new Image();
+  tempImg.src = src;
+  tempImg.onload = () => {
+    const ratio = tempImg.naturalHeight / tempImg.naturalWidth;
+    btn.style.display = ratio >= 1.2 ? 'block' : 'none';
+  };
+}
+
+    // Lightbox
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightbox-img');
+let currentPhotos = [];
+let currentIndex = 0;
+
+function getVisiblePhotos() {
+  return [...document.querySelectorAll('.photo-item img')].filter(img => {
+    return img.closest('.photo-item').style.display !== 'none';
+  });
+}
+
+function updatePrintOptions(src) {
+  const item = [...document.querySelectorAll('.photo-item')].find(el => el.querySelector('img').src === src);
+  const isVideo = item && item.getAttribute('data-source') === 'video';
+  document.querySelectorAll('.print-dropdown a').forEach(a => {
+    const text = a.textContent;
+    if (text.includes('16×20') || text.includes('20×30')) {
+      a.style.display = isVideo ? 'none' : 'block';
+    }
+  });
+}
+
+document.querySelectorAll('.photo-item img').forEach(img => {
+  img.addEventListener('click', () => {
+    currentPhotos = getVisiblePhotos();
+    currentIndex = currentPhotos.indexOf(img);
+    lightboxImg.src = img.src;
+    document.getElementById('lightbox-caption').textContent = img.src.split('/').pop();
+    updateViewInRoomBtn(img.src);
+    updatePrintOptions(lightboxImg.src);
+    lightbox.classList.add('active');
+  });
+});
+
+lightbox.addEventListener('click', (e) => {
+  if (e.target === lightbox || e.target === lightboxImg) {
+    lightbox.classList.remove('active');
+    lightboxImg.src = '';
+  }
+});
+
+document.addEventListener('keydown', (e) => {
+  if (!lightbox.classList.contains('active')) return;
+  if (e.key === 'ArrowRight') {
+    currentIndex = (currentIndex + 1) % currentPhotos.length;
+    lightboxImg.src = currentPhotos[currentIndex].src;
+    document.getElementById('lightbox-caption').textContent = currentPhotos[currentIndex].src.split('/').pop();
+    updateViewInRoomBtn(currentPhotos[currentIndex].src);
+    updatePrintOptions(lightboxImg.src);
+  }
+ if (e.key === 'ArrowLeft') {
+    currentIndex = (currentIndex - 1 + currentPhotos.length) % currentPhotos.length;
+    lightboxImg.src = currentPhotos[currentIndex].src;
+    document.getElementById('lightbox-caption').textContent = currentPhotos[currentIndex].src.split('/').pop();
+    updateViewInRoomBtn(currentPhotos[currentIndex].src);
+    updatePrintOptions(lightboxImg.src);
+  }
+  if (e.key === 'Escape') {
+    lightbox.classList.remove('active');
+    lightboxImg.src = '';
+  }
+});
+document.querySelector('.lightbox-prev').addEventListener('click', (e) => {
+  e.stopPropagation();
+  currentIndex = (currentIndex - 1 + currentPhotos.length) % currentPhotos.length;
+  lightboxImg.src = currentPhotos[currentIndex].src;
+  document.getElementById('lightbox-caption').textContent = currentPhotos[currentIndex].src.split('/').pop();
+  updateViewInRoomBtn(currentPhotos[currentIndex].src);
+  updatePrintOptions(lightboxImg.src);
+});
+
+document.querySelector('.lightbox-next').addEventListener('click', (e) => {
+  e.stopPropagation();
+  currentIndex = (currentIndex + 1) % currentPhotos.length;
+  lightboxImg.src = currentPhotos[currentIndex].src;
+  document.getElementById('lightbox-caption').textContent = currentPhotos[currentIndex].src.split('/').pop();
+  updateViewInRoomBtn(currentPhotos[currentIndex].src);
+  updatePrintOptions(lightboxImg.src);
+});
+
+document.querySelector('.lightbox-close').addEventListener('click', (e) => {
+  e.stopPropagation();
+  lightbox.classList.remove('active');
+  lightboxImg.src = '';
+});
+
+
+
+document.querySelectorAll('.photo-item').forEach(item => {
+  const overlay = document.createElement('div');
+  overlay.className = 'photo-overlay';
+  overlay.textContent = 'Order Print — from $36';
+  item.appendChild(overlay);
+});
+
+document.querySelector('.print-toggle').addEventListener('click', (e) => {
+  e.stopPropagation();
+  document.querySelector('.lightbox-print').classList.toggle('open');
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+const roomPreview = document.getElementById('room-preview');
+const roomBg = document.getElementById('room-bg');
+const roomOverlay = document.getElementById('room-overlay');
+
+document.getElementById('view-in-room-btn').addEventListener('click', (e) => {
+  e.stopPropagation();
+  console.log('room button clicked');
+  roomOverlay.src = lightboxImg.src;
+  roomPreview.classList.add('active');
+});
+document.querySelector('.room-close').addEventListener('click', () => {
+  roomPreview.classList.remove('active');
+});
+
+document.querySelectorAll('.room-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.room-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    roomBg.src = btn.getAttribute('data-room');
+    const overlay = document.getElementById('room-overlay');
+    overlay.style.left = btn.getAttribute('data-left') + '%';
+    overlay.style.top = btn.getAttribute('data-top') + '%';
+    overlay.style.width = btn.getAttribute('data-width') + '%';
+    overlay.style.height = btn.getAttribute('data-height') + '%';
+  });
+});
+
+roomPreview.addEventListener('click', (e) => {
+  if (e.target === roomPreview) roomPreview.classList.remove('active');
+});
+});
+
+document.querySelectorAll('.photo-item img').forEach(img => {
+  const item = img.closest('.photo-item');
+  const category = item.getAttribute('data-category') || '';
+  if (!category.includes('featured')) {
+    img.setAttribute('loading', 'lazy');
+  }
+});
+
+</script>
+
+<!-- ROOM PREVIEW MODAL -->
+<div class="room-preview" id="room-preview">
+  <span class="room-close">✕</span>
+  <div class="room-scene" id="room-scene">
+ <img class="room-bg" id="room-bg" src="room1.jpg" />
+    <img class="room-overlay" id="room-overlay" src="" />
+  </div>
+  <div class="room-switcher">
+    <button class="room-btn active" data-room="room1.jpg" data-left="24.20" data-top="20.60" data-width="50.99" data-height="47.65">Minimal</button>
+  </div>
+</div>
+
+<script src="site.js" defer></script>
+</body>
+</html>
